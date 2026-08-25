@@ -15,7 +15,6 @@
   --muted:#667085;
   --line:#d9e2f0;
   --now:#e65b67;
-  --white:#fff;
 }
 
 *{box-sizing:border-box}
@@ -35,10 +34,7 @@ button,input{font:inherit}
   padding:22px 18px 34px;
 }
 
-.hero-inner,
-.main,
-.controls-inner,
-footer{
+.hero-inner,.main,.controls-inner,footer{
   max-width:1200px;
   margin:auto;
 }
@@ -129,8 +125,7 @@ footer{
   overflow:auto;
 }
 
-.day,
-.demo{
+.day,.demo{
   border:1px solid var(--line);
   background:#fff;
   border-radius:11px;
@@ -139,8 +134,7 @@ footer{
   cursor:pointer;
 }
 
-.day.active,
-.demo.active{
+.day.active,.demo.active{
   background:var(--navy);
   color:#fff;
   border-color:var(--navy);
@@ -320,6 +314,44 @@ footer{
   font-size:10px;
 }
 
+/* ============================================================
+   ALL ROOMS ROWS
+   ============================================================ */
+
+.all-rooms-row{
+  display:grid;
+  min-width:760px;
+  border-left:1px solid var(--line);
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:#f8fafc;
+}
+
+.all-rooms-content{
+  padding:16px 20px;
+  text-align:center;
+  background:#fff;
+}
+
+.all-rooms-title{
+  display:block;
+  color:var(--navy);
+  font-size:15px;
+  font-weight:800;
+  margin-bottom:6px;
+}
+
+.all-rooms-time{
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  margin-bottom:8px;
+}
+
+/* ============================================================
+   BREAK ROW
+   ============================================================ */
+
 .break-row{
   display:grid;
   min-width:760px;
@@ -345,8 +377,7 @@ footer{
   font-style:italic;
 }
 
-.loading,
-.empty{
+.loading,.empty{
   background:#fff;
   border:1px solid var(--line);
   border-radius:15px;
@@ -455,6 +486,10 @@ footer{
   font-size:12px;
 }
 
+/* ============================================================
+   DESKTOP
+   ============================================================ */
+
 @media(min-width:700px){
 
   .hero{
@@ -472,6 +507,7 @@ footer{
   .modal-box{
     border-radius:22px;
   }
+
 }
 
 /* ============================================================
@@ -489,54 +525,25 @@ footer{
   }
 
   .timetable-scroll{
-    overflow-x:visible;
+    overflow-x:auto;
   }
 
   .time-header{
-    min-width:0;
-    grid-template-columns:78px 1fr !important;
-  }
-
-  .time-header .corner{
-    min-width:78px;
-  }
-
-  .room-header{
-    display:none;
+    min-width:760px;
   }
 
   .time-block{
-    display:grid;
-    grid-template-columns:78px 1fr !important;
-    min-width:0;
-  }
-
-  .time-label{
-    min-width:78px;
-  }
-
-  .room-cell{
-    min-width:0;
-    border-right:0;
-    padding:7px;
-  }
-
-  .room-cell:not(:has(.session-card)){
-    display:none;
-  }
-
-  .session-card{
-    min-height:100px;
+    min-width:760px;
   }
 
   .break-row{
-    grid-template-columns:78px 1fr !important;
-    min-width:0;
+    min-width:760px;
   }
 
-  .break-label{
-    min-width:78px;
+  .all-rooms-row{
+    min-width:760px;
   }
+
 }
 </style>
 </head>
@@ -544,47 +551,86 @@ footer{
 <body>
 
 <header class="hero">
+
   <div class="hero-inner">
 
     <div class="brand">
-      <img src="assets/sera-logo-original.png" alt="SERA logo">
+
+      <img
+        src="assets/sera-logo-original.png"
+        alt="SERA logo"
+      >
 
       <div>
-        <small>Scottish Educational Research Association</small>
-        <strong>SERA Conference 2026</strong>
+
+        <small>
+          Scottish Educational Research Association
+        </small>
+
+        <strong>
+          SERA Conference 2026
+        </strong>
+
       </div>
+
     </div>
 
-    <h1>Research, learning<br>and changing times.</h1>
+    <h1>
+      Research, learning<br>
+      and changing times.
+    </h1>
 
     <p>
       SERA Conference 2026 programme.
-      Explore sessions by time and room, search the programme,
+      Explore sessions by time and room,
+      search the programme,
       and save sessions to your personal programme.
     </p>
 
     <div class="meta">
-      <span class="pill">18–19 November 2026</span>
-      <span class="pill">Edinburgh Napier University</span>
-      <span class="pill">Edinburgh</span>
+
+      <span class="pill">
+        18–19 November 2026
+      </span>
+
+      <span class="pill">
+        Edinburgh Napier University
+      </span>
+
+      <span class="pill">
+        Edinburgh
+      </span>
+
     </div>
 
   </div>
+
 </header>
 
+
 <div id="notice" class="notice">
+
   <strong>Programme:</strong>
   The programme is subject to change.
+
 </div>
 
+
 <nav class="controls">
+
   <div class="controls-inner">
 
-    <button class="day active" data-day="0">
+    <button
+      class="day active"
+      data-day="0"
+    >
       Wed 18 Nov
     </button>
 
-    <button class="day" data-day="1">
+    <button
+      class="day"
+      data-day="1"
+    >
       Thu 19 Nov
     </button>
 
@@ -595,18 +641,24 @@ footer{
       aria-label="Search programme"
     >
 
-    <button id="demo" class="demo active">
+    <button
+      id="demo"
+      class="demo active"
+    >
       ● Live
     </button>
 
   </div>
+
 </nav>
+
 
 <main class="main">
 
   <div class="status">
 
     <div>
+
       <h2 id="dayTitle">
         Wednesday 18 November
       </h2>
@@ -614,6 +666,7 @@ footer{
       <small id="status">
         Loading programme…
       </small>
+
     </div>
 
     <small id="saved">
@@ -622,7 +675,11 @@ footer{
 
   </div>
 
-  <section id="timetable" class="timetable">
+
+  <section
+    id="timetable"
+    class="timetable"
+  >
 
     <div class="loading">
       Loading programme from Google Sheets…
@@ -632,21 +689,36 @@ footer{
 
 </main>
 
+
 <footer>
-  SERA Conference 2026 · Programme subject to change.
+
+  SERA Conference 2026 ·
+  Programme subject to change.
+
 </footer>
 
-<div id="modal" class="modal">
+
+<div
+  id="modal"
+  class="modal"
+>
 
   <div class="modal-box">
 
-    <button id="close" class="close" aria-label="Close">
+    <button
+      id="close"
+      class="close"
+      aria-label="Close"
+    >
       ×
     </button>
 
     <h2 id="mtitle"></h2>
 
-    <span id="mtype" class="modal-type"></span>
+    <span
+      id="mtype"
+      class="modal-type"
+    ></span>
 
     <div class="modal-details">
 
@@ -685,6 +757,7 @@ footer{
   </div>
 
 </div>
+
 
 <script>
 
@@ -758,6 +831,27 @@ function mins(value){
 }
 
 
+function formatMinutes(total){
+
+  if(!total){
+    return "";
+  }
+
+  const hours =
+    Math.floor(total / 60);
+
+  const minutes =
+    total % 60;
+
+  return (
+    String(hours).padStart(2,"0") +
+    ":" +
+    String(minutes).padStart(2,"0")
+  );
+
+}
+
+
 /* ============================================================
    CSV PARSER
    ============================================================ */
@@ -781,7 +875,9 @@ function parseCSV(text){
     if(char === '"' && quoted && next === '"'){
 
       cell += '"';
+
       i++;
+
       continue;
 
     }
@@ -789,6 +885,7 @@ function parseCSV(text){
     if(char === '"'){
 
       quoted = !quoted;
+
       continue;
 
     }
@@ -796,24 +893,41 @@ function parseCSV(text){
     if(char === "," && !quoted){
 
       row.push(cell);
+
       cell = "";
+
       continue;
 
     }
 
-    if((char === "\n" || char === "\r") && !quoted){
+    if(
+      (char === "\n" || char === "\r") &&
+      !quoted
+    ){
 
-      if(char === "\r" && next === "\n"){
+      if(
+        char === "\r" &&
+        next === "\n"
+      ){
+
         i++;
+
       }
 
       row.push(cell);
 
-      if(row.some(value => clean(value) !== "")){
+      if(
+        row.some(
+          value => clean(value) !== ""
+        )
+      ){
+
         rows.push(row);
+
       }
 
       row = [];
+
       cell = "";
 
       continue;
@@ -828,8 +942,14 @@ function parseCSV(text){
 
     row.push(cell);
 
-    if(row.some(value => clean(value) !== "")){
+    if(
+      row.some(
+        value => clean(value) !== ""
+      )
+    ){
+
       rows.push(row);
+
     }
 
   }
@@ -862,18 +982,42 @@ function convertRows(rows){
 
   }
 
-  const idIndex = column("id");
-  const dayIndex = column("day");
-  const dateIndex = column("date");
-  const startIndex = column("start");
-  const endIndex = column("end");
-  const roomIndex = column("room");
-  const typeIndex = column("type");
-  const titleIndex = column("title");
-  const speakerIndex = column("speaker(s)");
-  const affiliationIndex = column("affiliation");
-  const strandIndex = column("strand");
-  const chairIndex = column("chair");
+  const idIndex =
+    column("id");
+
+  const dayIndex =
+    column("day");
+
+  const dateIndex =
+    column("date");
+
+  const startIndex =
+    column("start");
+
+  const endIndex =
+    column("end");
+
+  const roomIndex =
+    column("room");
+
+  const typeIndex =
+    column("type");
+
+  const titleIndex =
+    column("title");
+
+  const speakerIndex =
+    column("speaker(s)");
+
+  const affiliationIndex =
+    column("affiliation");
+
+  const strandIndex =
+    column("strand");
+
+  const chairIndex =
+    column("chair");
+
 
   return rows
     .slice(1)
@@ -971,7 +1115,9 @@ async function loadProgramme(){
 
     }
 
-    $("#notice").classList.remove("error");
+    $("#notice").classList.remove(
+      "error"
+    );
 
     $("#notice").innerHTML =
       "<strong>Programme:</strong> " +
@@ -987,7 +1133,9 @@ async function loadProgramme(){
 
     console.error(error);
 
-    $("#notice").classList.add("error");
+    $("#notice").classList.add(
+      "error"
+    );
 
     $("#notice").innerHTML =
       "<strong>Programme could not be loaded.</strong> " +
@@ -1008,7 +1156,7 @@ async function loadProgramme(){
 
 
 /* ============================================================
-   GET SESSIONS FOR CURRENT DAY
+   GET DAY
    ============================================================ */
 
 function getDayProgramme(){
@@ -1079,7 +1227,9 @@ function getFilteredProgramme(){
       session.strand,
       session.chair
 
-    ].join(" ").toLowerCase();
+    ]
+      .join(" ")
+      .toLowerCase();
 
     return text.includes(query);
 
@@ -1089,7 +1239,7 @@ function getFilteredProgramme(){
 
 
 /* ============================================================
-   FIND ROOMS
+   GET ROOMS
    ============================================================ */
 
 function getRooms(sessions){
@@ -1098,12 +1248,16 @@ function getRooms(sessions){
 
   sessions.forEach(session => {
 
+    const room =
+      session.room.trim();
+
     if(
-      session.room &&
-      !rooms.includes(session.room)
+      room &&
+      room.toLowerCase() !== "all rooms" &&
+      !rooms.includes(room)
     ){
 
-      rooms.push(session.room);
+      rooms.push(room);
 
     }
 
@@ -1115,7 +1269,7 @@ function getRooms(sessions){
 
 
 /* ============================================================
-   GROUP BY START TIME
+   GROUP SESSIONS BY START TIME
    ============================================================ */
 
 function getTimeGroups(sessions){
@@ -1124,26 +1278,35 @@ function getTimeGroups(sessions){
 
   sessions.forEach(session => {
 
-    if(!times.includes(session.start)){
+    if(
+      session.start &&
+      !times.includes(session.start)
+    ){
+
       times.push(session.start);
+
     }
 
   });
 
   times.sort(
-    (a,b) => mins(a) - mins(b)
+    (a,b) =>
+      mins(a) - mins(b)
   );
 
   return times.map(start => {
 
     const items =
       sessions.filter(
-        session => session.start === start
+        session =>
+          session.start === start
       );
 
     const endTimes =
       items
-        .map(item => mins(item.end))
+        .map(
+          item => mins(item.end)
+        )
         .filter(Boolean);
 
     const end =
@@ -1163,7 +1326,7 @@ function getTimeGroups(sessions){
 
 
 /* ============================================================
-   IS THIS A BREAK?
+   BREAK DETECTION
    ============================================================ */
 
 function isBreak(session){
@@ -1198,6 +1361,7 @@ function render(){
   $("#saved").textContent =
     saved.length + " saved";
 
+
   if(!sessions.length){
 
     $("#timetable").innerHTML =
@@ -1209,6 +1373,7 @@ function render(){
 
   }
 
+
   const rooms =
     getRooms(sessions);
 
@@ -1217,80 +1382,142 @@ function render(){
 
   let html = "";
 
-  /* Room header */
+
+  /* ----------------------------------------------------------
+     ROOM HEADERS
+     ---------------------------------------------------------- */
 
   html += `
+
     <div
       class="timetable-scroll"
-      id="scrollArea"
     >
 
       <div
         class="time-header"
-        style="grid-template-columns:88px repeat(${rooms.length}, minmax(180px,1fr));"
+        style="
+          grid-template-columns:
+          88px
+          repeat(
+            ${rooms.length},
+            minmax(180px,1fr)
+          );
+        "
       >
 
         <div class="corner"></div>
 
         ${rooms.map(room => `
+
           <div class="room-header">
+
             ${escapeHTML(room)}
+
           </div>
+
         `).join("")}
 
       </div>
+
   `;
 
 
-  /* Time groups */
+  /* ----------------------------------------------------------
+     TIME GROUPS
+     ---------------------------------------------------------- */
 
   groups.forEach(group => {
 
-    const breakSessions =
-      group.sessions.filter(isBreak);
 
-    const normalSessions =
-      group.sessions.filter(
-        session => !isBreak(session)
+    /* --------------------------------------------------------
+       ALL ROOMS
+       -------------------------------------------------------- */
+
+    const allRoomsSession =
+      group.sessions.find(
+        session =>
+          session.room
+            .trim()
+            .toLowerCase() === "all rooms"
       );
 
 
-    /* A break occupying the whole timetable */
-
-    if(
-      breakSessions.length &&
-      !normalSessions.length
-    ){
-
-      const breakTitle =
-        breakSessions
-          .map(session => session.title)
-          .filter(Boolean)
-          .join(" · ");
+    if(allRoomsSession){
 
       html += `
 
         <div
-          class="break-row"
-          style="grid-template-columns:88px 1fr;"
+          class="all-rooms-row"
+          style="
+            grid-template-columns:
+            88px 1fr;
+          "
         >
 
           <div class="break-label">
-            ${escapeHTML(group.start)}
-          </div>
 
-          <div class="break-content">
-            ${escapeHTML(breakTitle)}
+            ${escapeHTML(group.start)}
+
             ${
-              group.end > mins(group.start)
-                ? " · " +
-                  escapeHTML(
-                    group.start +
-                    "–" +
-                    formatMinutes(group.end)
-                  )
+              group.end
+                ? `
+                  <br>
+                  <span
+                    style="font-weight:500"
+                  >
+                    ${escapeHTML(
+                      formatMinutes(group.end)
+                    )}
+                  </span>
+                `
                 : ""
             }
+
+          </div>
+
+
+          <div class="all-rooms-content">
+
+            <span class="all-rooms-title">
+
+              ${escapeHTML(
+                allRoomsSession.title
+              )}
+
+            </span>
+
+
+            <span class="all-rooms-time">
+
+              ${escapeHTML(
+                group.start
+              )}
+              ${
+                group.end
+                  ? "–" +
+                    escapeHTML(
+                      formatMinutes(
+                        group.end
+                      )
+                    )
+                  : ""
+              }
+
+            </span>
+
+
+            ${
+              allRoomsSession.type
+                ? `
+                  <span class="tag">
+                    ${escapeHTML(
+                      allRoomsSession.type
+                    )}
+                  </span>
+                `
+                : ""
+            }
+
           </div>
 
         </div>
@@ -1302,32 +1529,140 @@ function render(){
     }
 
 
-    /* Normal timetable row */
+    /* --------------------------------------------------------
+       BREAKS
+       -------------------------------------------------------- */
+
+    const breakSessions =
+      group.sessions.filter(
+        session => isBreak(session)
+      );
+
+    const normalSessions =
+      group.sessions.filter(
+        session => !isBreak(session)
+      );
+
+
+    if(
+      breakSessions.length &&
+      !normalSessions.length
+    ){
+
+      const breakTitle =
+        breakSessions
+          .map(
+            session =>
+              session.title
+          )
+          .filter(Boolean)
+          .join(" · ");
+
+
+      html += `
+
+        <div
+          class="break-row"
+          style="
+            grid-template-columns:
+            88px 1fr;
+          "
+        >
+
+          <div class="break-label">
+
+            ${escapeHTML(group.start)}
+
+            ${
+              group.end
+                ? `
+                  <br>
+                  <span
+                    style="font-weight:500"
+                  >
+                    ${escapeHTML(
+                      formatMinutes(group.end)
+                    )}
+                  </span>
+                `
+                : ""
+            }
+
+          </div>
+
+
+          <div class="break-content">
+
+            ${escapeHTML(
+              breakTitle
+            )}
+
+          </div>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    /* --------------------------------------------------------
+       NORMAL ROOM SESSIONS
+       -------------------------------------------------------- */
 
     html += `
 
       <div
         class="time-block"
-        data-start="${escapeHTML(group.start)}"
-        data-end="${escapeHTML(formatMinutes(group.end))}"
-        style="grid-template-columns:88px repeat(${rooms.length}, minmax(180px,1fr));"
+        data-start="${escapeHTML(
+          group.start
+        )}"
+        data-end="${escapeHTML(
+          formatMinutes(group.end)
+        )}"
+        style="
+          grid-template-columns:
+          88px
+          repeat(
+            ${rooms.length},
+            minmax(180px,1fr)
+          );
+        "
       >
 
+
         <div class="time-label">
+
           ${escapeHTML(group.start)}
+
           ${
             group.end
-              ? `<br><span style="font-weight:500">${escapeHTML(formatMinutes(group.end))}</span>`
+              ? `
+                <br>
+                <span
+                  style="font-weight:500"
+                >
+                  ${escapeHTML(
+                    formatMinutes(group.end)
+                  )}
+                </span>
+              `
               : ""
           }
+
         </div>
+
 
         ${rooms.map(room => {
 
           const session =
             normalSessions.find(
-              item => item.room === room
+              item =>
+                item.room === room
             );
+
 
           if(!session){
 
@@ -1337,8 +1672,12 @@ function render(){
 
           }
 
+
           const savedSession =
-            saved.includes(session.id);
+            saved.includes(
+              session.id
+            );
+
 
           return `
 
@@ -1346,61 +1685,95 @@ function render(){
 
               <div
                 class="session-card"
-                data-id="${escapeHTML(session.id)}"
+                data-id="${escapeHTML(
+                  session.id
+                )}"
               >
 
+
                 <button
-                  class="star ${savedSession ? "saved" : ""}"
-                  data-save="${escapeHTML(session.id)}"
+                  class="star ${
+                    savedSession
+                      ? "saved"
+                      : ""
+                  }"
+                  data-save="${escapeHTML(
+                    session.id
+                  )}"
                   aria-label="Save session"
                   title="Save session"
                 >
-                  ${savedSession ? "★" : "☆"}
+
+                  ${
+                    savedSession
+                      ? "★"
+                      : "☆"
+                  }
+
                 </button>
 
+
                 <h3>
-                  ${escapeHTML(session.title)}
+
+                  ${escapeHTML(
+                    session.title
+                  )}
+
                 </h3>
+
 
                 ${
                   session.speaker
                     ? `
                       <div class="session-speaker">
-                        ${escapeHTML(session.speaker)}
+                        ${escapeHTML(
+                          session.speaker
+                        )}
                       </div>
                     `
                     : ""
                 }
+
 
                 ${
                   session.affiliation
                     ? `
                       <div class="session-affiliation">
-                        ${escapeHTML(session.affiliation)}
+                        ${escapeHTML(
+                          session.affiliation
+                        )}
                       </div>
                     `
                     : ""
                 }
+
 
                 ${
                   session.type
                     ? `
                       <span class="tag">
-                        ${escapeHTML(session.type)}
+                        ${escapeHTML(
+                          session.type
+                        )}
                       </span>
                     `
                     : ""
                 }
 
+
                 ${
                   session.chair
                     ? `
                       <div class="chair">
-                        Chair: ${escapeHTML(session.chair)}
+                        Chair:
+                        ${escapeHTML(
+                          session.chair
+                        )}
                       </div>
                     `
                     : ""
                 }
+
 
               </div>
 
@@ -1410,6 +1783,7 @@ function render(){
 
         }).join("")}
 
+
       </div>
 
     `;
@@ -1418,10 +1792,15 @@ function render(){
 
 
   html += `
+
       </div>
+
   `;
 
-  $("#timetable").innerHTML = html;
+
+  $("#timetable").innerHTML =
+    html;
+
 
   placeNow();
 
@@ -1429,32 +1808,7 @@ function render(){
 
 
 /* ============================================================
-   FORMAT MINUTES
-   ============================================================ */
-
-function formatMinutes(total){
-
-  if(!total){
-    return "";
-  }
-
-  const hours =
-    Math.floor(total / 60);
-
-  const minutes =
-    total % 60;
-
-  return (
-    String(hours).padStart(2,"0") +
-    ":" +
-    String(minutes).padStart(2,"0")
-  );
-
-}
-
-
-/* ============================================================
-   LIVE LINE
+   LIVE / HAPPENING NOW
    ============================================================ */
 
 function placeNow(){
@@ -1467,57 +1821,87 @@ function placeNow(){
     return;
   }
 
+
   const today =
     new Date();
 
-  const date =
-    today.toISOString().slice(0,10);
 
   const conferenceDate =
     day === 0
       ? "2026-11-18"
       : "2026-11-19";
 
-  if(date !== conferenceDate){
+
+  const currentDate =
+    today.toISOString()
+      .slice(0,10);
+
+
+  if(
+    currentDate !==
+    conferenceDate
+  ){
+
     return;
+
   }
+
 
   const currentMinutes =
     today.getHours() * 60 +
     today.getMinutes();
+
 
   const rows =
     document.querySelectorAll(
       ".time-block"
     );
 
+
   rows.forEach(row => {
 
     const start =
-      mins(row.dataset.start);
+      mins(
+        row.dataset.start
+      );
 
     const end =
-      mins(row.dataset.end);
+      mins(
+        row.dataset.end
+      );
+
 
     if(
       currentMinutes >= start &&
       currentMinutes < end
     ){
 
-      row.classList.add("now-row");
+      row.classList.add(
+        "now-row"
+      );
+
 
       const line =
-        document.createElement("div");
+        document.createElement(
+          "div"
+        );
+
 
       line.className =
         "now-indicator";
 
+
       line.innerHTML =
         "<span>HAPPENING NOW</span>";
 
-      line.style.top = "0";
 
-      row.appendChild(line);
+      line.style.top =
+        "0";
+
+
+      row.appendChild(
+        line
+      );
 
     }
 
@@ -1534,19 +1918,27 @@ document.addEventListener(
   "click",
   event => {
 
+
     const saveButton =
-      event.target.closest("[data-save]");
+      event.target.closest(
+        "[data-save]"
+      );
+
 
     if(saveButton){
 
       const id =
         saveButton.dataset.save;
 
-      if(saved.includes(id)){
+
+      if(
+        saved.includes(id)
+      ){
 
         saved =
           saved.filter(
-            item => item !== id
+            item =>
+              item !== id
           );
 
       }else{
@@ -1558,10 +1950,12 @@ document.addEventListener(
 
       }
 
+
       localStorage.setItem(
         "seraSaved",
         JSON.stringify(saved)
       );
+
 
       render();
 
@@ -1571,56 +1965,80 @@ document.addEventListener(
 
 
     const card =
-      event.target.closest(".session-card");
+      event.target.closest(
+        ".session-card"
+      );
+
 
     if(!card){
       return;
     }
 
-    if(event.target.closest(".star")){
+
+    if(
+      event.target.closest(
+        ".star"
+      )
+    ){
+
       return;
+
     }
+
 
     const id =
       card.dataset.id;
 
+
     const session =
       programme.find(
-        item => item.id === id
+        item =>
+          item.id === id
       );
+
 
     if(!session){
       return;
     }
 
+
     $("#mtitle").textContent =
       session.title;
 
+
     $("#mtype").textContent =
       session.type || "";
+
 
     $("#mtime").textContent =
       session.start +
       (
         session.end
-          ? "–" + session.end
+          ? "–" +
+            session.end
           : ""
       );
+
 
     $("#mspeaker").textContent =
       session.speaker || "—";
 
+
     $("#maffiliation").textContent =
       session.affiliation || "—";
+
 
     $("#mroom").textContent =
       session.room || "—";
 
+
     $("#mstrand").textContent =
       session.strand || "—";
 
+
     $("#mchair").textContent =
       session.chair || "—";
+
 
     $("#modal")
       .classList
@@ -1634,26 +2052,31 @@ document.addEventListener(
    CLOSE MODAL
    ============================================================ */
 
-$("#close").onclick = () => {
-
-  $("#modal")
-    .classList
-    .remove("open");
-
-};
-
-
-$("#modal").onclick = event => {
-
-  if(event.target.id === "modal"){
+$("#close").onclick =
+  () => {
 
     $("#modal")
       .classList
       .remove("open");
 
-  }
+  };
 
-};
+
+$("#modal").onclick =
+  event => {
+
+    if(
+      event.target.id ===
+      "modal"
+    ){
+
+      $("#modal")
+        .classList
+        .remove("open");
+
+    }
+
+  };
 
 
 /* ============================================================
@@ -1662,35 +2085,41 @@ $("#modal").onclick = event => {
 
 document
   .querySelectorAll(".day")
-  .forEach((button,index) => {
+  .forEach(
+    (button,index) => {
 
-    button.onclick = () => {
+      button.onclick =
+        () => {
 
-      day = index;
+          day = index;
 
-      document
-        .querySelectorAll(".day")
-        .forEach(
-          (item,itemIndex) => {
 
-            item.classList.toggle(
-              "active",
-              itemIndex === index
+          document
+            .querySelectorAll(".day")
+            .forEach(
+              (item,itemIndex) => {
+
+                item.classList.toggle(
+                  "active",
+                  itemIndex === index
+                );
+
+              }
             );
 
-          }
-        );
 
-      $("#dayTitle").textContent =
-        index === 0
-          ? "Wednesday 18 November"
-          : "Thursday 19 November";
+          $("#dayTitle").textContent =
+            index === 0
+              ? "Wednesday 18 November"
+              : "Thursday 19 November";
 
-      render();
 
-    };
+          render();
 
-  });
+        };
+
+    }
+  );
 
 
 /* ============================================================
@@ -1705,25 +2134,29 @@ $("#search").oninput =
    LIVE BUTTON
    ============================================================ */
 
-$("#demo").onclick = () => {
+$("#demo").onclick =
+  () => {
 
-  demo = !demo;
+    demo = !demo;
 
-  $("#demo")
-    .classList
-    .toggle(
-      "active",
+
+    $("#demo")
+      .classList
+      .toggle(
+        "active",
+        demo
+      );
+
+
+    $("#demo").textContent =
       demo
-    );
+        ? "● Live"
+        : "○ Live";
 
-  $("#demo").textContent =
-    demo
-      ? "● Live"
-      : "○ Live";
 
-  render();
+    render();
 
-};
+  };
 
 
 /* ============================================================
