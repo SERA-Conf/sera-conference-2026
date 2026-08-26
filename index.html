@@ -1452,37 +1452,28 @@ async function loadProgramme(){
 
 function getDayProgramme(){
 
-  return programme.filter(
-    session => {
+  return programme.filter(session => {
 
-      const date =
-        session.date
-          .toLowerCase();
+    const day =
+      session.day
+        .trim()
+        .toLowerCase();
 
-      const dayName =
-        session.day
-          .toLowerCase();
-
-
-      if(
-        selectedDay === 0
-      ){
-
-        return (
-          date.includes("18") ||
-          dayName.includes("wed")
-        );
-
-      }
-
+    if(selectedDay === 0){
 
       return (
-        date.includes("19") ||
-        dayName.includes("thu")
+        day.includes("wed") ||
+        day.includes("wednesday")
       );
 
     }
-  );
+
+    return (
+      day.includes("thu") ||
+      day.includes("thursday")
+    );
+
+  });
 
 }
 
