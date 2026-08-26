@@ -223,7 +223,7 @@ footer{
 }
 
 .timetable{
-  min-width:760px;
+  min-width:850px;
 }
 
 .time-header{
@@ -660,7 +660,7 @@ footer{
   }
 
   .timetable{
-    min-width:760px;
+    min-width:850px;
   }
 
 }
@@ -909,11 +909,34 @@ footer{
 
 
 /* =========================================================
-   YOUR GOOGLE SHEET
+   GOOGLE SHEET
    ========================================================= */
 
 const PROGRAMME_URL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRMrcoDNYRb8VfAG9dTTEGRWtLRLDPkAumjl-ePZ7PHp6xl4SAI9K4GVX-3FyTu5_YCddZl8jxWbagu/pub?gid=0&single=true&output=csv";
+
+
+/* =========================================================
+   FIXED ROOM LIST
+   =========================================================
+
+   These rooms will ALWAYS appear.
+
+   If you add another room to the conference,
+   add it here.
+
+   "All Rooms" is NOT included because it
+   becomes a full-width session.
+   ========================================================= */
+
+const ROOMS = [
+
+  "Main Hall",
+  "Room A",
+  "Room B",
+  "Room 3030"
+
+];
 
 
 /* =========================================================
@@ -1000,6 +1023,7 @@ function mins(value){
   const parts =
     value.split(":");
 
+
   return (
     Number(parts[0]) * 60 +
     Number(parts[1])
@@ -1022,6 +1046,7 @@ function formatMinutes(total){
   const minutes =
     total % 60;
 
+
   return (
     String(hours)
       .padStart(2,"0")
@@ -1036,7 +1061,7 @@ function formatMinutes(total){
 
 
 /* =========================================================
-   NORMALISE ROOM NAME
+   NORMALISE ROOM
    ========================================================= */
 
 function normaliseRoom(room){
@@ -1190,7 +1215,7 @@ function parseCSV(text){
 
 
 /* =========================================================
-   CONVERT SHEET INTO PROGRAMME DATA
+   CONVERT GOOGLE SHEET ROWS
    ========================================================= */
 
 function convertRows(rows){
@@ -1452,28 +1477,34 @@ async function loadProgramme(){
 
 function getDayProgramme(){
 
-  return programme.filter(session => {
+  return programme.filter(
+    session => {
 
-    const day =
-      session.day
-        .trim()
-        .toLowerCase();
+      const day =
+        session.day
+          .trim()
+          .toLowerCase();
 
-    if(selectedDay === 0){
+
+      if(
+        selectedDay === 0
+      ){
+
+        return (
+          day.includes("wed") ||
+          day.includes("wednesday")
+        );
+
+      }
+
 
       return (
-        day.includes("wed") ||
-        day.includes("wednesday")
+        day.includes("thu") ||
+        day.includes("thursday")
       );
 
     }
-
-    return (
-      day.includes("thu") ||
-      day.includes("thursday")
-    );
-
-  });
+  );
 
 }
 
@@ -1531,72 +1562,7 @@ function getFilteredProgramme(){
 
 
 /* =========================================================
-   ROOMS
-   ========================================================= */
-
-function getRooms(
-  sessions
-){
-
-  const rooms = [];
-
-
-  sessions.forEach(
-    session => {
-
-      const room =
-        clean(
-          session.room
-        );
-
-
-      /*
-         ONLY "All Rooms" is
-         excluded from the room
-         columns.
-      */
-
-      if(
-        room &&
-        normaliseRoom(room) !==
-        "all rooms"
-      ){
-
-        if(
-          !rooms.some(
-            existing =>
-              normaliseRoom(
-                existing
-              ) ===
-              normaliseRoom(
-                room
-              )
-          )
-        ){
-
-          rooms.push(
-            room
-          );
-
-        }
-
-      }
-
-    }
-  );
-
-
-  return rooms;
-
-}
-
-
-/* =========================================================
-   IS THIS AN ALL-ROOMS SESSION?
-   
-   IMPORTANT:
-   We ONLY use the Room column.
-   No title-based guessing.
+   ONLY ALL ROOMS SPANS THE TIMETABLE
    ========================================================= */
 
 function isAllRooms(
@@ -1802,7 +1768,7 @@ function allRoomsCard(
 
 
 /* =========================================================
-   RENDER TIMETABLE
+   RENDER
    ========================================================= */
 
 function render(){
@@ -1835,23 +1801,19 @@ function render(){
 
 
   /*
-     Get room columns.
+     FIXED ROOM LIST.
 
-     All Rooms is deliberately NOT
-     included as a column.
+     Room 3030 will ALWAYS be
+     present on both days.
   */
 
   const rooms =
-    getRooms(
-      sessions
-    );
+    ROOMS;
 
 
   /*
-     Split sessions into:
-
-     1. All Rooms
-     2. Specific-room sessions
+     Separate All Rooms sessions
+     from room-specific sessions.
   */
 
   const allRoomSessions =
@@ -1948,17 +1910,16 @@ function render(){
 
 
   /*
-     Render each time.
+     Render each start time.
   */
 
   startTimes.forEach(
     start => {
 
-      /*
-         ---------------------------------------------------
+
+      /* ---------------------------------------------------
          ALL ROOMS
-         ---------------------------------------------------
-      */
+         --------------------------------------------------- */
 
       const allRooms =
         allRoomSessions.filter(
@@ -1980,11 +1941,9 @@ function render(){
       );
 
 
-      /*
-         ---------------------------------------------------
-         SPECIFIC ROOMS
-         ---------------------------------------------------
-      */
+      /* ---------------------------------------------------
+         ROOM-SPECIFIC SESSIONS
+         --------------------------------------------------- */
 
       const atThisTime =
         roomSessions.filter(
@@ -2004,8 +1963,8 @@ function render(){
 
 
       /*
-         Work out the latest end time
-         for this particular row.
+         Find the longest session
+         beginning at this time.
       */
 
       const endMinutes =
@@ -2078,15 +2037,15 @@ function render(){
             room => {
 
               /*
-                 THIS IS THE IMPORTANT PART.
+                 CRITICAL:
 
-                 We only put a session into
-                 a cell when its Room value
-                 actually matches that room.
+                 A session is placed into
+                 this column ONLY if the
+                 Room cell in the Sheet
+                 matches the room heading.
 
-                 Room A can therefore NEVER
-                 appear in Room B or across
-                 the whole timetable.
+                 Nothing is inferred from
+                 the title or Type.
               */
 
               const sessionsInRoom =
@@ -2165,7 +2124,7 @@ function render(){
 function placeNow(){
 
   /*
-     Remove previous lines.
+     Remove existing indicators.
   */
 
   document
@@ -2186,8 +2145,7 @@ function placeNow(){
 
 
   /*
-     Only show the line on the
-     actual conference dates.
+     Get current real-world time.
   */
 
   const now =
@@ -2203,6 +2161,12 @@ function placeNow(){
   const date =
     now.getDate();
 
+
+  /*
+     Conference dates:
+       Wednesday 18 November 2026
+       Thursday 19 November 2026
+  */
 
   const correctDay =
     (
@@ -2234,7 +2198,7 @@ function placeNow(){
 
 
   /*
-     Check ordinary timetable rows.
+     Normal sessions.
   */
 
   document
@@ -2309,7 +2273,7 @@ function placeNow(){
 
 
   /*
-     Check All Rooms blocks.
+     All Rooms sessions.
   */
 
   document
@@ -2386,7 +2350,7 @@ function placeNow(){
 
 
 /* =========================================================
-   SAVE / OPEN SESSION
+   CLICK HANDLER
    ========================================================= */
 
 document.addEventListener(
@@ -2394,9 +2358,7 @@ document.addEventListener(
   event => {
 
 
-    /*
-       SAVE BUTTON
-    */
+    /* SAVE */
 
     const saveButton =
       event.target.closest(
@@ -2446,9 +2408,7 @@ document.addEventListener(
     }
 
 
-    /*
-       SESSION CARD
-    */
+    /* SESSION */
 
     const card =
       event.target.closest(
@@ -2689,7 +2649,7 @@ $("#demo").onclick =
 
 
 /* =========================================================
-   UPDATE RED LINE
+   UPDATE LIVE LINE
    ========================================================= */
 
 setInterval(
