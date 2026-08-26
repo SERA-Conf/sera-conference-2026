@@ -4,21 +4,12 @@
 <head>
 
 <meta charset="utf-8">
-
-<meta name="viewport"
-      content="width=device-width,initial-scale=1">
-
-<meta name="theme-color"
-      content="#102a72">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102a72">
 
 <title>SERA Conference 2026 — Programme</title>
 
-
 <style>
-
-/* =========================================================
-   BASIC
-   ========================================================= */
 
 :root{
   --navy:#102a72;
@@ -61,7 +52,6 @@ input{
     );
 
   color:#fff;
-
   padding:22px 18px 34px;
 }
 
@@ -99,36 +89,19 @@ footer{
   font-size:18px;
 }
 
-
-/* =========================================================
-   MAIN HEADING
-   ========================================================= */
-
 .hero h1{
-
-  font-size:
-    clamp(
-      36px,
-      7vw,
-      62px
-    );
-
+  font-size:clamp(36px,7vw,62px);
   line-height:1.02;
-
   letter-spacing:-.04em;
-
   margin:45px 0 18px;
-
   max-width:1050px;
 }
-
 
 .hero p{
   max-width:720px;
   line-height:1.5;
   opacity:.92;
 }
-
 
 .meta{
   display:flex;
@@ -150,21 +123,13 @@ footer{
    ========================================================= */
 
 .notice{
-
   max-width:1200px;
-
   margin:16px auto;
-
   background:#fff;
-
   border:1px solid var(--line);
-
   color:var(--muted);
-
   border-radius:12px;
-
   padding:11px 14px;
-
   font-size:13px;
 }
 
@@ -180,69 +145,44 @@ footer{
    ========================================================= */
 
 .controls{
-
   position:sticky;
-
   top:0;
-
   z-index:20;
-
   background:#f7f9fced;
-
   backdrop-filter:blur(10px);
-
   border-bottom:1px solid var(--line);
 }
 
 .controls-inner{
-
   padding:10px 16px;
-
   display:flex;
-
   gap:8px;
-
   overflow:auto;
 }
 
 .day,
 .demo{
-
   border:1px solid var(--line);
-
   background:#fff;
-
   border-radius:11px;
-
   padding:9px 12px;
-
   white-space:nowrap;
-
   cursor:pointer;
 }
 
 .day.active,
 .demo.active{
-
   background:var(--navy);
-
   color:#fff;
-
   border-color:var(--navy);
 }
 
 .search{
-
   min-width:220px;
-
   flex:1;
-
   border:1px solid var(--line);
-
   border-radius:11px;
-
   padding:9px 12px;
-
   background:#fff;
 }
 
@@ -252,32 +192,23 @@ footer{
    ========================================================= */
 
 .main{
-
   padding:26px 16px 70px;
 }
 
 .status{
-
   display:flex;
-
   justify-content:space-between;
-
   gap:12px;
-
   align-items:end;
-
   margin-bottom:20px;
 }
 
 .status h2{
-
   margin:0;
-
   font-size:24px;
 }
 
 .status small{
-
   color:var(--muted);
 }
 
@@ -287,97 +218,73 @@ footer{
    ========================================================= */
 
 .timetable-scroll{
-
   overflow-x:auto;
-
   padding-bottom:12px;
 }
 
-.time-header{
-
-  display:grid;
-
+.timetable{
   min-width:760px;
+}
 
+.time-header{
+  display:grid;
   background:#fff;
-
   border:1px solid var(--line);
-
   border-radius:15px 15px 0 0;
-
   overflow:hidden;
 }
 
 .corner{
-
   background:#f1f5fb;
-
   border-right:1px solid var(--line);
-
   min-width:88px;
 }
 
 .room-header{
-
   padding:13px 10px;
-
   text-align:center;
-
   font-size:12px;
-
   font-weight:800;
-
   color:var(--navy);
-
   background:#f1f5fb;
-
   border-right:1px solid var(--line);
 }
 
 .room-header:last-child{
-
   border-right:0;
 }
 
 
 /* =========================================================
-   NORMAL TIME ROW
+   TIME ROW
    ========================================================= */
 
 .time-block{
-
   display:grid;
-
-  min-width:760px;
+  position:relative;
 
   border-left:1px solid var(--line);
-
   border-right:1px solid var(--line);
-
   border-bottom:1px solid var(--line);
 
   background:#fff;
-
-  position:relative;
 }
 
 .time-label{
-
   min-width:88px;
-
   padding:15px 8px;
-
   text-align:right;
-
   color:var(--muted);
-
   font-size:12px;
-
   font-weight:800;
-
   border-right:1px solid var(--line);
-
   background:#f8fafc;
+}
+
+.time-label-end{
+  display:block;
+  margin-top:3px;
+  font-weight:500;
 }
 
 
@@ -386,32 +293,24 @@ footer{
    ========================================================= */
 
 .room-cell{
-
   min-width:180px;
-
   padding:8px;
-
   border-right:1px solid var(--line);
-
   min-height:115px;
 }
 
 .room-cell:last-child{
-
   border-right:0;
 }
 
 
 /* =========================================================
-   MULTIPLE PRESENTATIONS
+   MULTIPLE SESSIONS IN ONE ROOM
    ========================================================= */
 
 .session-stack{
-
   display:flex;
-
   flex-direction:column;
-
   gap:8px;
 }
 
@@ -421,15 +320,11 @@ footer{
    ========================================================= */
 
 .session-card{
-
   position:relative;
-
   padding:13px;
 
   background:#fff;
-
   border:1px solid var(--line);
-
   border-radius:13px;
 
   box-shadow:
@@ -437,11 +332,12 @@ footer{
 
   cursor:pointer;
 
-  transition:.15s ease;
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease;
 }
 
 .session-card:hover{
-
   transform:translateY(-2px);
 
   box-shadow:
@@ -449,118 +345,74 @@ footer{
 }
 
 .session-card h3{
-
-  margin:
-    0
-    30px
-    7px
-    0;
-
+  margin:0 30px 7px 0;
   font-size:14px;
-
   line-height:1.3;
 }
 
 .session-speaker{
-
   color:var(--muted);
-
   font-size:12px;
-
   line-height:1.4;
-
   margin-bottom:7px;
 }
 
 .session-affiliation{
-
   color:var(--muted);
-
   font-size:11px;
-
   line-height:1.4;
-
   margin-bottom:8px;
 }
 
 .tag{
-
   display:inline-block;
-
   background:var(--sky);
-
   color:var(--blue);
-
   border-radius:999px;
-
   padding:4px 7px;
-
   font-size:9px;
-
   font-weight:800;
-
   text-transform:uppercase;
 }
 
 .star{
-
   position:absolute;
-
   right:7px;
-
   top:5px;
-
   border:0;
-
   background:none;
-
   font-size:20px;
-
   color:#9aa5b6;
-
   cursor:pointer;
-
   padding:2px;
 }
 
 .star.saved{
-
   color:#e6af00;
 }
 
 .chair{
-
   margin-top:7px;
-
   color:var(--muted);
-
   font-size:10px;
 }
 
 
 /* =========================================================
-   ALL ROOMS / FULL WIDTH SESSIONS
+   ALL ROOMS BLOCK
    ========================================================= */
 
 .all-rooms-row{
-
-  min-width:760px;
+  position:relative;
 
   border-left:1px solid var(--line);
-
   border-right:1px solid var(--line);
-
   border-bottom:1px solid var(--line);
 
   background:#fff;
-
-  position:relative;
-
-  padding:0;
 }
 
 .all-rooms-inner{
-
   padding:18px 20px;
 
   text-align:center;
@@ -572,80 +424,35 @@ footer{
   min-height:95px;
 
   display:flex;
-
   flex-direction:column;
-
   justify-content:center;
-
   align-items:center;
 }
 
 .all-rooms-title{
-
   display:block;
-
   color:var(--navy);
-
   font-size:16px;
-
   font-weight:800;
-
   margin-bottom:6px;
 }
 
 .all-rooms-time{
-
   display:block;
-
   color:var(--muted);
-
   font-size:11px;
-
   margin-bottom:8px;
 }
 
 
 /* =========================================================
-   BREAKS
-   ========================================================= */
-
-.break-row{
-
-  min-width:760px;
-
-  border-left:1px solid var(--line);
-
-  border-right:1px solid var(--line);
-
-  border-bottom:1px solid var(--line);
-
-  background:#f8fafc;
-}
-
-.break-inner{
-
-  padding:18px;
-
-  text-align:center;
-
-  color:var(--muted);
-
-  font-size:13px;
-
-  font-style:italic;
-}
-
-
-/* =========================================================
-   HAPPENING NOW
+   HAPPENING NOW LINE
    ========================================================= */
 
 .now-indicator{
-
   position:absolute;
 
   left:0;
-
   right:0;
 
   height:3px;
@@ -661,11 +468,9 @@ footer{
 }
 
 .now-indicator span{
-
   position:absolute;
 
   left:0;
-
   top:-13px;
 
   transform:translateY(-100%);
@@ -688,17 +493,14 @@ footer{
 }
 
 .now-indicator::after{
-
   content:"";
 
   position:absolute;
 
   left:-5px;
-
   top:-5px;
 
   width:13px;
-
   height:13px;
 
   border-radius:50%;
@@ -716,17 +518,11 @@ footer{
 
 .loading,
 .empty{
-
   background:#fff;
-
   border:1px solid var(--line);
-
   border-radius:15px;
-
   padding:30px;
-
   color:var(--muted);
-
   text-align:center;
 }
 
@@ -736,9 +532,7 @@ footer{
    ========================================================= */
 
 .modal{
-
   position:fixed;
-
   inset:0;
 
   background:#08122a99;
@@ -751,12 +545,10 @@ footer{
 }
 
 .modal.open{
-
   display:flex;
 }
 
 .modal-box{
-
   background:#fff;
 
   width:min(680px,100%);
@@ -772,7 +564,6 @@ footer{
 }
 
 .close{
-
   float:right;
 
   border:0;
@@ -780,7 +571,6 @@ footer{
   border-radius:50%;
 
   width:36px;
-
   height:36px;
 
   cursor:pointer;
@@ -789,18 +579,11 @@ footer{
 }
 
 .modal h2{
-
-  margin:
-    0
-    45px
-    10px
-    0;
-
+  margin:0 45px 10px 0;
   line-height:1.2;
 }
 
 .modal-type{
-
   display:inline-block;
 
   background:var(--sky);
@@ -819,20 +602,14 @@ footer{
 }
 
 .modal-details{
-
   margin-top:20px;
-
   padding-top:15px;
-
   border-top:1px solid var(--line);
 }
 
 .modal-details p{
-
   margin:9px 0;
-
   color:var(--muted);
-
   line-height:1.45;
 }
 
@@ -842,14 +619,8 @@ footer{
    ========================================================= */
 
 footer{
-
-  padding:
-    0
-    16px
-    40px;
-
+  padding:0 16px 40px;
   color:var(--muted);
-
   font-size:12px;
 }
 
@@ -861,56 +632,34 @@ footer{
 @media(min-width:700px){
 
   .hero{
-
-    padding:
-      30px
-      28px
-      44px;
+    padding:30px 28px 44px;
   }
 
   .main{
-
-    padding:
-      34px
-      28px
-      80px;
+    padding:34px 28px 80px;
   }
 
   .modal{
-
     align-items:center;
   }
 
   .modal-box{
-
     border-radius:22px;
   }
 
 }
 
-
 @media(max-width:699px){
 
   .main{
-
-    padding:
-      22px
-      10px
-      60px;
+    padding:22px 10px 60px;
   }
 
   .status{
-
-    padding:
-      0
-      6px;
+    padding:0 6px;
   }
 
-  .time-header,
-  .time-block,
-  .all-rooms-row,
-  .break-row{
-
+  .timetable{
     min-width:760px;
   }
 
@@ -954,18 +703,15 @@ footer{
     </div>
 
 
-    <!-- YOUR NEW MAIN HEADING -->
-
     <h1>
       Living Our Research: Agency, Culture, and the Pursuit of Equity in Education
     </h1>
 
 
     <p>
-      SERA Conference 2026 programme.
-      Explore sessions by time and room,
-      search the programme,
-      and save sessions to your personal programme.
+      Explore the SERA Conference 2026 programme,
+      search sessions and speakers, and save sessions
+      to your personal programme.
     </p>
 
 
@@ -1076,9 +822,7 @@ footer{
   <section id="timetable">
 
     <div class="loading">
-
       Loading programme from Google Sheets…
-
     </div>
 
   </section>
@@ -1088,14 +832,13 @@ footer{
 
 <footer>
 
-  SERA Conference 2026 ·
-  Programme subject to change.
+  SERA Conference 2026 · Programme subject to change.
 
 </footer>
 
 
 <!-- =========================================================
-     MODAL
+     SESSION MODAL
      ========================================================= -->
 
 <div
@@ -1166,7 +909,7 @@ footer{
 
 
 /* =========================================================
-   GOOGLE SHEETS LINK
+   YOUR GOOGLE SHEET
    ========================================================= */
 
 const PROGRAMME_URL =
@@ -1179,9 +922,9 @@ const PROGRAMME_URL =
 
 let programme = [];
 
-let day = 0;
+let selectedDay = 0;
 
-let demo = true;
+let liveLine = true;
 
 let saved =
   JSON.parse(
@@ -1192,7 +935,7 @@ let saved =
 
 
 /* =========================================================
-   HELPERS
+   SHORTCUT
    ========================================================= */
 
 const $ =
@@ -1201,6 +944,10 @@ const $ =
       selector
     );
 
+
+/* =========================================================
+   CLEAN TEXT
+   ========================================================= */
 
 function clean(value){
 
@@ -1220,6 +967,10 @@ function clean(value){
 }
 
 
+/* =========================================================
+   ESCAPE HTML
+   ========================================================= */
+
 function escapeHTML(value){
 
   return String(
@@ -1234,6 +985,10 @@ function escapeHTML(value){
 }
 
 
+/* =========================================================
+   TIME TO MINUTES
+   ========================================================= */
+
 function mins(value){
 
   if(!value){
@@ -1245,7 +1000,6 @@ function mins(value){
   const parts =
     value.split(":");
 
-
   return (
     Number(parts[0]) * 60 +
     Number(parts[1])
@@ -1254,13 +1008,11 @@ function mins(value){
 }
 
 
+/* =========================================================
+   MINUTES TO TIME
+   ========================================================= */
+
 function formatMinutes(total){
-
-  if(!total){
-
-    return "";
-
-  }
 
   const hours =
     Math.floor(
@@ -1269,7 +1021,6 @@ function formatMinutes(total){
 
   const minutes =
     total % 60;
-
 
   return (
     String(hours)
@@ -1280,6 +1031,19 @@ function formatMinutes(total){
     String(minutes)
       .padStart(2,"0")
   );
+
+}
+
+
+/* =========================================================
+   NORMALISE ROOM NAME
+   ========================================================= */
+
+function normaliseRoom(room){
+
+  return clean(room)
+    .replace(/\s+/g," ")
+    .toLowerCase();
 
 }
 
@@ -1426,7 +1190,7 @@ function parseCSV(text){
 
 
 /* =========================================================
-   CONVERT GOOGLE SHEET ROWS
+   CONVERT SHEET INTO PROGRAMME DATA
    ========================================================= */
 
 function convertRows(rows){
@@ -1443,13 +1207,12 @@ function convertRows(rows){
   const headers =
     rows[0].map(
       header =>
-        clean(
-          header
-        ).toLowerCase()
+        clean(header)
+          .toLowerCase()
     );
 
 
-  function column(name){
+  function col(name){
 
     return headers.indexOf(
       name.toLowerCase()
@@ -1458,41 +1221,45 @@ function convertRows(rows){
   }
 
 
-  const idIndex =
-    column("id");
+  const indexes = {
 
-  const dayIndex =
-    column("day");
+    id:
+      col("id"),
 
-  const dateIndex =
-    column("date");
+    day:
+      col("day"),
 
-  const startIndex =
-    column("start");
+    date:
+      col("date"),
 
-  const endIndex =
-    column("end");
+    start:
+      col("start"),
 
-  const roomIndex =
-    column("room");
+    end:
+      col("end"),
 
-  const typeIndex =
-    column("type");
+    room:
+      col("room"),
 
-  const titleIndex =
-    column("title");
+    type:
+      col("type"),
 
-  const speakerIndex =
-    column("speaker(s)");
+    title:
+      col("title"),
 
-  const affiliationIndex =
-    column("affiliation");
+    speaker:
+      col("speaker(s)"),
 
-  const strandIndex =
-    column("strand");
+    affiliation:
+      col("affiliation"),
 
-  const chairIndex =
-    column("chair");
+    strand:
+      col("strand"),
+
+    chair:
+      col("chair")
+
+  };
 
 
   return rows
@@ -1507,66 +1274,65 @@ function convertRows(rows){
 
           id:
             clean(
-              row[idIndex]
+              row[indexes.id]
             ) ||
             "session-" +
             index,
 
           day:
             clean(
-              row[dayIndex]
+              row[indexes.day]
             ),
 
           date:
             clean(
-              row[dateIndex]
+              row[indexes.date]
             ),
 
           start:
             clean(
-              row[startIndex]
+              row[indexes.start]
             ),
 
           end:
             clean(
-              row[endIndex]
+              row[indexes.end]
             ),
 
           room:
             clean(
-              row[roomIndex]
-            ) ||
-            "Unallocated",
+              row[indexes.room]
+            ),
 
           type:
             clean(
-              row[typeIndex]
+              row[indexes.type]
             ),
 
           title:
             clean(
-              row[titleIndex]
+              row[indexes.title]
             ) ||
             "Untitled session",
 
           speaker:
             clean(
-              row[speakerIndex]
+              row[indexes.speaker]
             ),
 
           affiliation:
             clean(
-              row[affiliationIndex]
+              row[indexes.affiliation]
             ),
 
           strand:
             clean(
-              row[strandIndex]
+              row[indexes.strand]
             ),
 
           chair:
             clean(
-              row[chairIndex]
+              row[indexes.chair]
             )
 
         };
@@ -1575,7 +1341,7 @@ function convertRows(rows){
     )
     .filter(
       session =>
-        session.start ||
+        session.start &&
         session.title
     );
 
@@ -1601,7 +1367,7 @@ async function loadProgramme(){
     if(!response.ok){
 
       throw new Error(
-        "Could not access Google Sheets."
+        "Google Sheet could not be accessed."
       );
 
     }
@@ -1624,17 +1390,10 @@ async function loadProgramme(){
     ){
 
       throw new Error(
-        "No programme rows found."
+        "No programme data was found."
       );
 
     }
-
-
-    $("#notice")
-      .classList
-      .remove(
-        "error"
-      );
 
 
     $("#status")
@@ -1662,25 +1421,19 @@ async function loadProgramme(){
 
     $("#notice")
       .innerHTML =
-        "<strong>Programme could not be loaded.</strong> " +
-        "Please check that the Google Sheet is published to the web as CSV.";
-
-
-    $("#status")
-      .textContent =
-        "Unable to load the programme.";
+        `
+          <strong>
+            Programme could not be loaded.
+          </strong>
+          Please check that the Google Sheet
+          is published to the web as CSV.
+        `;
 
 
     $("#timetable")
       .innerHTML =
         `
           <div class="empty">
-
-            <strong>
-              Programme unavailable
-            </strong>
-
-            <br><br>
 
             The programme could not be
             loaded from Google Sheets.
@@ -1694,7 +1447,7 @@ async function loadProgramme(){
 
 
 /* =========================================================
-   GET CURRENT DAY
+   GET DAY PROGRAMME
    ========================================================= */
 
 function getDayProgramme(){
@@ -1711,26 +1464,21 @@ function getDayProgramme(){
           .toLowerCase();
 
 
+      if(
+        selectedDay === 0
+      ){
+
+        return (
+          date.includes("18") ||
+          dayName.includes("wed")
+        );
+
+      }
+
+
       return (
-
-        (
-          day === 0 &&
-          (
-            date.includes("18") ||
-            dayName.includes("wed")
-          )
-        )
-
-        ||
-
-        (
-          day === 1 &&
-          (
-            date.includes("19") ||
-            dayName.includes("thu")
-          )
-        )
-
+        date.includes("19") ||
+        dayName.includes("thu")
       );
 
     }
@@ -1766,7 +1514,7 @@ function getFilteredProgramme(){
   return sessions.filter(
     session => {
 
-      const text = [
+      const searchable = [
 
         session.title,
         session.speaker,
@@ -1781,7 +1529,7 @@ function getFilteredProgramme(){
       .toLowerCase();
 
 
-      return text.includes(
+      return searchable.includes(
         query
       );
 
@@ -1792,7 +1540,7 @@ function getFilteredProgramme(){
 
 
 /* =========================================================
-   GET ROOMS
+   ROOMS
    ========================================================= */
 
 function getRooms(
@@ -1806,21 +1554,40 @@ function getRooms(
     session => {
 
       const room =
-        session.room.trim();
+        clean(
+          session.room
+        );
 
+
+      /*
+         ONLY "All Rooms" is
+         excluded from the room
+         columns.
+      */
 
       if(
         room &&
-        room.toLowerCase() !==
-        "all rooms" &&
-        !rooms.includes(
-          room
-        )
+        normaliseRoom(room) !==
+        "all rooms"
       ){
 
-        rooms.push(
-          room
-        );
+        if(
+          !rooms.some(
+            existing =>
+              normaliseRoom(
+                existing
+              ) ===
+              normaliseRoom(
+                room
+              )
+          )
+        ){
+
+          rooms.push(
+            room
+          );
+
+        }
 
       }
 
@@ -1834,158 +1601,22 @@ function getRooms(
 
 
 /* =========================================================
-   GET TIME GROUPS
+   IS THIS AN ALL-ROOMS SESSION?
+   
+   IMPORTANT:
+   We ONLY use the Room column.
+   No title-based guessing.
    ========================================================= */
 
-function getTimeGroups(
-  sessions
-){
-
-  const starts = [];
-
-
-  sessions.forEach(
-    session => {
-
-      if(
-        session.start &&
-        !starts.includes(
-          session.start
-        )
-      ){
-
-        starts.push(
-          session.start
-        );
-
-      }
-
-    }
-  );
-
-
-  starts.sort(
-    (
-      a,
-      b
-    ) =>
-      mins(a) -
-      mins(b)
-  );
-
-
-  return starts.map(
-    start => {
-
-      const items =
-        sessions.filter(
-          session =>
-            session.start ===
-            start
-        );
-
-
-      const endTimes =
-        items
-          .map(
-            item =>
-              mins(
-                item.end
-              )
-          )
-          .filter(
-            Boolean
-          );
-
-
-      const end =
-        endTimes.length
-          ? Math.max(
-              ...endTimes
-            )
-          : mins(start);
-
-
-      return {
-
-        start,
-
-        end,
-
-        sessions:
-          items
-
-      };
-
-    }
-  );
-
-}
-
-
-/* =========================================================
-   DETECT BREAK / REGISTRATION
-   ========================================================= */
-
-function isFullWidth(
+function isAllRooms(
   session
 ){
 
-  const room =
-    session.room
-      .trim()
-      .toLowerCase();
-
-  const type =
-    session.type
-      .toLowerCase();
-
-  const title =
-    session.title
-      .toLowerCase();
-
-
-  /*
-     Anything explicitly marked
-     "All Rooms" spans the timetable.
-  */
-
-  if(
-    room === "all rooms"
-  ){
-
-    return true;
-
-  }
-
-
-  /*
-     These common conference-wide
-     activities also become full-width
-     automatically.
-
-     You can remove any of these later
-     if you don't want that behaviour.
-  */
-
-  const keywords = [
-
-    "registration",
-    "coffee",
-    "tea",
-    "lunch",
-    "networking",
-    "refreshments",
-    "arrival",
-    "conference close",
-    "conference opening"
-
-  ];
-
-
-  return keywords.some(
-    word =>
-      title.includes(word)
+  return (
+    normaliseRoom(
+      session.room
+    ) ===
+    "all rooms"
   );
 
 }
@@ -1999,7 +1630,7 @@ function sessionCard(
   session
 ){
 
-  const savedSession =
+  const isSaved =
     saved.includes(
       session.id
     );
@@ -2016,7 +1647,7 @@ function sessionCard(
 
       <button
         class="star ${
-          savedSession
+          isSaved
             ? "saved"
             : ""
         }"
@@ -2027,7 +1658,7 @@ function sessionCard(
       >
 
         ${
-          savedSession
+          isSaved
             ? "★"
             : "☆"
         }
@@ -2036,11 +1667,9 @@ function sessionCard(
 
 
       <h3>
-
         ${escapeHTML(
           session.title
         )}
-
       </h3>
 
 
@@ -2050,11 +1679,9 @@ function sessionCard(
             <div
               class="session-speaker"
             >
-
               ${escapeHTML(
                 session.speaker
               )}
-
             </div>
           `
           : ""
@@ -2067,11 +1694,9 @@ function sessionCard(
             <div
               class="session-affiliation"
             >
-
               ${escapeHTML(
                 session.affiliation
               )}
-
             </div>
           `
           : ""
@@ -2081,14 +1706,10 @@ function sessionCard(
       ${
         session.type
           ? `
-            <span
-              class="tag"
-            >
-
+            <span class="tag">
               ${escapeHTML(
                 session.type
               )}
-
             </span>
           `
           : ""
@@ -2098,15 +1719,11 @@ function sessionCard(
       ${
         session.chair
           ? `
-            <div
-              class="chair"
-            >
-
+            <div class="chair">
               Chair:
               ${escapeHTML(
                 session.chair
               )}
-
             </div>
           `
           : ""
@@ -2120,10 +1737,10 @@ function sessionCard(
 
 
 /* =========================================================
-   FULL WIDTH SESSION
+   ALL ROOMS CARD
    ========================================================= */
 
-function fullWidthCard(
+function allRoomsCard(
   session
 ){
 
@@ -2146,11 +1763,9 @@ function fullWidthCard(
         <span
           class="all-rooms-title"
         >
-
           ${escapeHTML(
             session.title
           )}
-
         </span>
 
 
@@ -2178,11 +1793,9 @@ function fullWidthCard(
           session.type
             ? `
               <span class="tag">
-
                 ${escapeHTML(
                   session.type
                 )}
-
               </span>
             `
             : ""
@@ -2221,10 +1834,7 @@ function render(){
       .innerHTML =
         `
           <div class="empty">
-
-            No sessions found
-            for this day.
-
+            No sessions found for this day.
           </div>
         `;
 
@@ -2233,6 +1843,13 @@ function render(){
   }
 
 
+  /*
+     Get room columns.
+
+     All Rooms is deliberately NOT
+     included as a column.
+  */
+
   const rooms =
     getRooms(
       sessions
@@ -2240,91 +1857,45 @@ function render(){
 
 
   /*
-     Separate full-width activities
-     from normal room sessions.
+     Split sessions into:
+
+     1. All Rooms
+     2. Specific-room sessions
   */
 
-  const fullWidth =
+  const allRoomSessions =
     sessions.filter(
-      isFullWidth
+      isAllRooms
     );
 
 
-  const normal =
+  const roomSessions =
     sessions.filter(
       session =>
-        !isFullWidth(
+        !isAllRooms(
           session
         )
     );
 
 
-  const groups =
-    getTimeGroups(
-      normal
-    );
-
-
-  let html = `
-
-    <div class="timetable-scroll">
-
-
-      <div
-        class="time-header"
-        style="
-          grid-template-columns:
-          88px
-          repeat(
-            ${rooms.length},
-            minmax(180px,1fr)
-          );
-        "
-      >
-
-        <div class="corner"></div>
-
-        ${rooms.map(
-          room => `
-
-            <div
-              class="room-header"
-            >
-
-              ${escapeHTML(
-                room
-              )}
-
-            </div>
-
-          `
-        ).join("")}
-
-      </div>
-
-  `;
-
-
   /*
-     Build a combined list of
-     all start times, including
-     full-width activities.
+     Get every start time.
   */
 
-  const allStarts = [];
+  const startTimes = [];
 
 
-  normal.forEach(
+  sessions.forEach(
     session => {
 
       if(
         session.start &&
-        !allStarts.includes(
+        !startTimes.includes(
           session.start
         )
       ){
 
-        allStarts.push(
+        startTimes.push(
           session.start
         );
 
@@ -2334,27 +1905,7 @@ function render(){
   );
 
 
-  fullWidth.forEach(
-    session => {
-
-      if(
-        session.start &&
-        !allStarts.includes(
-          session.start
-        )
-      ){
-
-        allStarts.push(
-          session.start
-        );
-
-      }
-
-    }
-  );
-
-
-  allStarts.sort(
+  startTimes.sort(
     (
       a,
       b
@@ -2364,32 +1915,73 @@ function render(){
   );
 
 
+  let html = `
+
+    <div class="timetable-scroll">
+
+      <div class="timetable">
+
+        <div
+          class="time-header"
+          style="
+            grid-template-columns:
+            88px
+            repeat(
+              ${rooms.length},
+              minmax(180px,1fr)
+            );
+          "
+        >
+
+          <div class="corner"></div>
+
+          ${rooms.map(
+            room => `
+
+              <div
+                class="room-header"
+              >
+
+                ${escapeHTML(
+                  room
+                )}
+
+              </div>
+
+            `
+          ).join("")}
+
+        </div>
+
+  `;
+
+
   /*
-     Render each start time.
+     Render each time.
   */
 
-  allStarts.forEach(
+  startTimes.forEach(
     start => {
 
       /*
-         First check whether there
-         is a full-width activity
-         at this time.
+         ---------------------------------------------------
+         ALL ROOMS
+         ---------------------------------------------------
       */
 
-      const fullSessions =
-        fullWidth.filter(
+      const allRooms =
+        allRoomSessions.filter(
           session =>
             session.start ===
             start
         );
 
 
-      fullSessions.forEach(
+      allRooms.forEach(
         session => {
 
           html +=
-            fullWidthCard(
+            allRoomsCard(
               session
             );
 
@@ -2398,12 +1990,13 @@ function render(){
 
 
       /*
-         Now render normal room
-         sessions at this time.
+         ---------------------------------------------------
+         SPECIFIC ROOMS
+         ---------------------------------------------------
       */
 
-      const timeSessions =
-        normal.filter(
+      const atThisTime =
+        roomSessions.filter(
           session =>
             session.start ===
             start
@@ -2411,7 +2004,7 @@ function render(){
 
 
       if(
-        !timeSessions.length
+        !atThisTime.length
       ){
 
         return;
@@ -2419,8 +2012,13 @@ function render(){
       }
 
 
-      const endTimes =
-        timeSessions
+      /*
+         Work out the latest end time
+         for this particular row.
+      */
+
+      const endMinutes =
+        atThisTime
           .map(
             session =>
               mins(
@@ -2428,14 +2026,15 @@ function render(){
               )
           )
           .filter(
-            Boolean
+            value =>
+              value > 0
           );
 
 
-      const groupEnd =
-        endTimes.length
+      const rowEnd =
+        endMinutes.length
           ? Math.max(
-              ...endTimes
+              ...endMinutes
             )
           : mins(start);
 
@@ -2449,7 +2048,7 @@ function render(){
           )}"
           data-end="${escapeHTML(
             formatMinutes(
-              groupEnd
+              rowEnd
             )
           )}"
           style="
@@ -2459,28 +2058,23 @@ function render(){
               ${rooms.length},
               minmax(180px,1fr)
             );
-        "
+          "
         >
 
-          <div
-            class="time-label"
-          >
+
+          <div class="time-label">
 
             ${escapeHTML(
               start
             )}
 
-            <br>
-
             <span
-              style="
-                font-weight:500
-              "
+              class="time-label-end"
             >
 
               ${escapeHTML(
                 formatMinutes(
-                  groupEnd
+                  rowEnd
                 )
               )}
 
@@ -2493,37 +2087,27 @@ function render(){
             room => {
 
               /*
-                 Find EVERY presentation
-                 in this room at this
-                 start time.
+                 THIS IS THE IMPORTANT PART.
 
-                 This is what allows
-                 2, 3 or 4 speakers/
-                 papers to appear
-                 stacked together.
+                 We only put a session into
+                 a cell when its Room value
+                 actually matches that room.
+
+                 Room A can therefore NEVER
+                 appear in Room B or across
+                 the whole timetable.
               */
 
-              const roomSessions =
-                timeSessions.filter(
+              const sessionsInRoom =
+                atThisTime.filter(
                   session =>
-                    session.room ===
-                    room
+                    normaliseRoom(
+                      session.room
+                    ) ===
+                    normaliseRoom(
+                      room
+                    )
                 );
-
-
-              if(
-                !roomSessions.length
-              ){
-
-                return `
-
-                  <div
-                    class="room-cell"
-                  ></div>
-
-                `;
-
-              }
 
 
               return `
@@ -2536,7 +2120,7 @@ function render(){
                     class="session-stack"
                   >
 
-                    ${roomSessions
+                    ${sessionsInRoom
                       .map(
                         session =>
                           sessionCard(
@@ -2555,6 +2139,7 @@ function render(){
             }
           ).join("")}
 
+
         </div>
 
       `;
@@ -2564,6 +2149,8 @@ function render(){
 
 
   html += `
+
+      </div>
 
     </div>
 
@@ -2586,6 +2173,10 @@ function render(){
 
 function placeNow(){
 
+  /*
+     Remove previous lines.
+  */
+
   document
     .querySelectorAll(
       ".now-indicator"
@@ -2596,12 +2187,17 @@ function placeNow(){
     );
 
 
-  if(!demo){
+  if(!liveLine){
 
     return;
 
   }
 
+
+  /*
+     Only show the line on the
+     actual conference dates.
+  */
 
   const now =
     new Date();
@@ -2617,22 +2213,23 @@ function placeNow(){
     now.getDate();
 
 
-  const isDayOne =
-    year === 2026 &&
-    month === 11 &&
-    date === 18;
+  const correctDay =
+    (
+      selectedDay === 0 &&
+      year === 2026 &&
+      month === 11 &&
+      date === 18
+    )
+    ||
+    (
+      selectedDay === 1 &&
+      year === 2026 &&
+      month === 11 &&
+      date === 19
+    );
 
 
-  const isDayTwo =
-    year === 2026 &&
-    month === 11 &&
-    date === 19;
-
-
-  if(
-    (day === 0 && !isDayOne) ||
-    (day === 1 && !isDayTwo)
-  ){
+  if(!correctDay){
 
     return;
 
@@ -2646,7 +2243,7 @@ function placeNow(){
 
 
   /*
-     NORMAL SESSION ROWS
+     Check ordinary timetable rows.
   */
 
   document
@@ -2672,17 +2269,16 @@ function placeNow(){
           currentMinutes < end
         ){
 
-          const duration =
-            end - start;
-
-
           const progress =
-            duration > 0
-              ? (
-                  currentMinutes -
-                  start
-                ) / duration
-              : 0;
+            (
+              currentMinutes -
+              start
+            )
+            /
+            Math.max(
+              1,
+              end - start
+            );
 
 
           const line =
@@ -2722,12 +2318,7 @@ function placeNow(){
 
 
   /*
-     FULL WIDTH SESSIONS
-
-     The red line can also run
-     through a full-width
-     Registration / Lunch /
-     Coffee block.
+     Check All Rooms blocks.
   */
 
   document
@@ -2753,17 +2344,16 @@ function placeNow(){
           currentMinutes < end
         ){
 
-          const duration =
-            end - start;
-
-
           const progress =
-            duration > 0
-              ? (
-                  currentMinutes -
-                  start
-                ) / duration
-              : 0;
+            (
+              currentMinutes -
+              start
+            )
+            /
+            Math.max(
+              1,
+              end - start
+            );
 
 
           const line =
@@ -2805,17 +2395,7 @@ function placeNow(){
 
 
 /* =========================================================
-   REFRESH NOW LINE
-   ========================================================= */
-
-setInterval(
-  placeNow,
-  30000
-);
-
-
-/* =========================================================
-   CLICK EVENTS
+   SAVE / OPEN SESSION
    ========================================================= */
 
 document.addEventListener(
@@ -2824,7 +2404,7 @@ document.addEventListener(
 
 
     /*
-       SAVE SESSION
+       SAVE BUTTON
     */
 
     const saveButton =
@@ -2853,10 +2433,9 @@ document.addEventListener(
 
       }else{
 
-        saved = [
-          ...saved,
+        saved.push(
           id
-        ];
+        );
 
       }
 
@@ -2877,7 +2456,7 @@ document.addEventListener(
 
 
     /*
-       OPEN SESSION
+       SESSION CARD
     */
 
     const card =
@@ -3036,7 +2615,7 @@ document
       button.onclick =
         () => {
 
-          day =
+          selectedDay =
             index;
 
 
@@ -3080,7 +2659,11 @@ document
    ========================================================= */
 
 $("#search").oninput =
-  render;
+  () => {
+
+    render();
+
+  };
 
 
 /* =========================================================
@@ -3090,21 +2673,21 @@ $("#search").oninput =
 $("#demo").onclick =
   () => {
 
-    demo =
-      !demo;
+    liveLine =
+      !liveLine;
 
 
     $("#demo")
       .classList
       .toggle(
         "active",
-        demo
+        liveLine
       );
 
 
     $("#demo")
       .textContent =
-        demo
+        liveLine
           ? "● Live"
           : "○ Live";
 
@@ -3112,6 +2695,16 @@ $("#demo").onclick =
     render();
 
   };
+
+
+/* =========================================================
+   UPDATE RED LINE
+   ========================================================= */
+
+setInterval(
+  placeNow,
+  30000
+);
 
 
 /* =========================================================
