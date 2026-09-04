@@ -1,3 +1,7 @@
+e site is still the same SERA programme page.
+
+Replace your entire current index.html with the version below.
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -1285,6 +1289,82 @@ function allRoomsCard(session){
 }
 
 /* =========================================================
+   NORMAL TIME ROW
+   ========================================================= */
+
+function createTimeRow(start, rooms, roomSessions, gridColumns){
+
+  const atThisTime =
+    roomSessions.filter(session =>
+      minutes(session.start) === start
+    );
+
+  if(!atThisTime.length){
+    return null;
+  }
+
+  const endMinutes =
+    Math.max(
+      start + 30,
+      ...atThisTime.map(session =>
+        minutes(session.end) || start + 30
+      )
+    );
+
+  const row = document.createElement("div");
+
+  row.className = "time-row";
+
+  row.style.gridTemplateColumns =
+    gridColumns;
+
+  row.dataset.start = start;
+  row.dataset.end = endMinutes;
+
+  row.innerHTML = `
+    <div class="time-heading-cell">
+
+      ${formatMinutes(start)}
+
+      <span class="time-label-end">
+        ${formatMinutes(endMinutes)}
+      </span>
+
+    </div>
+
+    ${
+      rooms.map(room => {
+
+        const matching =
+          atThisTime.filter(session =>
+            normaliseRoom(session.room) ===
+            normaliseRoom(room)
+          );
+
+        return `
+          <div class="room-cell">
+
+            <div class="session-stack">
+
+              ${
+                matching
+                  .map(session => sessionCard(session))
+                  .join("")
+              }
+
+            </div>
+
+          </div>
+        `;
+
+      }).join("")
+    }
+  `;
+
+  return row;
+}
+
+/* =========================================================
    RENDER
    ========================================================= */
 
@@ -1314,9 +1394,18 @@ function render(){
     return;
   }
 
-  const startTimes = [
+  /*
+    IMPORTANT:
+    All Rooms sessions and normal room sessions are now
+    combined into one chronological sequence.
+
+    This means an All Rooms session such as lunch at 12:00
+    appears after the 09:30 sessions rather than at the top.
+  */
+
+  const chronologicalTimes = [
     ...new Set(
-      roomSessions
+      programme
         .map(session => minutes(session.start))
         .filter(value => value > 0)
     )
@@ -1362,13 +1451,26 @@ function render(){
 
   const rows = document.getElementById("rows");
 
-  /* ALL ROOMS */
+  /*
+    Build everything in chronological order.
+    All Rooms sessions get their own full-width row at the
+    correct point in the timetable.
+  */
 
-  allRoomSessions
-    .sort((a,b) =>
-      minutes(a.start) - minutes(b.start)
-    )
-    .forEach(session => {
+  chronologicalTimes.forEach(start => {
+
+    const allAtThisTime =
+      allRoomSessions.filter(session =>
+        minutes(session.start) === start
+      );
+
+    /*
+      Full-width All Rooms sessions first at their actual time.
+      They are inserted here rather than all being placed at
+      the top of the timetable.
+    */
+
+    allAtThisTime.forEach(session => {
 
       rows.insertAdjacentHTML(
         "beforeend",
@@ -1377,78 +1479,22 @@ function render(){
 
     });
 
-  /* NORMAL ROOMS */
+    /*
+      Then render ordinary room sessions starting at the same
+      time as a normal room row.
+    */
 
-  startTimes.forEach(start => {
-
-    const atThisTime =
-      roomSessions.filter(session =>
-        minutes(session.start) === start
+    const timeRow =
+      createTimeRow(
+        start,
+        rooms,
+        roomSessions,
+        gridColumns
       );
 
-    if(!atThisTime.length){
-      return;
+    if(timeRow){
+      rows.appendChild(timeRow);
     }
-
-    const endMinutes =
-      Math.max(
-        start + 30,
-        ...atThisTime.map(session =>
-          minutes(session.end) || start + 30
-        )
-      );
-
-    const row = document.createElement("div");
-
-    row.className = "time-row";
-
-    row.style.gridTemplateColumns =
-      gridColumns;
-
-    row.dataset.start = start;
-    row.dataset.end = endMinutes;
-
-    row.innerHTML = `
-      <div class="time-heading-cell">
-
-        ${formatMinutes(start)}
-
-        <span class="time-label-end">
-          ${formatMinutes(endMinutes)}
-        </span>
-
-      </div>
-
-      ${
-        rooms.map(room => {
-
-          const matching =
-            atThisTime.filter(session =>
-              normaliseRoom(session.room) ===
-              normaliseRoom(room)
-            );
-
-          return `
-            <div class="room-cell">
-
-              <div class="session-stack">
-
-                ${
-                  matching
-                    .map(session => sessionCard(session))
-                    .join("")
-                }
-
-              </div>
-
-            </div>
-          `;
-
-        }).join("")
-      }
-    `;
-
-    rows.appendChild(row);
 
   });
 
