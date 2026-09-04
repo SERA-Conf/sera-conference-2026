@@ -5,53 +5,11 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <meta name="theme-color" content="#102a72">
-
-<title>SERA Conference 2026 — Programme</title>
-@@ -18,15 +20,26 @@
-  --muted:#667085;
-  --line:#d9e2f0;
-  --now:#e65b67;
-  --white:#ffffff;
-}
-
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-  color:var(--ink);
-  background:#f7f9fc;
-}
-@@ -38,24 +51,27 @@
-
-
-/* =========================================================
-   HEADER
-   HERO
+@@ -43,14 +42,12 @@
    ========================================================= */
 
 .hero{
-  background:linear-gradient(
-    135deg,
-    #102a72,
-    #1f62ad 65%,
-    #3184c5
-  );
   background:
     linear-gradient(
       135deg,
@@ -60,273 +18,38 @@ body{
       #3184c5
     );
 
+  background:linear-gradient(
+    135deg,
+    #102a72,
+    #1f62ad 65%,
+    #3184c5
+  );
   color:#fff;
   padding:22px 18px 34px;
-
-  padding:
-    24px
-    18px
-    38px;
 }
-
-.hero-inner,
-.main,
-.controls-inner,
-footer{
-.hero-inner{
-  max-width:1200px;
-  margin:auto;
-}
-@@ -87,17 +103,32 @@
+@@ -90,7 +87,7 @@
 }
 
 .hero h1{
+  font-size:clamp(36px,7vw,62px);
   font-size:clamp(34px,7vw,62px);
-  font-size:
-    clamp(
-      34px,
-      7vw,
-      62px
-    );
-
   line-height:1.02;
-
   letter-spacing:-.04em;
   margin:45px 0 18px;
-  max-width:1050px;
-
-  margin:
-    45px 0
-    18px;
-
-  max-width:1100px;
-}
-
-.hero p{
-  max-width:720px;
-  line-height:1.5;
-  max-width:750px;
-
-  line-height:1.55;
-
-  opacity:.92;
-
-  margin-bottom:20px;
-}
-
-.meta{
-@@ -108,9 +139,17 @@
-
-.pill{
-  background:#ffffff1c;
-  border:1px solid #ffffff47;
-
-  border:
-    1px solid
-    #ffffff47;
-
-  border-radius:999px;
-  padding:8px 12px;
-
-  padding:
-    8px
-    12px;
-
-  font-size:13px;
-}
-
-@@ -120,19 +159,35 @@
-   ========================================================= */
-
-.notice{
-
-  max-width:1200px;
-  margin:16px auto;
-
-  margin:
-    16px auto;
-
-  background:#fff;
-  border:1px solid var(--line);
-
-  border:
-    1px solid
-    var(--line);
-
-  color:var(--muted);
-
-  border-radius:12px;
-  padding:11px 14px;
-
-  padding:
-    11px
-    14px;
-
-  font-size:13px;
-}
-
-.notice.error{
-
-  background:#fff0f1;
-
-  border-color:#f0b5bb;
-
-  color:#8d2631;
-}
-
-@@ -142,44 +197,85 @@
-   ========================================================= */
-
-.controls{
-
-  position:sticky;
-
-  top:0;
-
-  z-index:20;
-
-  background:#f7f9fced;
-
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line);
-
-  border-bottom:
-    1px solid
-    var(--line);
-}
-
-.controls-inner{
-  padding:10px 16px;
-
-  max-width:1200px;
-
-  margin:auto;
-
-  padding:
-    10px
-    16px;
-
-  display:flex;
-
-  gap:8px;
-  overflow:auto;
-
-  overflow-x:auto;
-}
-
-.day,
-.demo{
-  border:1px solid var(--line);
-.live-button{
-
-  border:
-    1px solid
-    var(--line);
-
-  background:#fff;
-
-  border-radius:11px;
-  padding:9px 12px;
-
-  padding:
-    9px
-    12px;
-
-  white-space:nowrap;
-
-  cursor:pointer;
-}
-
-.day.active,
-.demo.active{
-.live-button.active{
-
-  background:var(--navy);
-
-  color:#fff;
-
-  border-color:var(--navy);
-}
-
-.search{
-
-  min-width:220px;
-
-  flex:1;
-  border:1px solid var(--line);
-
-  border:
-    1px solid
-    var(--line);
-
-  border-radius:11px;
-  padding:9px 12px;
-
-  padding:
-    9px
-    12px;
-
-  background:#fff;
-}
-
-@@ -189,129 +285,187 @@
-   ========================================================= */
-
-.main{
-  padding:26px 16px 70px;
-
-  max-width:1200px;
-
-  margin:auto;
-
-  padding:
-    26px
-    16px
-    70px;
-}
-
-.status{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  gap:12px;
-
-  align-items:end;
-
-  margin-bottom:20px;
-}
-
-.status h2{
-
-  margin:0;
-
-  font-size:24px;
-}
-
-.status small{
-
-  color:var(--muted);
-}
+@@ -214,40 +211,104 @@
 
 
 /* =========================================================
+   TIMETABLE
    TIMETABLE OUTER SCROLL
-   TIMETABLE SCROLL
    ========================================================= */
 
 .timetable-scroll{
-.timetable-wrapper{
-
   width:100%;
-
   overflow-x:auto;
-
+  padding-bottom:12px;
   overflow-y:visible;
-
   -webkit-overflow-scrolling:touch;
-
   padding-bottom:14px;
 }
 
@@ -337,36 +60,27 @@ footer{
   The timetable is deliberately wider than a phone screen.
 
   This means the user can swipe left/right to see:
-  The timetable width is determined
-  by the number of rooms found
-  in the Google Sheet.
 
   Time
   Main Hall
   Room A
   Room B
   Room 3030
-  There are NO hard-coded room names.
 */
 
 .timetable{
+  min-width:850px;
   min-width:1000px;
-
-  width:max-content;
-
-  min-width:100%;
-
 }
 
 
 /* =========================================================
    ROOM HEADER
-   HEADER ROW
    ========================================================= */
 
 .time-header{
   display:grid;
-.room-header-row{
+  background:#fff;
 
   grid-template-columns:
     88px
@@ -374,81 +88,38 @@ footer{
     1fr
     1fr
     1fr;
-  display:grid;
 
   width:100%;
-  position:relative;
 
   background:#f1f5fb;
 
   border:1px solid var(--line);
-  border:
-    1px solid
-    var(--line);
 
   border-radius:15px 15px 0 0;
-  border-radius:
-    15px
-    15px
-    0
-    0;
+  overflow:hidden;
 
   overflow:visible;
 }
 
 .corner{
-
-/*
-  The first column is the time column.
-*/
-
-.time-heading{
-
+  background:#f1f5fb;
+  border-right:1px solid var(--line);
   min-width:88px;
   min-height:55px;
-
-  min-height:58px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
 
   background:#e9eef6;
 
   border-right:1px solid var(--line);
-  border-right:
-    1px solid
-    var(--line);
-
-  font-size:11px;
-
-  font-weight:800;
-
-  color:var(--muted);
 }
 
 
 /*
   EACH ROOM HAS ITS OWN VISIBLE HEADER.
-  ROOM HEADINGS
 
   Room 3030 is explicitly included.
-  These are generated entirely
-  from the Google Sheet.
-
-  Nothing such as "Room A" or
-  "Main Hall" is written here.
 */
 
 .room-header{
-.room-heading{
-
-  min-width:220px;
-
-  min-height:58px;
-
   display:flex;
 
   align-items:center;
@@ -456,52 +127,33 @@ footer{
 
   min-width:200px;
   min-height:55px;
-  justify-content:center;
 
   padding:13px 10px;
-  padding:
-    10px
-    14px;
 
   text-align:center;
+  font-size:12px;
 
   font-size:13px;
-
   font-weight:800;
+  color:var(--navy);
 
   color:#102a72;
-  color:var(--navy);
 
   background:#f1f5fb;
 
   border-right:1px solid var(--line);
-  border-right:
-    1px solid
-    var(--line);
-
-  white-space:normal;
-
-  word-break:normal;
 
   visibility:visible;
   opacity:1;
 
   white-space:nowrap;
-  opacity:1;
 }
 
 .room-header:last-child{
-.room-heading:last-child{
-
-  border-right:0;
-}
-
-@@ -320,24 +474,23 @@
-   TIME ROW
+@@ -260,9 +321,20 @@
    ========================================================= */
 
 .time-block{
-.time-row{
 
   display:grid;
 
@@ -515,45 +167,30 @@ footer{
   position:relative;
 
   width:100%;
-  border-left:
-    1px solid
-    var(--line);
-
-  border-right:
-    1px solid
-    var(--line);
 
   border-left:1px solid var(--line);
   border-right:1px solid var(--line);
   border-bottom:1px solid var(--line);
-  border-bottom:
-    1px solid
-    var(--line);
-
-  background:#fff;
+@@ -271,32 +343,49 @@
 }
-@@ -346,7 +499,9 @@
+
+.time-label{
 
   min-width:88px;
 
   padding:15px 8px;
-  padding:
-    15px
-    8px;
 
   text-align:right;
 
-@@ -356,39 +511,44 @@
+  color:var(--muted);
+
+  font-size:12px;
 
   font-weight:800;
 
   border-right:1px solid var(--line);
 
   background:#f8fafc;
-
-  border-right:
-    1px solid
-    var(--line);
 }
 
 .time-label-end{
@@ -561,368 +198,108 @@ footer{
   display:block;
 
   margin-top:3px;
-  margin-top:4px;
 
   font-weight:500;
 }
 
 
 /* =========================================================
-   ROOM CELLS
    ROOM CELL
+   ROOM CELLS
    ========================================================= */
 
 .room-cell{
+  min-width:180px;
 
   min-width:200px;
 
   padding:8px;
-  min-width:220px;
+  border-right:1px solid var(--line);
 
   min-height:115px;
-  min-height:110px;
 
   border-right:1px solid var(--line);
-  padding:8px;
 
   background:#fff;
-
-  border-right:
-    1px solid
-    var(--line);
 }
 
 .room-cell:last-child{
-
-  border-right:0;
-}
-
-@@ -415,19 +575,22 @@
-
-  position:relative;
-
-  padding:13px;
-
-  background:#fff;
-
-  border:1px solid var(--line);
-  border:
-    1px solid
-    var(--line);
-
-  border-radius:13px;
-
-  box-shadow:
-    0 3px 10px #102a7210;
-  padding:13px;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 3px 10px
-    #102a7210;
-
-  transition:
-    transform .15s ease,
-    box-shadow .15s ease;
-@@ -438,12 +601,17 @@
-  transform:translateY(-2px);
-
-  box-shadow:
-    0 6px 18px #102a7218;
-    0 6px 18px
-    #102a7218;
-}
-
-.session-card h3{
-
-  margin:0 30px 7px 0;
-  margin:
-    0
-    30px
-    7px
-    0;
-
-  font-size:14px;
-
-@@ -472,6 +640,17 @@
-  margin-bottom:8px;
-}
-
-.session-chair{
-
-  color:var(--muted);
-
-  font-size:10px;
-
-  line-height:1.4;
-
-  margin-top:8px;
-}
-
-.tag{
-
-  display:inline-block;
-@@ -482,7 +661,9 @@
-
-  border-radius:999px;
-
-  padding:4px 7px;
-  padding:
-    4px
-    7px;
-
-  font-size:9px;
-
-@@ -496,6 +677,7 @@
-  position:absolute;
-
-  right:7px;
-
-  top:5px;
-
-  border:0;
-@@ -512,61 +694,63 @@
-}
-
-.star.saved{
-  color:#e6af00;
-}
-
-.chair{
-
-  margin-top:7px;
-
-  color:var(--muted);
-
-  font-size:10px;
-  color:#e6af00;
-}
+@@ -305,12 +394,15 @@
 
 
 /* =========================================================
-   ALL ROOMS
+   MULTIPLE SESSIONS IN ONE ROOM
+   SESSION STACK
    ========================================================= */
 
-.all-rooms-row{
-
-  position:relative;
-.all-rooms{
-
-  width:100%;
-
-  border-left:1px solid var(--line);
-  border-right:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-
-  background:#fff;
-}
-
-.all-rooms-inner{
-  border-left:
-    1px solid
-    var(--line);
-
-  padding:18px 20px;
-  border-right:
-    1px solid
-    var(--line);
-
-  text-align:center;
-  border-bottom:
-    1px solid
-    var(--line);
-
-  background:#fff;
-
-  border-left:5px solid var(--blue);
-  position:relative;
-}
-
-.all-rooms-inner{
-
-  min-height:95px;
-
-  padding:
-    18px
-    20px;
+.session-stack{
 
   display:flex;
 
   flex-direction:column;
 
-  align-items:center;
-
-  justify-content:center;
-
-  align-items:center;
-  text-align:center;
-
-  border-left:
-    5px solid
-    var(--blue);
-
-  background:#fff;
+  gap:8px;
 }
 
-.all-rooms-title{
-
-  display:block;
-
-  color:var(--navy);
-
-  font-size:16px;
-@@ -578,8 +762,6 @@
-
-.all-rooms-time{
-
-  display:block;
-
-  color:var(--muted);
-
-  font-size:11px;
-@@ -592,7 +774,7 @@
-   HAPPENING NOW
+@@ -320,11 +412,15 @@
    ========================================================= */
 
-.now-indicator{
-.now-line{
+.session-card{
 
-  position:absolute;
+  position:relative;
 
-@@ -604,61 +786,64 @@
-
-  background:var(--now);
-
-  z-index:30;
-  z-index:40;
-
-  pointer-events:none;
-
-  box-shadow:
-    0 1px 4px #e65b6740;
-    0 1px 5px
-    #e65b6740;
-}
-
-.now-indicator span{
-.now-label{
-
-  position:absolute;
-
-  left:0;
-
-  top:-13px;
-  top:-4px;
-
-  transform:translateY(-100%);
-  transform:
-    translateY(-100%);
-
-  background:var(--now);
-
-  color:#fff;
-
-  padding:5px 8px;
-  padding:
-    5px
-    8px;
-
-  border-radius:6px;
-
-  font-size:10px;
-
-  line-height:1;
-
-  font-weight:800;
-
-  white-space:nowrap;
-}
-
-.now-indicator::after{
-.now-line::after{
-
-  content:"";
-
-  position:absolute;
-
-  left:-5px;
-  left:-6px;
-
-  top:-5px;
-  top:-6px;
-
-  width:13px;
-  width:15px;
-
-  height:13px;
-  height:15px;
-
-  border-radius:50%;
-
-  background:var(--now);
-
-  box-shadow:
-    0 0 0 3px #fff;
-  border:
-    3px solid
-    #fff;
-}
-
-
-@@ -671,7 +856,9 @@
+  padding:13px;
 
   background:#fff;
 
   border:1px solid var(--line);
-  border:
-    1px solid
-    var(--line);
 
-  border-radius:15px;
+  border-radius:13px;
 
-@@ -703,17 +890,24 @@
+  box-shadow:
+@@ -338,52 +434,80 @@
 }
 
-.modal.open{
+.session-card:hover{
 
-  display:flex;
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 6px 18px #102a7218;
 }
 
-.modal-box{
+.session-card h3{
 
-  background:#fff;
+  margin:0 30px 7px 0;
 
-  width:min(680px,100%);
-  width:min(
-    680px,
-    100%
-  );
+  font-size:14px;
 
-  border-radius:
-    22px 22px 0 0;
-    22px
-    22px
-    0
-    0;
-
-  padding:22px;
-
-@@ -741,42 +935,31 @@
-
-.modal h2{
-
-  margin:0 45px 10px 0;
-  margin:
-    0
-    45px
-    10px
-    0;
-
-  line-height:1.2;
+  line-height:1.3;
 }
 
-.modal-type{
+.session-speaker{
+
+  color:var(--muted);
+
+  font-size:12px;
+
+  line-height:1.4;
+
+  margin-bottom:7px;
+}
+
+.session-affiliation{
+
+  color:var(--muted);
+
+  font-size:11px;
+
+  line-height:1.4;
+
+  margin-bottom:8px;
+}
+
+.tag{
 
   display:inline-block;
 
@@ -932,13 +309,219 @@ footer{
 
   border-radius:999px;
 
-  padding:5px 8px;
+  padding:4px 7px;
 
-  font-size:10px;
+  font-size:9px;
 
   font-weight:800;
 
   text-transform:uppercase;
+}
+
+.star{
+
+  position:absolute;
+
+  right:7px;
+  top:5px;
+
+  border:0;
+
+  background:none;
+
+  font-size:20px;
+
+  color:#9aa5b6;
+
+  cursor:pointer;
+
+  padding:2px;
+}
+
+@@ -392,19 +516,25 @@
+}
+
+.chair{
+
+  margin-top:7px;
+
+  color:var(--muted);
+
+  font-size:10px;
+}
+
+
+/* =========================================================
+   ALL ROOMS BLOCK
+   ALL ROOMS
+   ========================================================= */
+
+.all-rooms-row{
+
+  position:relative;
+
+  width:100%;
+
+  border-left:1px solid var(--line);
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+@@ -413,6 +543,7 @@
+}
+
+.all-rooms-inner{
+
+  padding:18px 20px;
+
+  text-align:center;
+@@ -424,35 +555,49 @@
+  min-height:95px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+  align-items:center;
+}
+
+.all-rooms-title{
+
+  display:block;
+
+  color:var(--navy);
+
+  font-size:16px;
+
+  font-weight:800;
+
+  margin-bottom:6px;
+}
+
+.all-rooms-time{
+
+  display:block;
+
+  color:var(--muted);
+
+  font-size:11px;
+
+  margin-bottom:8px;
+}
+
+
+/* =========================================================
+   HAPPENING NOW LINE
+   HAPPENING NOW
+   ========================================================= */
+
+.now-indicator{
+
+  position:absolute;
+
+  left:0;
+
+  right:0;
+
+  height:3px;
+@@ -468,9 +613,11 @@
+}
+
+.now-indicator span{
+
+  position:absolute;
+
+  left:0;
+
+  top:-13px;
+
+  transform:translateY(-100%);
+@@ -493,14 +640,17 @@
+}
+
+.now-indicator::after{
+
+  content:"";
+
+  position:absolute;
+
+  left:-5px;
+
+  top:-5px;
+
+  width:13px;
+
+  height:13px;
+
+  border-radius:50%;
+@@ -518,11 +668,17 @@
+
+.loading,
+.empty{
+
+  background:#fff;
+
+  border:1px solid var(--line);
+
+  border-radius:15px;
+
+  padding:30px;
+
+  color:var(--muted);
+
+  text-align:center;
+}
+
+@@ -532,7 +688,9 @@
+   ========================================================= */
+
+.modal{
+
+  position:fixed;
+
+  inset:0;
+
+  background:#08122a99;
+@@ -549,6 +707,7 @@
+}
+
+.modal-box{
+
+  background:#fff;
+
+  width:min(680px,100%);
+@@ -564,13 +723,15 @@
+}
+
+.close{
+
+  float:right;
+
+  border:0;
+
+  border-radius:50%;
+
+  width:36px;
+
+  height:36px;
+
+  cursor:pointer;
+@@ -579,11 +740,14 @@
+}
+
+.modal h2{
+
+  margin:0 45px 10px 0;
+
+  line-height:1.2;
+}
+
+.modal-type{
+
+  display:inline-block;
+
+  background:var(--sky);
+@@ -602,14 +766,20 @@
 }
 
 .modal-details{
@@ -948,98 +531,54 @@ footer{
   padding-top:15px;
 
   border-top:1px solid var(--line);
-  border-top:
-    1px solid
-    var(--line);
 }
 
 .modal-details p{
 
   margin:9px 0;
-  margin:
-    9px
-    0;
 
   color:var(--muted);
 
-@@ -790,7 +973,14 @@
+  line-height:1.45;
+}
+
+@@ -619,14 +789,17 @@
+   ========================================================= */
 
 footer{
 
   padding:0 16px 40px;
-  max-width:1200px;
-
-  margin:auto;
-
-  padding:
-    0
-    16px
-    40px;
 
   color:var(--muted);
 
-@@ -805,18 +995,28 @@
+  font-size:12px;
+}
+
+
+/* =========================================================
+   MOBILE
+   DESKTOP
+   ========================================================= */
+
 @media(min-width:700px){
+@@ -649,6 +822,11 @@
 
-  .hero{
-    padding:30px 28px 44px;
+}
 
-    padding:
-      30px
-      28px
-      44px;
-  }
 
-  .main{
-    padding:34px 28px 80px;
-
-    padding:
-      34px
-      28px
-      80px;
-  }
-
-  .modal{
-
-    align-items:center;
-  }
-
-  .modal-box{
-
-    border-radius:22px;
-  }
-
-@@ -829,39 +1029,77 @@
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media(max-width:699px){
 
   .main{
-    padding:22px 10px 60px;
-  .hero{
-
-    padding:
-      22px
-      16px
-      32px;
-  }
-
-  .status{
-    padding:0 6px;
-  .hero h1{
-
-    margin-top:35px;
-
-    font-size:38px;
+@@ -660,7 +838,30 @@
   }
 
   .timetable{
+    min-width:850px;
     min-width:1088px;
-  .main{
-
-    padding:
-      22px
-      10px
-      60px;
   }
 
   .time-header{
@@ -1049,18 +588,6 @@ footer{
       250px
       250px
       250px;
-  /*
-     On mobile the timetable remains
-     horizontally scrollable.
-
-     This is important because each
-     room is a genuine column.
-  */
-
-  .room-heading,
-  .room-cell{
-
-    min-width:230px;
   }
 
   .time-block{
@@ -1070,1424 +597,376 @@ footer{
       250px
       250px
       250px;
-  .time-heading,
-  .time-label{
-
-    min-width:82px;
   }
 
   .room-header,
   .room-cell{
     min-width:250px;
-}
-
-
-/* =========================================================
-   MOBILE SWIPE HINT
-   ========================================================= */
-
-.timetable-hint{
-
-  display:none;
-
-  color:var(--muted);
-
-  font-size:11px;
-
-  text-align:center;
-
-  margin:
-    -4px
-    0
-    12px;
-}
-
-@media(max-width:699px){
-
-  .timetable-hint{
-
-    display:block;
   }
 
 }
-@@ -874,9 +1112,9 @@
-<body>
+@@ -838,7 +1039,7 @@
 
 
 <!-- =========================================================
-     HEADER
-     ========================================================= -->
-<!-- =======================================================
-     HERO
-     ======================================================= -->
-
-<header class="hero">
-
-@@ -937,9 +1175,9 @@
-</header>
-
-
-<!-- =========================================================
-<!-- =======================================================
-     NOTICE
-     ========================================================= -->
-     ======================================================= -->
-
-<div
-  id="notice"
-@@ -952,9 +1190,9 @@
-</div>
-
-
-<!-- =========================================================
-<!-- =======================================================
-     CONTROLS
-     ========================================================= -->
-     ======================================================= -->
-
-<nav class="controls">
-
-@@ -967,23 +1205,26 @@
-      Wed 18 Nov
-    </button>
-
-
-    <button
-      class="day"
-      data-day="1"
-    >
-      Thu 19 Nov
-    </button>
-
-
-    <input
-      id="search"
-      class="search"
-      placeholder="Search sessions, speakers, rooms…"
-      aria-label="Search programme"
-    >
-
-
-    <button
-      id="demo"
-      class="demo active"
-      id="liveButton"
-      class="live-button active"
-    >
-      ● Live
-    </button>
-@@ -993,9 +1234,9 @@
-</nav>
-
-
-<!-- =========================================================
-<!-- =======================================================
-     MAIN
-     ========================================================= -->
-     ======================================================= -->
-
-<main class="main">
-
-@@ -1008,22 +1249,32 @@
-      </h2>
-
-      <small id="status">
-        Loading programme…
-        Loading programme from Google Sheets…
-      </small>
-
-    </div>
-
-
-    <small id="saved">
-      0 saved
-    </small>
-
-  </div>
-
-
-  <div class="timetable-hint">
-
-    ← Swipe left/right to see all rooms →
-
-  </div>
-
-
-  <section id="timetable">
-
-    <div class="loading">
-      Loading programme from Google Sheets…
-
-      Loading programme…
-
-    </div>
-
-  </section>
-@@ -1038,9 +1289,9 @@
-</footer>
-
-
-<!-- =========================================================
-<!-- =======================================================
+     SESSION MODAL
      MODAL
      ========================================================= -->
-     ======================================================= -->
 
 <div
-  id="modal"
-@@ -1063,7 +1314,7 @@
-
-    <span
-      id="mtype"
-      class="modal-type"
-      class="tag"
-    ></span>
-
-
-@@ -1074,26 +1325,31 @@
-        <span id="mtime"></span>
-      </p>
-
-
-      <p>
-        <b>Speaker(s):</b>
-        <span id="mspeaker"></span>
-      </p>
-
-
-      <p>
-        <b>Affiliation:</b>
-        <span id="maffiliation"></span>
-      </p>
-
-
-      <p>
-        <b>Room:</b>
-        <span id="mroom"></span>
-      </p>
-
-
-      <p>
-        <b>Strand:</b>
-        <span id="mstrand"></span>
-      </p>
-
-
-      <p>
-        <b>Chair:</b>
-        <span id="mchair"></span>
-@@ -1110,32 +1366,13 @@
-
-
-/* =========================================================
-   GOOGLE SHEET
-   GOOGLE SHEETS CSV URL
-   ========================================================= */
-
-const PROGRAMME_URL =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRMrcoDNYRb8VfAG9dTTEGRWtLRLDPkAumjl-ePZ7PHp6xl4SAI9K4GVX-3FyTu5_YCddZl8jxWbagu/pub?gid=0&single=true&output=csv";
-
-
-/* =========================================================
+@@ -920,22 +1121,18 @@
    FIXED ROOM LIST
    =========================================================
 
+   These rooms will ALWAYS appear.
    IMPORTANT:
 
+   If you add another room to the conference,
+   add it here.
    These are the room headings that will appear.
 
+   "All Rooms" is NOT included because it
+   becomes a full-width session.
+   ========================================================= */
    Room 3030 is explicitly included.
 */
 
 const ROOMS = [
+
   "Main Hall",
   "Room A",
   "Room B",
   "Room 3030"
+
 ];
 
 
-/* =========================================================
-   STATE
-   ========================================================= */
-@@ -1144,7 +1381,7 @@
-
-let selectedDay = 0;
-
-let liveLine = true;
-let liveLineEnabled = true;
-
-let saved =
-  JSON.parse(
-@@ -1166,7 +1403,7 @@
+@@ -969,7 +1166,7 @@
 
 
 /* =========================================================
+   CLEAN TEXT
    CLEAN
-   CLEAN VALUE
    ========================================================= */
 
 function clean(value){
-@@ -1188,7 +1425,7 @@
+@@ -1009,21 +1206,18 @@
 
 
 /* =========================================================
-   ESCAPE HTML
-   HTML ESCAPE
-   ========================================================= */
-
-function escapeHTML(value){
-@@ -1206,17 +1443,31 @@
-
-
-/* =========================================================
-   TIME
    TIME TO MINUTES
+   TIME
    ========================================================= */
 
 function mins(value){
-function minutes(time){
-
-  if(!time){
 
   if(!value){
+
     return 0;
 
   }
-
 
   const parts =
     value.split(":");
-    clean(time)
-      .split(":");
-
-
-  if(
-    parts.length < 2
-  ){
-
-    return 0;
-
-  }
 
 
   return (
     Number(parts[0]) * 60 +
-@@ -1226,31 +1477,36 @@
+    Number(parts[1])
+@@ -1032,10 +1226,6 @@
 }
 
 
-function formatMinutes(total){
 /* =========================================================
    MINUTES TO TIME
    ========================================================= */
 
-function minutesToTime(value){
+function formatMinutes(total){
 
   const hours =
-    Math.floor(
-      total / 60
-      value / 60
-    );
-
+@@ -1046,7 +1236,6 @@
   const minutes =
     total % 60;
-  const mins =
-    value % 60;
 
 
   return (
     String(hours)
       .padStart(2,"0")
-    +
-    ":"
-    +
-    String(minutes)
-    String(mins)
-      .padStart(2,"0")
-  );
-
-}
+@@ -1061,7 +1250,7 @@
 
 
 /* =========================================================
+   NORMALISE ROOM
    ROOM NORMALISATION
-   NORMALISE ROOM NAME
    ========================================================= */
 
 function normaliseRoom(room){
-@@ -1274,7 +1530,7 @@
-
-  let cell = "";
-
-  let quoted = false;
-  let insideQuotes = false;
-
-
-  for(
-@@ -1290,9 +1546,14 @@
-      text[i+1];
-
-
-    /*
-       Two quotes inside a quoted
-       CSV field represent one quote.
-    */
-
-    if(
-      char === '"' &&
-      quoted &&
-      insideQuotes &&
-      next === '"'
-    ){
-
-@@ -1305,19 +1566,28 @@
-    }
-
-
-    /*
-       Start/end quoted field.
-    */
-
-    if(char === '"'){
-
-      quoted =
-        !quoted;
-      insideQuotes =
-        !insideQuotes;
-
-      continue;
-
-    }
-
-
-    /*
-       Comma outside quotes =
-       next column.
-    */
-
-    if(
-      char === "," &&
-      !quoted
-      !insideQuotes
-    ){
-
-      row.push(cell);
-@@ -1329,12 +1599,17 @@
-    }
-
-
-    /*
-       New line outside quotes =
-       next row.
-    */
-
-    if(
-      (
-        char === "\n" ||
-        char === "\r"
-      ) &&
-      !quoted
-      !insideQuotes
-    ){
-
-      if(
-@@ -1352,8 +1627,8 @@
-
-      if(
-        row.some(
-          value =>
-            clean(value) !== ""
-          item =>
-            clean(item) !== ""
-        )
-      ){
-
-@@ -1376,6 +1651,10 @@
-  }
-
-
-  /*
-     Last row.
-  */
-
-  if(
-    cell.length ||
-    row.length
-@@ -1386,8 +1665,8 @@
-
-    if(
-      row.some(
-        value =>
-          clean(value) !== ""
-        item =>
-          clean(item) !== ""
-      )
-    ){
-
-@@ -1404,7 +1683,7 @@
+@@ -1215,7 +1404,7 @@
 
 
 /* =========================================================
+   CONVERT GOOGLE SHEET ROWS
    CONVERT SHEET DATA
-   CONVERT CSV ROWS INTO SESSIONS
    ========================================================= */
 
 function convertRows(rows){
-@@ -1426,7 +1705,7 @@
-    );
-
-
-  function col(name){
-  function indexOfHeader(name){
-
-    return headers.indexOf(
-      name.toLowerCase()
-@@ -1435,43 +1714,43 @@
-  }
-
-
-  const indexes = {
-  const columns = {
-
-    id:
-      col("id"),
-      indexOfHeader("id"),
-
-    day:
-      col("day"),
-      indexOfHeader("day"),
-
-    date:
-      col("date"),
-      indexOfHeader("date"),
-
-    start:
-      col("start"),
-      indexOfHeader("start"),
-
-    end:
-      col("end"),
-      indexOfHeader("end"),
-
-    room:
-      col("room"),
-      indexOfHeader("room"),
-
-    type:
-      col("type"),
-      indexOfHeader("type"),
-
-    title:
-      col("title"),
-      indexOfHeader("title"),
-
-    speaker:
-      col("speaker(s)"),
-      indexOfHeader("speaker(s)"),
-
-    affiliation:
-      col("affiliation"),
-      indexOfHeader("affiliation"),
-
-    strand:
-      col("strand"),
-      indexOfHeader("strand"),
-
-    chair:
-      col("chair")
-      indexOfHeader("chair")
-
-  };
-
-@@ -1488,65 +1767,65 @@
-
-          id:
-            clean(
-              row[indexes.id]
-              row[columns.id]
-            ) ||
-            "session-" +
-            index,
-
-          day:
-            clean(
-              row[indexes.day]
-              row[columns.day]
-            ),
-
-          date:
-            clean(
-              row[indexes.date]
-              row[columns.date]
-            ),
-
-          start:
-            clean(
-              row[indexes.start]
-              row[columns.start]
-            ),
-
-          end:
-            clean(
-              row[indexes.end]
-              row[columns.end]
-            ),
-
-          room:
-            clean(
-              row[indexes.room]
-              row[columns.room]
-            ),
-
-          type:
-            clean(
-              row[indexes.type]
-              row[columns.type]
-            ),
-
-          title:
-            clean(
-              row[indexes.title]
-              row[columns.title]
-            ) ||
-            "Untitled session",
-
-          speaker:
-            clean(
-              row[indexes.speaker]
-              row[columns.speaker]
-            ),
-
-          affiliation:
-            clean(
-              row[indexes.affiliation]
-              row[columns.affiliation]
-            ),
-
-          strand:
-            clean(
-              row[indexes.strand]
-              row[columns.strand]
-            ),
-
-          chair:
-            clean(
-              row[indexes.chair]
-              row[columns.chair]
-            )
-
-        };
-@@ -1581,7 +1860,7 @@
-    if(!response.ok){
-
-      throw new Error(
-        "Google Sheet could not be accessed."
-        "Could not access Google Sheet."
-      );
-
-    }
-@@ -1604,12 +1883,19 @@
-    ){
-
-      throw new Error(
-        "No programme data was found."
-        "No programme rows found."
-      );
-
-    }
-
-
-    $("#notice")
-      .classList
-      .remove(
-        "error"
-      );
-
-
-    $("#status")
-      .textContent =
-        programme.length +
-@@ -1661,48 +1947,68 @@
+@@ -1472,7 +1661,7 @@
 
 
 /* =========================================================
+   GET DAY PROGRAMME
    DAY FILTER
-   DAY MATCHING
-   ========================================================= */
-
-function sessionBelongsToSelectedDay(
-  session
-){
-
-  const day =
-    clean(
-      session.day
-    ).toLowerCase();
-
-
-  const date =
-    clean(
-      session.date
-    ).toLowerCase();
-
-
-  if(
-    selectedDay === 0
-  ){
-
-    return (
-      day.includes("wed") ||
-      day.includes("wednesday") ||
-      date.includes("18")
-    );
-
-  }
-
-
-  return (
-    day.includes("thu") ||
-    day.includes("thursday") ||
-    date.includes("19")
-  );
-
-}
-
-
-/* =========================================================
-   GET DAY'S SESSIONS
    ========================================================= */
 
 function getDayProgramme(){
-function getDaySessions(){
-
-  return programme.filter(
-    session => {
-
-      const day =
-        session.day
-          .trim()
-          .toLowerCase();
-
-
-      if(
-        selectedDay === 0
-      ){
-
-        return (
-          day.includes("wed") ||
-          day.includes("wednesday")
-        );
-
-      }
-
-
-      return (
-        day.includes("thu") ||
-        day.includes("thursday")
-      );
-
-    }
-    session =>
-      sessionBelongsToSelectedDay(
-        session
-      )
-  );
-
-}
+@@ -1510,7 +1699,7 @@
 
 
 /* =========================================================
+   SEARCH
    SEARCH FILTER
-   GET SEARCHED SESSIONS
    ========================================================= */
 
 function getFilteredProgramme(){
-function getFilteredSessions(){
-
-  const query =
-    $("#search")
-@@ -1712,7 +2018,7 @@
-
-
-  const sessions =
-    getDayProgramme();
-    getDaySessions();
-
-
-  if(!query){
-@@ -1733,7 +2039,8 @@
-        session.room,
-        session.type,
-        session.strand,
-        session.chair
-        session.chair,
-        session.date
-
-      ]
-      .join(" ")
-@@ -1751,10 +2058,12 @@
+@@ -1562,12 +1751,10 @@
 
 
 /* =========================================================
+   ONLY ALL ROOMS SPANS THE TIMETABLE
    ALL ROOMS
-   DETERMINE WHETHER A SESSION IS ALL ROOMS
    ========================================================= */
 
-function isAllRooms(session){
 function isAllRooms(
   session
 ){
+function isAllRooms(session){
 
   return (
     normaliseRoom(
-@@ -1766,43 +2075,213 @@
-}
-
-
-/* =========================================================
-   GET ROOMS FROM GOOGLE SHEET
-   =========================================================
-
-   THIS IS THE IMPORTANT PART.
-
-   There are NO hard-coded room names.
-
-   If the Sheet contains:
-
-       Room 3030
-
-   then Room 3030 becomes a heading.
-
-   If you add another room:
-
-       Room 3050
-
-   then Room 3050 becomes a heading too.
-*/
-
-function getRooms(
-  sessions
-){
-
-  const rooms = [];
-
-  sessions.forEach(
-    session => {
-
-      if(
-        isAllRooms(
-          session
-        )
-      ){
-
-        return;
-
-      }
-
-
-      const room =
-        clean(
-          session.room
-        );
-
-
-      if(!room){
-
-        return;
-
-      }
-
-
-      /*
-         Compare normalised names
-         but preserve the original
-         capitalisation from the Sheet.
-      */
-
-      const alreadyExists =
-        rooms.some(
-          existing =>
-            normaliseRoom(
-              existing
-            ) ===
-            normaliseRoom(
-              room
-            )
-        );
-
-
-      if(
-        !alreadyExists
-      ){
-
-        rooms.push(
-          room
-        );
-
-      }
-
-    }
-  );
-
-
-  /*
-     Sort alphabetically, but put
-     common whole-conference spaces
-     first if they exist.
-
-     This does NOT rename them.
-  */
-
-  const preferred = [
-    "main hall",
-    "plenary",
-    "atrium"
-  ];
-
-
-  rooms.sort(
-    (
-      a,
-      b
-    ) => {
-
-      const ai =
-        preferred.indexOf(
-          normaliseRoom(a)
-        );
-
-      const bi =
-        preferred.indexOf(
-          normaliseRoom(b)
-        );
-
-
-      if(
-        ai !== -1 &&
-        bi === -1
-      ){
-
-        return -1;
-
-      }
-
-
-      if(
-        ai === -1 &&
-        bi !== -1
-      ){
-
-        return 1;
-
-      }
-
-
-      if(
-        ai !== -1 &&
-        bi !== -1
-      ){
-
-        return ai - bi;
-
-      }
-
-
-      return a.localeCompare(
-        b,
-        undefined,
-        {
-          numeric:true,
-          sensitivity:"base"
-        }
-      );
-
-    }
-  );
-
-
-  return rooms;
-
-}
-
-
-/* =========================================================
+@@ -1583,9 +1770,7 @@
    SESSION CARD
    ========================================================= */
 
-function sessionCard(session){
-function makeSessionCard(
+function sessionCard(
   session
 ){
+function sessionCard(session){
 
   const isSaved =
-  const savedClass =
     saved.includes(
-      session.id
-    );
-    )
-      ? "saved"
-      : "";
-
-
-  const star =
-    saved.includes(
-      session.id
-    )
-      ? "★"
-      : "☆";
-
-
-  return `
-
-    <div
-    <article
-      class="session-card"
-      data-id="${escapeHTML(
-      data-session-id="${escapeHTML(
-        session.id
-      )}"
-    >
-
-      <button
-        class="star ${
-          isSaved
-            ? "saved"
-            : ""
-        }"
-        class="star ${savedClass}"
-        data-save="${escapeHTML(
-          session.id
+@@ -1613,13 +1798,11 @@
         )}"
         aria-label="Save session"
       >
+
         ${
           isSaved
             ? "★"
             : "☆"
         }
-        ${star}
+
       </button>
 
 
-@@ -1816,9 +2295,7 @@
-      ${
-        session.speaker
-          ? `
-            <div
-              class="session-speaker"
-            >
-            <div class="session-speaker">
-              ${escapeHTML(
-                session.speaker
-              )}
-@@ -1831,9 +2308,7 @@
-      ${
-        session.affiliation
-          ? `
-            <div
-              class="session-affiliation"
-            >
-            <div class="session-affiliation">
-              ${escapeHTML(
-                session.affiliation
-              )}
-@@ -1859,7 +2334,7 @@
-      ${
-        session.chair
-          ? `
-            <div class="chair">
-            <div class="session-chair">
-              Chair:
-              ${escapeHTML(
-                session.chair
-@@ -1869,23 +2344,25 @@
-          : ""
-      }
-
-    </div>
-    </article>
-
-  `;
-
-}
-
-
-/* =========================================================
+@@ -1697,9 +1880,7 @@
    ALL ROOMS CARD
-   ALL ROOMS BLOCK
    ========================================================= */
 
-function allRoomsCard(session){
-function makeAllRoomsBlock(
+function allRoomsCard(
   session
 ){
+function allRoomsCard(session){
 
   return `
 
-    <div
-      class="all-rooms-row"
-      class="all-rooms"
-      data-start="${escapeHTML(
-        session.start
-      )}"
-@@ -1894,33 +2371,31 @@
-      )}"
-    >
-
-      <div
-        class="all-rooms-inner"
-      >
-      <div class="all-rooms-inner">
-
-        <span class="all-rooms-title">
-
-        <span
-          class="all-rooms-title"
-        >
-          ${escapeHTML(
-            session.title
-          )}
-
-        </span>
-
-
-        <span
-          class="all-rooms-time"
-        >
-        <span class="all-rooms-time">
-
-          ${escapeHTML(
-            session.start
-          )}
-
-          ${
-            session.end
-              ? "–" +
-                escapeHTML(
-              ? `
-                –
-                ${escapeHTML(
-                  session.end
-                )
-                )}
-              `
-              : ""
-          }
-
-@@ -1949,13 +2424,13 @@
+@@ -1768,7 +1949,7 @@
 
 
 /* =========================================================
-   RENDER TIMETABLE
    RENDER
+   RENDER TIMETABLE
    ========================================================= */
 
 function render(){
-
-  const sessions =
-    getFilteredProgramme();
-    getFilteredSessions();
-
-
-  $("#saved")
-@@ -1972,7 +2447,9 @@
-      .innerHTML =
-        `
-          <div class="empty">
-
-            No sessions found for this day.
-
-          </div>
-        `;
-
-@@ -1981,23 +2458,19 @@
+@@ -1800,22 +1981,6 @@
   }
 
+
+  /*
+     FIXED ROOM LIST.
+
+     Room 3030 will ALWAYS be
+     present on both days.
+  */
+
+  const rooms =
+    ROOMS;
+
+
+  /*
+     Separate All Rooms sessions
+     from room-specific sessions.
+  */
 
   const allRoomSessions =
     sessions.filter(
       isAllRooms
-    );
-
-  /*
-     Get room names DIRECTLY
-     from the Sheet.
-  */
-
-  const roomSessions =
-    sessions.filter(
-      session =>
-        !isAllRooms(
-          session
-        )
-  const rooms =
-    getRooms(
-      sessions
-    );
+@@ -1832,7 +1997,7 @@
 
 
   /*
+     Get every start time.
      Collect all start times.
-     Get all unique start times.
   */
 
   const startTimes = [];
-@@ -2007,7 +2480,6 @@
-    session => {
-
-      if(
-        session.start &&
-        !startTimes.includes(
-          session.start
-        )
-@@ -2028,80 +2500,115 @@
-      a,
-      b
-    ) =>
-      mins(a) -
-      mins(b)
-      minutes(a) -
-      minutes(b)
+@@ -1868,58 +2033,61 @@
   );
 
 
   /*
      HEADER
-     Determine grid columns.
 
      This is deliberately hard-coded.
-     88px = time column.
 
      Therefore Room 3030 will be
      shown regardless of what happens
      in the spreadsheet.
-     Every room gets its own
-     220px column.
   */
-
-  const gridColumns =
-    "88px " +
-    rooms
-      .map(
-        () =>
-          "220px"
-      )
-      .join(" ");
-
 
   let html = `
 
     <div class="timetable-scroll">
-    <div class="timetable-wrapper">
 
       <div class="timetable">
-      <div
-        class="timetable"
-        style="--room-count:${rooms.length}"
-      >
 
+        <div
+          class="time-header"
+          style="
+            grid-template-columns:
+            88px
+            repeat(
+              ${rooms.length},
+              minmax(180px,1fr)
+            );
+          "
+        >
         <div class="time-header">
 
           <div class="corner"></div>
-        <!-- ROOM HEADINGS -->
 
+          ${rooms.map(
+            room => `
+
+              <div
+                class="room-header"
+              >
           <div class="room-header">
             Main Hall
           </div>
-        <div
-          class="room-header-row"
-          style="grid-template-columns:${gridColumns}"
-        >
 
+                ${escapeHTML(
+                  room
+                )}
           <div class="room-header">
             Room A
-          <div class="time-heading">
-            Time
           </div>
 
+              </div>
           <div class="room-header">
             Room B
           </div>
-  `;
 
+            `
+          ).join("")}
           <div class="room-header">
             Room 3030
           </div>
 
-  /*
-     BUILD HEADINGS DIRECTLY
-     FROM GOOGLE SHEET ROOM VALUES.
-  */
-
-  rooms.forEach(
-    room => {
-
-      html += `
-
-        <div class="room-heading">
-
-          ${escapeHTML(
-            room
-          )}
-
-        </div>
-
-      `;
-
-    }
-  );
-
-
-  html += `
-
         </div>
 
   `;
 
 
   /*
+     Render each start time.
      Render each time.
-     BUILD TIME ROWS.
   */
 
   startTimes.forEach(
     start => {
 
-      const atThisTime =
-        sessions.filter(
-          session =>
-            session.start ===
-            start
-        );
 
-
+      /* ---------------------------------------------------
       /*
          ALL ROOMS
+         --------------------------------------------------- */
 
          These appear as one
          full-width block.
-         All Rooms sessions.
       */
 
       const allRooms =
         allRoomSessions.filter(
-          session =>
-            session.start ===
-            start
-        atThisTime.filter(
-          isAllRooms
-        );
+@@ -1941,9 +2109,10 @@
+      );
 
 
-      allRooms.forEach(
-        session => {
-
-          html +=
-            allRoomsCard(
-            makeAllRoomsBlock(
-              session
-            );
-
-@@ -2110,32 +2617,37 @@
-
-
+      /* ---------------------------------------------------
+         ROOM-SPECIFIC SESSIONS
+         --------------------------------------------------- */
       /*
          Normal room-specific
          sessions.
-         Room-specific sessions.
       */
 
       const atThisTime =
         roomSessions.filter(
-      const roomSpecific =
-        atThisTime.filter(
-          session =>
-            session.start ===
-            start
-            !isAllRooms(
-              session
-            )
-        );
-
-
-      if(
-        !atThisTime.length
-        !roomSpecific.length
-      ){
-
-        return;
-
+@@ -1962,11 +2131,6 @@
       }
 
 
-      const endMinutes =
-        atThisTime
       /*
-         Determine the latest
-         ending session in this row.
+         Find the longest session
+         beginning at this time.
       */
 
-      const ends =
-        roomSpecific
+      const endMinutes =
+        atThisTime
           .map(
-            session =>
-              mins(
-              minutes(
-                session.end
-              )
-          )
-@@ -2146,25 +2658,26 @@
-
-
-      const rowEnd =
-        endMinutes.length
-        ends.length
-          ? Math.max(
-              ...endMinutes
-              ...ends
-            )
-          : mins(start);
-          : minutes(start);
-
-
-      html += `
-
-        <div
-          class="time-block"
-          class="time-row"
-          data-start="${escapeHTML(
-            start
-          )}"
-          data-end="${escapeHTML(
-            formatMinutes(
-            minutesToTime(
+@@ -2001,14 +2165,6 @@
               rowEnd
             )
           )}"
-          style="grid-template-columns:${gridColumns}"
+          style="
+            grid-template-columns:
+            88px
+            repeat(
+              ${rooms.length},
+              minmax(180px,1fr)
+            );
+          "
         >
 
 
-@@ -2179,7 +2692,7 @@
-            >
-
-              ${escapeHTML(
-                formatMinutes(
-                minutesToTime(
-                  rowEnd
-                )
-              )}
-@@ -2188,58 +2701,60 @@
-
+@@ -2033,19 +2189,14 @@
           </div>
 
-      `;
 
+          ${rooms.map(
           ${ROOMS.map(
             room => {
 
               /*
+                 CRITICAL:
+
+                 A session is placed into
+                 this column ONLY if the
+                 Room cell in the Sheet
+                 matches the room heading.
+
+                 Nothing is inferred from
+                 the title or Type.
                  ONLY sessions whose
                  Room matches this
                  specific heading
@@ -2495,403 +974,96 @@ function render(){
               */
 
               const sessionsInRoom =
-                atThisTime.filter(
-                  session =>
-                    normaliseRoom(
-                      session.room
-                    ) ===
-                    normaliseRoom(
-                      room
-                    )
-                );
-
-      /*
-         IMPORTANT:
-
-         For EACH room heading,
-         only sessions whose room
-         exactly matches that room
-         are placed underneath it.
-      */
-
-      rooms.forEach(
-        room => {
-
-          const matchingSessions =
-            roomSpecific.filter(
-              session =>
-                normaliseRoom(
-                  session.room
-                ) ===
-                normaliseRoom(
-                  room
-                )
-            );
-
-              return `
-
-                <div
-                  class="room-cell"
-                >
-          html += `
-
-                  <div
-                    class="session-stack"
-                  >
-            <div class="room-cell">
-
-                    ${sessionsInRoom
-                      .map(
-                        session =>
-                          sessionCard(
-                            session
-                          )
-              <div class="session-stack">
-
-                ${matchingSessions
-                  .map(
-                    session =>
-                      makeSessionCard(
-                        session
-                      )
-                      .join("")
-                    }
-                  )
-                  .join("")
-                }
-
-              </div>
-
-                  </div>
-            </div>
-
-                </div>
-          `;
-
-              `;
-        }
-      );
-
-            }
-          ).join("")}
-
-      html += `
-
-        </div>
-
-@@ -2274,23 +2789,33 @@
+@@ -2123,10 +2274,6 @@
 
 function placeNow(){
 
   /*
-     Remove previous lines.
+     Remove existing indicators.
   */
 
   document
     .querySelectorAll(
       ".now-indicator"
-      ".now-line"
-    )
-    .forEach(
-      element =>
-        element.remove()
-    );
-
-
-  if(!liveLine){
-  if(
-    !liveLineEnabled
-  ){
-
-    return;
-
+@@ -2144,10 +2291,6 @@
   }
 
 
   /*
-     Current real date/time.
+     Get current real-world time.
   */
 
   const now =
     new Date();
 
-@@ -2306,18 +2831,21 @@
+@@ -2163,9 +2306,8 @@
 
 
   /*
+     Conference dates:
+       Wednesday 18 November 2026
+       Thursday 19 November 2026
      Only show the line on
      the actual conference dates.
-     Only show the line on the
-     corresponding conference day.
   */
 
   const correctDay =
-
-    (
-      selectedDay === 0 &&
-      year === 2026 &&
-      month === 11 &&
-      date === 18
-    )
-
-    ||
-
-    (
-      selectedDay === 1 &&
-      year === 2026 &&
-@@ -2334,8 +2862,11 @@
+@@ -2198,7 +2340,7 @@
 
 
-  const currentMinutes =
-
-    now.getHours() * 60 +
-
-    now.getMinutes() +
-
-    now.getSeconds() / 60;
-
-
-@@ -2345,18 +2876,18 @@
+  /*
+     Normal sessions.
+     Normal timetable rows.
+  */
 
   document
-    .querySelectorAll(
-      ".time-block"
-      ".time-row"
-    )
-    .forEach(
-      row => {
-
-        const start =
-          mins(
-          minutes(
-            row.dataset.start
-          );
-
-        const end =
-          mins(
-          minutes(
-            row.dataset.end
-          );
-
-@@ -2366,7 +2897,8 @@
-          currentMinutes < end
-        ){
-
-          const progress =
-          const percentage =
-
-            (
-              currentMinutes -
-              start
-@@ -2385,22 +2917,23 @@
+@@ -2273,7 +2415,7 @@
 
 
-          line.className =
-            "now-indicator";
-            "now-line";
-
-
-          line.innerHTML =
-            `
-              <span>
-              <span class="now-label">
-                HAPPENING NOW
-              </span>
-            `;
-
-
-          line.style.top =
-            (
-              progress *
-              percentage *
-              row.offsetHeight
-            ) +
-            )
-            +
-            "px";
-
-
-@@ -2420,18 +2953,18 @@
+  /*
+     All Rooms sessions.
+     All Rooms rows.
+  */
 
   document
-    .querySelectorAll(
-      ".all-rooms-row"
-      ".all-rooms"
-    )
-    .forEach(
-      row => {
-
-        const start =
-          mins(
-          minutes(
-            row.dataset.start
-          );
-
-        const end =
-          mins(
-          minutes(
-            row.dataset.end
-          );
-
-@@ -2441,7 +2974,8 @@
-          currentMinutes < end
-        ){
-
-          const progress =
-          const percentage =
-
-            (
-              currentMinutes -
-              start
-@@ -2460,22 +2994,23 @@
+@@ -2358,7 +2500,9 @@
+  event => {
 
 
-          line.className =
-            "now-indicator";
-            "now-line";
-
-
-          line.innerHTML =
-            `
-              <span>
-              <span class="now-label">
-                HAPPENING NOW
-              </span>
-            `;
-
-
-          line.style.top =
-            (
-              progress *
-              percentage *
-              row.offsetHeight
-            ) +
-            )
-            +
-            "px";
-
-
-@@ -2492,7 +3027,7 @@
-
-
-/* =========================================================
-   CLICK HANDLER
-   SAVE / OPEN SESSION
-   ========================================================= */
-
-document.addEventListener(
-@@ -2501,7 +3036,7 @@
-
-
+    /* SAVE */
     /*
        SAVE
-       SAVE BUTTON
     */
 
     const saveButton =
-@@ -2553,7 +3088,7 @@
+      event.target.closest(
+@@ -2408,7 +2552,9 @@
+    }
 
 
+    /* SESSION */
     /*
        OPEN SESSION
-       SESSION CARD
     */
 
     const card =
-@@ -2569,19 +3104,8 @@
-    }
-
-
-    if(
       event.target.closest(
-        ".star"
-      )
-    ){
-
-      return;
-
-    }
-
-
-    const id =
-      card.dataset.id;
-      card.dataset.sessionId;
-
-
-    const session =
-@@ -2611,7 +3135,9 @@
-
-    $("#mtime")
-      .textContent =
-
-        session.start +
-
-        (
-          session.end
-            ? "–" +
-@@ -2738,8 +3264,11 @@
-
-          $("#dayTitle")
-            .textContent =
-
-              index === 0
-
-                ? "Wednesday 18 November"
-
-                : "Thursday 19 November";
-
-
-@@ -2767,25 +3296,28 @@
-   LIVE BUTTON
-   ========================================================= */
-
-$("#demo").onclick =
-$("#liveButton").onclick =
-  () => {
-
-    liveLine =
-      !liveLine;
-    liveLineEnabled =
-      !liveLineEnabled;
-
-
-    $("#demo")
-    $("#liveButton")
-      .classList
-      .toggle(
-        "active",
-        liveLine
-        liveLineEnabled
-      );
-
-
-    $("#demo")
-    $("#liveButton")
-      .textContent =
-        liveLine
-
-        liveLineEnabled
-
-          ? "● Live"
-
-          : "○ Live";
-
-
-@@ -2795,7 +3327,7 @@
+@@ -2649,23 +2795,23 @@
 
 
 /* =========================================================
+   UPDATE LIVE LINE
    KEEP LIVE LINE UPDATED
-   KEEP "HAPPENING NOW" CURRENT
    ========================================================= */
 
 setInterval(
-@@ -2805,13 +3337,13 @@
+  placeNow,
+  30000
+);
 
 
 /* =========================================================
    START
-   INITIAL LOAD
    ========================================================= */
 
 loadProgramme();
