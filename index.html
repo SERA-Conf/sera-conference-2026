@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -433,6 +432,8 @@ input{
   line-height:1.4;
 }
 
+/* Abstract */
+
 .abstract-section{
   border-top:1px solid var(--border);
   padding-top:20px;
@@ -557,7 +558,10 @@ input{
 
 <header>
   <div class="header-inner">
-    <div class="eyebrow">SERA Conference 2026</div>
+
+    <div class="eyebrow">
+      SERA Conference 2026
+    </div>
 
     <h1>
       Living Our Research: Agency, Culture, and the Pursuit of Equity in Education
@@ -566,13 +570,16 @@ input{
     <div class="header-subtitle">
       18–19 November 2026 · Edinburgh Napier University, Edinburgh
     </div>
+
   </div>
 </header>
 
 <div class="controls">
+
   <div class="controls-inner">
 
     <div class="day-buttons">
+
       <button class="day-button active" data-day="Wednesday">
         Wednesday 18
       </button>
@@ -580,9 +587,11 @@ input{
       <button class="day-button" data-day="Thursday">
         Thursday 19
       </button>
+
     </div>
 
     <div class="search-wrap">
+
       <input
         id="search"
         class="search"
@@ -590,6 +599,7 @@ input{
         placeholder="Search presentations, speakers, affiliations..."
         aria-label="Search programme"
       >
+
     </div>
 
     <button id="favouritesButton" class="favourites-button">
@@ -597,25 +607,35 @@ input{
     </button>
 
   </div>
+
 </div>
 
 <div id="status" class="status"></div>
+
 <div id="nowLine" class="now-line"></div>
 
 <main class="programme-wrap">
 
   <div class="day-heading">
-    <h2 id="dayTitle">Wednesday 18 November</h2>
+
+    <h2 id="dayTitle">
+      Wednesday 18 November
+    </h2>
+
     <div id="dayDate" class="date"></div>
+
   </div>
 
   <div id="programme">
+
     <div class="loading">
       Loading programme…
     </div>
+
   </div>
 
 </main>
+
 
 <!-- Modal -->
 
@@ -678,21 +698,31 @@ input{
 
       </div>
 
-      <!-- NEW: ABSTRACT -->
+
+      <!-- Abstract -->
 
       <div class="abstract-section">
 
-        <h3>Abstract</h3>
+        <h3>
+          Abstract
+        </h3>
 
-        <div id="modalAbstract" class="abstract-text"></div>
+        <div
+          id="modalAbstract"
+          class="abstract-text"
+        ></div>
 
       </div>
 
     </div>
 
+
     <div class="modal-footer">
 
-      <button id="modalFavourite" class="favourite-modal">
+      <button
+        id="modalFavourite"
+        class="favourite-modal"
+      >
         ☆ Add to favourites
       </button>
 
@@ -702,14 +732,18 @@ input{
 
 </div>
 
+
 <script>
 
 const CSV_URL =
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vRMrcoDNYRb8VfAG9dTTEGRWtLRLDPkAumjl-ePZ7PHp6xl4SAI9K4GVX-3FyTu5_YCddZl8jxWbagu/pub?gid=0&single=true&output=csv";
 
 let allSessions = [];
+
 let selectedDay = "Wednesday";
+
 let showFavouritesOnly = false;
+
 let currentModalSession = null;
 
 const $ = selector => document.querySelector(selector);
@@ -720,34 +754,53 @@ const $ = selector => document.querySelector(selector);
 ------------------------------------------------------- */
 
 function clean(value){
-  if(value === null || value === undefined) return "";
+
+  if(value === null || value === undefined){
+    return "";
+  }
+
   return String(value).trim();
+
 }
 
+
 function escapeHTML(value){
+
   return String(value ?? "")
     .replace(/&/g,"&amp;")
     .replace(/</g,"&lt;")
     .replace(/>/g,"&gt;")
     .replace(/"/g,"&quot;")
     .replace(/'/g,"&#039;");
+
 }
+
 
 function minutes(time){
 
-  if(!time) return 0;
+  if(!time){
+    return 0;
+  }
 
-  const match = String(time).trim().match(
-    /^(\d{1,2})(?::(\d{2}))?\s*(am|pm)?$/i
-  );
+  const match = String(time)
+    .trim()
+    .match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm)?$/i);
 
-  if(!match) return 0;
+  if(!match){
+    return 0;
+  }
 
   let hour = parseInt(match[1],10);
-  let minute = parseInt(match[2] || "0",10);
+
+  let minute = parseInt(
+    match[2] || "0",
+    10
+  );
+
   const ampm = match[3];
 
   if(ampm){
+
     const lower = ampm.toLowerCase();
 
     if(lower === "pm" && hour !== 12){
@@ -757,14 +810,18 @@ function minutes(time){
     if(lower === "am" && hour === 12){
       hour = 0;
     }
+
   }
 
   return hour * 60 + minute;
+
 }
+
 
 function minutesToTime(total){
 
   let hour = Math.floor(total / 60);
+
   const minute = total % 60;
 
   const suffix = hour >= 12 ? "pm" : "am";
@@ -778,10 +835,14 @@ function minutesToTime(total){
   }
 
   return `${hour}:${String(minute).padStart(2,"0")} ${suffix}`;
+
 }
 
+
 function normaliseRoom(room){
+
   return clean(room);
+
 }
 
 
@@ -792,150 +853,241 @@ function normaliseRoom(room){
 function parseCSV(text){
 
   const rows = [];
+
   let row = [];
+
   let cell = "";
+
   let inQuotes = false;
 
-  for(let i=0;i<text.length;i++){
+  for(let i = 0; i < text.length; i++){
 
     const char = text[i];
-    const next = text[i+1];
+
+    const next = text[i + 1];
+
 
     if(char === '"' && inQuotes && next === '"'){
+
       cell += '"';
+
       i++;
+
       continue;
+
     }
+
 
     if(char === '"'){
+
       inQuotes = !inQuotes;
+
       continue;
+
     }
+
 
     if(char === "," && !inQuotes){
+
       row.push(cell);
+
       cell = "";
+
       continue;
+
     }
 
-    if((char === "\n" || char === "\r") && !inQuotes){
+
+    if(
+      (char === "\n" || char === "\r") &&
+      !inQuotes
+    ){
 
       if(char === "\r" && next === "\n"){
         i++;
       }
 
       row.push(cell);
+
       cell = "";
 
-      if(row.some(value => clean(value) !== "")){
+
+      if(
+        row.some(
+          value => clean(value) !== ""
+        )
+      ){
+
         rows.push(row);
+
       }
 
+
       row = [];
+
       continue;
+
     }
+
 
     cell += char;
+
   }
+
 
   if(cell !== "" || row.length){
+
     row.push(cell);
 
-    if(row.some(value => clean(value) !== "")){
+    if(
+      row.some(
+        value => clean(value) !== ""
+      )
+    ){
+
       rows.push(row);
+
     }
+
   }
 
+
   return rows;
+
 }
 
 
 /* -------------------------------------------------------
-   Convert Google Sheet rows into sessions
+   Convert Google Sheet rows
 ------------------------------------------------------- */
 
 function convertRows(rows){
 
-  if(!rows.length) return [];
+  if(!rows.length){
+    return [];
+  }
+
 
   const headers = rows[0].map(
     header => clean(header).toLowerCase()
   );
 
+
   function indexOfHeader(name){
+
     return headers.indexOf(name);
+
   }
+
 
   const columns = {
 
     id: indexOfHeader("id"),
+
     day: indexOfHeader("day"),
+
     date: indexOfHeader("date"),
+
     start: indexOfHeader("start"),
+
     end: indexOfHeader("end"),
+
     room: indexOfHeader("room"),
+
     type: indexOfHeader("type"),
+
     title: indexOfHeader("title"),
+
     speaker: indexOfHeader("speaker(s)"),
+
     affiliation: indexOfHeader("affiliation"),
+
     strand: indexOfHeader("strand"),
+
     chair: indexOfHeader("chair"),
 
-    // NEW COLUMN
+    /* NEW COLUMN */
+
     abstract: indexOfHeader("abstract")
+
   };
 
-  return rows.slice(1).map((row,index) => {
 
-    const value = column => {
+  return rows
+    .slice(1)
+    .map((row,index) => {
 
-      if(column === -1) return "";
 
-      return clean(row[column]);
+      const value = column => {
 
-    };
+        if(column === -1){
+          return "";
+        }
 
-    return {
+        return clean(row[column]);
 
-      id: value(columns.id) || `session-${index + 1}`,
+      };
 
-      day: value(columns.day),
 
-      date: value(columns.date),
+      return {
 
-      start: value(columns.start),
+        id:
+          value(columns.id) ||
+          `session-${index + 1}`,
 
-      end: value(columns.end),
+        day:
+          value(columns.day),
 
-      room: normaliseRoom(value(columns.room)),
+        date:
+          value(columns.date),
 
-      type: value(columns.type),
+        start:
+          value(columns.start),
 
-      title: value(columns.title),
+        end:
+          value(columns.end),
 
-      speaker: value(columns.speaker),
+        room:
+          normaliseRoom(
+            value(columns.room)
+          ),
 
-      affiliation: value(columns.affiliation),
+        type:
+          value(columns.type),
 
-      strand: value(columns.strand),
+        title:
+          value(columns.title),
 
-      chair: value(columns.chair),
+        speaker:
+          value(columns.speaker),
 
-      // NEW: ABSTRACT FROM GOOGLE SHEET
-      abstract: value(columns.abstract)
+        affiliation:
+          value(columns.affiliation),
 
-    };
+        strand:
+          value(columns.strand),
 
-  }).filter(session => {
+        chair:
+          value(columns.chair),
 
-    return (
-      session.title ||
-      session.room ||
-      session.type ||
-      session.start
-    );
+        /* NEW: ABSTRACT */
 
-  });
+        abstract:
+          value(columns.abstract)
+
+      };
+
+    })
+    .filter(session => {
+
+      return (
+        session.title ||
+        session.room ||
+        session.type ||
+        session.start
+      );
+
+    });
 
 }
 
@@ -948,38 +1100,60 @@ async function loadProgramme(){
 
   const status = $("#status");
 
-  status.textContent = "Loading programme…";
+  status.textContent =
+    "Loading programme…";
+
   status.classList.remove("error");
+
 
   try{
 
     const response = await fetch(
-      CSV_URL + "&cache=" + Date.now()
+      CSV_URL +
+      "&cache=" +
+      Date.now()
     );
 
+
     if(!response.ok){
-      throw new Error("Could not load the programme.");
+
+      throw new Error(
+        "Could not load the programme."
+      );
+
     }
 
-    const csv = await response.text();
 
-    const rows = parseCSV(csv);
+    const csv =
+      await response.text();
 
-    allSessions = convertRows(rows);
+
+    const rows =
+      parseCSV(csv);
+
+
+    allSessions =
+      convertRows(rows);
+
 
     status.textContent =
       `${allSessions.length} programme items loaded.`;
 
+
     render();
+
 
   }catch(error){
 
     console.error(error);
 
+
     status.textContent =
       "Unable to load the programme. Please try again later.";
 
+
     status.classList.add("error");
+
 
     $("#programme").innerHTML = `
       <div class="empty">
@@ -998,20 +1172,33 @@ async function loadProgramme(){
 
 function sessionBelongsToSelectedDay(session){
 
-  const day = clean(session.day).toLowerCase();
+  const day =
+    clean(session.day).toLowerCase();
+
 
   if(day){
-    return day === selectedDay.toLowerCase();
+
+    return (
+      day ===
+      selectedDay.toLowerCase()
+    );
+
   }
 
-  const date = clean(session.date).toLowerCase();
+
+  const date =
+    clean(session.date).toLowerCase();
+
 
   if(selectedDay === "Wednesday"){
+
     return (
       date.includes("18th") ||
       date.includes("18/")
     );
+
   }
+
 
   return (
     date.includes("19th") ||
@@ -1020,53 +1207,83 @@ function sessionBelongsToSelectedDay(session){
 
 }
 
+
 function getDaySessions(){
 
   return allSessions.filter(
-    session => sessionBelongsToSelectedDay(session)
+    session =>
+      sessionBelongsToSelectedDay(session)
   );
 
 }
 
+
 function getFilteredSessions(){
 
-  let sessions = getDaySessions();
+  let sessions =
+    getDaySessions();
 
-  const search = clean($("#search").value).toLowerCase();
+
+  const search =
+    clean($("#search").value)
+      .toLowerCase();
+
 
   if(search){
 
-    sessions = sessions.filter(session => {
+    sessions =
+      sessions.filter(session => {
 
-      const searchable = [
-        session.title,
-        session.speaker,
-        session.affiliation,
-        session.type,
-        session.strand,
-        session.chair,
-        session.room,
-        session.abstract
-      ]
-      .join(" ")
-      .toLowerCase();
+        const searchable = [
 
-      return searchable.includes(search);
+          session.title,
 
-    });
+          session.speaker,
+
+          session.affiliation,
+
+          session.type,
+
+          session.strand,
+
+          session.chair,
+
+          session.room,
+
+          session.abstract
+
+        ]
+        .join(" ")
+        .toLowerCase();
+
+
+        return searchable.includes(search);
+
+      });
 
   }
+
 
   if(showFavouritesOnly){
 
     const favourites =
-      JSON.parse(localStorage.getItem("sera-favourites") || "[]");
+      JSON.parse(
+        localStorage.getItem(
+          "sera-favourites"
+        ) || "[]"
+      );
 
-    sessions = sessions.filter(
-      session => favourites.includes(session.id)
-    );
+
+    sessions =
+      sessions.filter(
+        session =>
+          favourites.includes(
+            session.id
+          )
+      );
 
   }
+
 
   return sessions;
 
@@ -1079,23 +1296,38 @@ function getFilteredSessions(){
 
 function isAllRooms(session){
 
-  return clean(session.room).toLowerCase() === "all rooms";
+  return (
+    clean(session.room)
+      .toLowerCase() ===
+    "all rooms"
+  );
 
 }
+
 
 function getRooms(sessions){
 
   const rooms = [];
 
+
   sessions.forEach(session => {
 
-    if(isAllRooms(session)) return;
+    if(isAllRooms(session)){
+      return;
+    }
 
-    if(session.room && !rooms.includes(session.room)){
+
+    if(
+      session.room &&
+      !rooms.includes(session.room)
+    ){
+
       rooms.push(session.room);
+
     }
 
   });
+
 
   return rooms;
 
@@ -1109,25 +1341,34 @@ function getRooms(sessions){
 function getFavourites(){
 
   return JSON.parse(
-    localStorage.getItem("sera-favourites") || "[]"
+    localStorage.getItem(
+      "sera-favourites"
+    ) || "[]"
   );
 
 }
 
+
 function isFavourite(id){
 
-  return getFavourites().includes(id);
+  return getFavourites()
+    .includes(id);
 
 }
 
+
 function toggleFavourite(id){
 
-  let favourites = getFavourites();
+  let favourites =
+    getFavourites();
+
 
   if(favourites.includes(id)){
 
     favourites =
-      favourites.filter(item => item !== id);
+      favourites.filter(
+        item => item !== id
+      );
 
   }else{
 
@@ -1135,12 +1376,15 @@ function toggleFavourite(id){
 
   }
 
+
   localStorage.setItem(
     "sera-favourites",
     JSON.stringify(favourites)
   );
 
+
   render();
+
 
   if(
     currentModalSession &&
@@ -1163,6 +1407,7 @@ function makeSessionCard(session){
   const favourite =
     isFavourite(session.id);
 
+
   return `
 
     <div
@@ -1171,59 +1416,77 @@ function makeSessionCard(session){
     >
 
       <div class="session-title">
-        ${escapeHTML(session.title || "Untitled session")}
+        ${escapeHTML(
+          session.title ||
+          "Untitled session"
+        )}
       </div>
+
 
       ${
         session.speaker
         ?
-        `<div class="session-speaker">
+        `
+        <div class="session-speaker">
           ${escapeHTML(session.speaker)}
-        </div>`
+        </div>
+        `
         :
         ""
       }
 
+
       ${
         session.affiliation
         ?
-        `<div class="session-affiliation">
+        `
+        <div class="session-affiliation">
           ${escapeHTML(session.affiliation)}
-        </div>`
+        </div>
+        `
         :
         ""
       }
+
 
       <div class="session-meta">
 
         ${
           session.type
           ?
-          `<span class="badge">
+          `
+          <span class="badge">
             ${escapeHTML(session.type)}
-          </span>`
+          </span>
+          `
           :
           ""
         }
 
+
         ${
           session.strand
           ?
-          `<span class="badge">
+          `
+          <span class="badge">
             ${escapeHTML(session.strand)}
-          </span>`
+          </span>
+          `
           :
           ""
         }
 
       </div>
 
+
       ${
         session.chair
         ?
-        `<div class="chair">
+        `
+        <div class="chair">
           Chair: ${escapeHTML(session.chair)}
-        </div>`
+        </div>
+        `
         :
         ""
       }
@@ -1244,6 +1507,7 @@ function makeAllRoomsBlock(session){
   const favourite =
     isFavourite(session.id);
 
+
   return `
 
     <div
@@ -1252,49 +1516,64 @@ function makeAllRoomsBlock(session){
     >
 
       <div class="session-title">
-        ${escapeHTML(session.title || "Untitled session")}
+        ${escapeHTML(
+          session.title ||
+          "Untitled session"
+        )}
       </div>
+
 
       ${
         session.speaker
         ?
-        `<div class="session-speaker">
+        `
+        <div class="session-speaker">
           ${escapeHTML(session.speaker)}
-        </div>`
+        </div>
+        `
         :
         ""
       }
 
+
       ${
         session.affiliation
         ?
-        `<div class="session-affiliation">
+        `
+        <div class="session-affiliation">
           ${escapeHTML(session.affiliation)}
-        </div>`
+        </div>
+        `
         :
         ""
       }
+
 
       <div class="session-meta">
 
         ${
           session.type
           ?
-          `<span class="badge">
+          `
+          <span class="badge">
             ${escapeHTML(session.type)}
-          </span>`
+          </span>
+          `
           :
           ""
         }
 
       </div>
 
+
       ${
         session.chair
         ?
-        `<div class="chair">
+        `
+        <div class="chair">
           Chair: ${escapeHTML(session.chair)}
-        </div>`
+        </div>
+        `
         :
         ""
       }
@@ -1312,19 +1591,23 @@ function makeAllRoomsBlock(session){
 
 function render(){
 
-  const programme = $("#programme");
+  const programme =
+    $("#programme");
 
-  const sessions = getFilteredSessions();
+
+  const sessions =
+    getFilteredSessions();
+
 
   $("#dayTitle").textContent =
     selectedDay === "Wednesday"
       ? "Wednesday 18 November"
       : "Thursday 19 November";
 
+
   $("#dayDate").textContent =
-    selectedDay === "Wednesday"
-      ? "Edinburgh Napier University"
-      : "Edinburgh Napier University";
+    "Edinburgh Napier University";
+
 
   if(!sessions.length){
 
@@ -1334,26 +1617,36 @@ function render(){
       </div>
     `;
 
+
     placeNow();
 
     return;
 
   }
 
+
   const allRoomsSessions =
     sessions.filter(isAllRooms);
 
+
   const roomSessions =
-    sessions.filter(session => !isAllRooms(session));
+    sessions.filter(
+      session =>
+        !isAllRooms(session)
+    );
+
 
   let html = "";
+
 
   /* All Rooms */
 
   if(allRoomsSessions.length){
 
     html += `
+
       <div class="all-rooms-section">
+
         <div class="room-section">
 
           <div class="room-title">
@@ -1361,51 +1654,89 @@ function render(){
           </div>
 
           <div class="session-area">
+
     `;
 
+
     allRoomsSessions
-      .sort((a,b) => minutes(a.start) - minutes(b.start))
+      .sort(
+        (a,b) =>
+          minutes(a.start) -
+          minutes(b.start)
+      )
       .forEach(session => {
 
         html += `
+
           <div class="session-row">
 
             <div class="session-time">
+
               ${escapeHTML(session.start)}
+
               ${
                 session.end
-                ? `<br>–<br>${escapeHTML(session.end)}`
-                : ""
+                ?
+                `
+                <br>
+                –
+                <br>
+                ${escapeHTML(session.end)}
+                `
+                :
+                ""
               }
+
             </div>
 
+
             <div class="session-area">
+
               ${makeAllRoomsBlock(session)}
+
             </div>
 
           </div>
+
         `;
 
       });
 
+
     html += `
+
           </div>
+
         </div>
+
       </div>
+
     `;
 
   }
 
+
   /* Individual rooms */
 
-  const rooms = getRooms(roomSessions);
+  const rooms =
+    getRooms(roomSessions);
+
 
   rooms.forEach(room => {
 
+
     const sessionsInRoom =
       roomSessions
-        .filter(session => session.room === room)
-        .sort((a,b) => minutes(a.start) - minutes(b.start));
+        .filter(
+          session =>
+            session.room === room
+        )
+        .sort(
+          (a,b) =>
+            minutes(a.start) -
+            minutes(b.start)
+        );
+
 
     html += `
 
@@ -1421,6 +1752,7 @@ function render(){
 
     `;
 
+
     sessionsInRoom.forEach(session => {
 
       html += `
@@ -1434,12 +1766,18 @@ function render(){
             ${
               session.end
               ?
-              `<br>–<br>${escapeHTML(session.end)}`
+              `
+              <br>
+              –
+              <br>
+              ${escapeHTML(session.end)}
+              `
               :
               ""
             }
 
           </div>
+
 
           <div class="session-area">
 
@@ -1453,6 +1791,7 @@ function render(){
 
     });
 
+
     html += `
 
           </div>
@@ -1465,7 +1804,10 @@ function render(){
 
   });
 
-  programme.innerHTML = html;
+
+  programme.innerHTML =
+    html;
+
 
   attachSessionHandlers();
 
@@ -1484,19 +1826,32 @@ function attachSessionHandlers(){
     .querySelectorAll("[data-id]")
     .forEach(element => {
 
-      element.addEventListener("click", event => {
+      element.addEventListener(
+        "click",
+        event => {
 
-        const id =
-          element.getAttribute("data-id");
+          const id =
+            element.getAttribute(
+              "data-id"
+            );
 
-        const session =
-          allSessions.find(item => item.id === id);
 
-        if(!session) return;
+          const session =
+            allSessions.find(
+              item =>
+                item.id === id
+            );
 
-        openModal(session);
 
-      });
+          if(!session){
+            return;
+          }
+
+
+          openModal(session);
+
+        }
+      );
 
     });
 
@@ -1509,39 +1864,59 @@ function attachSessionHandlers(){
 
 function openModal(session){
 
-  currentModalSession = session;
+  currentModalSession =
+    session;
+
 
   $("#modalTitle").textContent =
-    session.title || "Untitled session";
+    session.title ||
+    "Untitled session";
+
 
   $("#modalType").textContent =
-    session.type || "—";
+    session.type ||
+    "—";
+
 
   $("#modalTime").textContent =
     session.start
       ?
-      `${session.start}${session.end ? " – " + session.end : ""}`
+      `${session.start}${
+        session.end
+          ? " – " + session.end
+          : ""
+      }`
       :
       "—";
 
+
   $("#modalSpeaker").textContent =
-    session.speaker || "—";
+    session.speaker ||
+    "—";
+
 
   $("#modalAffiliation").textContent =
-    session.affiliation || "—";
+    session.affiliation ||
+    "—";
+
 
   $("#modalRoom").textContent =
-    session.room || "—";
+    session.room ||
+    "—";
+
 
   $("#modalStrand").textContent =
-    session.strand || "—";
+    session.strand ||
+    "—";
+
 
   $("#modalChair").textContent =
-    session.chair || "—";
+    session.chair ||
+    "—";
 
 
   /* -----------------------------------------
-     NEW: DISPLAY ABSTRACT
+     ABSTRACT
   ----------------------------------------- */
 
   if(session.abstract){
@@ -1549,65 +1924,87 @@ function openModal(session){
     $("#modalAbstract").textContent =
       session.abstract;
 
-    $("#modalAbstract").classList.remove(
-      "no-abstract"
-    );
+    $("#modalAbstract")
+      .classList.remove(
+        "no-abstract"
+      );
 
   }else{
 
     $("#modalAbstract").textContent =
       "No abstract available.";
 
-    $("#modalAbstract").classList.add(
-      "no-abstract"
-    );
+    $("#modalAbstract")
+      .classList.add(
+        "no-abstract"
+      );
 
   }
 
 
   updateModalFavourite();
 
-  $("#modal").classList.add("open");
+
+  $("#modal")
+    .classList.add("open");
+
 
   $("#modal").setAttribute(
     "aria-hidden",
     "false"
   );
 
-  document.body.style.overflow = "hidden";
+
+  document.body.style.overflow =
+    "hidden";
 
 }
 
 
 function closeModal(){
 
-  $("#modal").classList.remove("open");
+  $("#modal")
+    .classList.remove("open");
+
 
   $("#modal").setAttribute(
     "aria-hidden",
     "true"
   );
 
-  document.body.style.overflow = "";
 
-  currentModalSession = null;
+  document.body.style.overflow =
+    "";
+
+
+  currentModalSession =
+    null;
 
 }
 
+
 function updateModalFavourite(){
 
-  if(!currentModalSession) return;
+  if(!currentModalSession){
+    return;
+  }
+
 
   const button =
     $("#modalFavourite");
 
+
   const favourite =
-    isFavourite(currentModalSession.id);
+    isFavourite(
+      currentModalSession.id
+    );
+
 
   button.textContent =
     favourite
       ? "★ Remove from favourites"
       : "☆ Add to favourites";
+
 
   button.classList.toggle(
     "active",
@@ -1623,7 +2020,9 @@ function updateModalFavourite(){
 
 function placeNow(){
 
-  const nowLine = $("#nowLine");
+  const nowLine =
+    $("#nowLine");
+
 
   if(!allSessions.length){
 
@@ -1633,39 +2032,53 @@ function placeNow(){
 
   }
 
-  const now = new Date();
+
+  const now =
+    new Date();
+
 
   const currentHour =
     now.getHours();
 
+
   const currentMinute =
     now.getMinutes();
 
+
   const currentTotal =
-    currentHour * 60 + currentMinute;
+    currentHour * 60 +
+    currentMinute;
+
 
   const currentSessions =
-    getDaySessions().filter(session => {
+    getDaySessions()
+      .filter(session => {
 
-      const start =
-        minutes(session.start);
+        const start =
+          minutes(session.start);
 
-      const end =
-        minutes(session.end);
 
-      return (
-        currentTotal >= start &&
-        currentTotal < end
-      );
+        const end =
+          minutes(session.end);
 
-    });
+
+        return (
+          currentTotal >= start &&
+          currentTotal < end
+        );
+
+      });
+
 
   if(currentSessions.length){
 
     nowLine.textContent =
       "● HAPPENING NOW: " +
       currentSessions
-        .map(session => session.title)
+        .map(
+          session =>
+            session.title
+        )
         .join(" · ");
 
   }else{
@@ -1685,27 +2098,42 @@ document
   .querySelectorAll(".day-button")
   .forEach(button => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+      "click",
+      () => {
 
-      document
-        .querySelectorAll(".day-button")
-        .forEach(item =>
-          item.classList.remove("active")
+        document
+          .querySelectorAll(
+            ".day-button"
+          )
+          .forEach(item =>
+            item.classList.remove(
+              "active"
+            )
+          );
+
+
+        button.classList.add(
+          "active"
         );
 
-      button.classList.add("active");
 
-      selectedDay =
-        button.getAttribute("data-day");
+        selectedDay =
+          button.getAttribute(
+            "data-day"
+          );
 
-      render();
 
-      window.scrollTo({
-        top:0,
-        behavior:"smooth"
-      });
+        render();
 
-    });
+
+        window.scrollTo({
+          top:0,
+          behavior:"smooth"
+        });
+
+      }
+    );
 
   });
 
@@ -1716,59 +2144,68 @@ $("#search").addEventListener(
 );
 
 
-$("#favouritesButton").addEventListener(
-  "click",
-  () => {
+$("#favouritesButton")
+  .addEventListener(
+    "click",
+    () => {
 
-    showFavouritesOnly =
-      !showFavouritesOnly;
-
-    $("#favouritesButton")
-      .classList.toggle(
-        "active",
-        showFavouritesOnly
-      );
-
-    render();
-
-  }
-);
+      showFavouritesOnly =
+        !showFavouritesOnly;
 
 
-$("#closeModal").addEventListener(
-  "click",
-  closeModal
-);
+      $("#favouritesButton")
+        .classList.toggle(
+          "active",
+          showFavouritesOnly
+        );
 
 
-$("#modalFavourite").addEventListener(
-  "click",
-  () => {
-
-    if(currentModalSession){
-
-      toggleFavourite(
-        currentModalSession.id
-      );
+      render();
 
     }
-
-  }
-);
+  );
 
 
-$("#modal").addEventListener(
-  "click",
-  event => {
+$("#closeModal")
+  .addEventListener(
+    "click",
+    closeModal
+  );
 
-    if(event.target === $("#modal")){
 
-      closeModal();
+$("#modalFavourite")
+  .addEventListener(
+    "click",
+    () => {
+
+      if(currentModalSession){
+
+        toggleFavourite(
+          currentModalSession.id
+        );
+
+      }
 
     }
+  );
 
-  }
-);
+
+$("#modal")
+  .addEventListener(
+    "click",
+    event => {
+
+      if(
+        event.target ===
+        $("#modal")
+      ){
+
+        closeModal();
+
+      }
+
+    }
+  );
 
 
 document.addEventListener(
@@ -1791,6 +2228,7 @@ document.addEventListener(
 
 loadProgramme();
 
+
 setInterval(
   placeNow,
   60000
@@ -1800,4 +2238,3 @@ setInterval(
 
 </body>
 </html>
-```
