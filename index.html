@@ -1,23 +1,52 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#102a72">
-@@ -43,14 +42,12 @@
+<title>SERA Conference 2026</title>
+
+<style>
+:root{
+  --navy:#102a72;
+  --blue:#1f62ad;
+  --sky:#eaf2f8;
+  --muted:#667085;
+  --line:#d9e2f0;
+  --now:#e65b67;
+  --white:#ffffff;
+  --ink:#172033;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:#f7f9fc;
+}
+
+button,
+input{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* =========================================================
+   HERO
    ========================================================= */
 
 .hero{
-  background:
-    linear-gradient(
-      135deg,
-      #102a72,
-      #1f62ad 65%,
-      #3184c5
-    );
-
   background:linear-gradient(
     135deg,
     #102a72,
@@ -27,544 +56,556 @@
   color:#fff;
   padding:22px 18px 34px;
 }
-@@ -90,7 +87,7 @@
+
+.hero-inner{
+  max-width:1200px;
+  margin:auto;
+}
+
+.hero-logo{
+  display:block;
+  width:min(180px,45vw);
+  max-height:90px;
+  object-fit:contain;
+  object-position:left center;
+  margin:0 0 12px;
 }
 
 .hero h1{
-  font-size:clamp(36px,7vw,62px);
   font-size:clamp(34px,7vw,62px);
   line-height:1.02;
   letter-spacing:-.04em;
   margin:45px 0 18px;
-@@ -214,40 +211,104 @@
+  max-width:1050px;
+}
 
+.hero p{
+  max-width:720px;
+  line-height:1.5;
+  opacity:.92;
+  margin-bottom:20px;
+}
+
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.pill{
+  background:#ffffff1c;
+  border:1px solid #ffffff47;
+  border-radius:999px;
+  padding:8px 12px;
+  font-size:13px;
+}
+
+/* =========================================================
+   NOTICE
+   ========================================================= */
+
+.notice{
+  max-width:1200px;
+  margin:16px auto;
+  background:#fff;
+  border:1px solid var(--line);
+  color:var(--muted);
+  border-radius:12px;
+  padding:11px 14px;
+  font-size:13px;
+}
+
+.notice.error{
+  background:#fff0f1;
+  border-color:#f0b5bb;
+  color:#8d2631;
+}
+
+/* =========================================================
+   CONTROLS
+   ========================================================= */
+
+.controls{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:#f7f9fced;
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+
+.controls-inner{
+  padding:10px 16px;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  gap:8px;
+  overflow:auto;
+}
+
+.day,
+.demo{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:11px;
+  padding:9px 12px;
+  white-space:nowrap;
+  cursor:pointer;
+}
+
+.day.active,
+.demo.active{
+  background:var(--navy);
+  color:#fff;
+  border-color:var(--navy);
+}
+
+.search{
+  min-width:220px;
+  flex:1;
+  border:1px solid var(--line);
+  border-radius:11px;
+  padding:9px 12px;
+  background:#fff;
+  outline:none;
+}
+
+.search:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px #1f62ad18;
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.main{
+  padding:26px 16px 70px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.status{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:end;
+  margin-bottom:20px;
+}
+
+.status h2{
+  margin:0;
+  font-size:24px;
+}
+
+.status small{
+  color:var(--muted);
+}
+
+.status-right{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.timetable-hint{
+  display:none;
+  color:var(--muted);
+  font-size:12px;
+  margin:-8px 0 12px;
+  text-align:center;
+}
 
 /* =========================================================
    TIMETABLE
-   TIMETABLE OUTER SCROLL
    ========================================================= */
 
 .timetable-scroll{
   width:100%;
   overflow-x:auto;
-  padding-bottom:12px;
   overflow-y:visible;
   -webkit-overflow-scrolling:touch;
   padding-bottom:14px;
 }
 
-
-/*
-  IMPORTANT:
-
-  The timetable is deliberately wider than a phone screen.
-
-  This means the user can swipe left/right to see:
-
-  Time
-  Main Hall
-  Room A
-  Room B
-  Room 3030
-*/
-
 .timetable{
-  min-width:850px;
-  min-width:1000px;
+  width:max-content;
+  min-width:100%;
 }
 
-
-/* =========================================================
-   ROOM HEADER
-   ========================================================= */
-
-.time-header{
+.room-header-row,
+.time-row{
   display:grid;
-  background:#fff;
-
-  grid-template-columns:
-    88px
-    1fr
-    1fr
-    1fr
-    1fr;
-
   width:100%;
+}
 
+.room-header-row{
   background:#f1f5fb;
-
   border:1px solid var(--line);
-
   border-radius:15px 15px 0 0;
   overflow:hidden;
-
-  overflow:visible;
 }
 
-.corner{
-  background:#f1f5fb;
-  border-right:1px solid var(--line);
+.time-heading{
   min-width:88px;
   min-height:55px;
-
-  background:#e9eef6;
-
-  border-right:1px solid var(--line);
-}
-
-
-/*
-  EACH ROOM HAS ITS OWN VISIBLE HEADER.
-
-  Room 3030 is explicitly included.
-*/
-
-.room-header{
   display:flex;
-
   align-items:center;
   justify-content:center;
-
-  min-width:200px;
-  min-height:55px;
-
-  padding:13px 10px;
-
-  text-align:center;
+  padding:10px;
+  background:#e9eef6;
+  border-right:1px solid var(--line);
+  color:var(--navy);
   font-size:12px;
+  font-weight:800;
+}
 
+.room-heading{
+  min-width:220px;
+  min-height:55px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 14px;
+  text-align:center;
   font-size:13px;
   font-weight:800;
   color:var(--navy);
-
-  color:#102a72;
-
   background:#f1f5fb;
-
   border-right:1px solid var(--line);
-
-  visibility:visible;
-  opacity:1;
-
   white-space:nowrap;
 }
 
-.room-header:last-child{
-@@ -260,9 +321,20 @@
-   ========================================================= */
+.room-heading:last-child{
+  border-right:0;
+}
 
-.time-block{
-
-  display:grid;
-
-  grid-template-columns:
-    88px
-    1fr
-    1fr
-    1fr
-    1fr;
-
+.time-row{
   position:relative;
-
-  width:100%;
-
   border-left:1px solid var(--line);
   border-right:1px solid var(--line);
   border-bottom:1px solid var(--line);
-@@ -271,32 +343,49 @@
+  background:#fff;
 }
 
-.time-label{
-
+.time-heading-cell{
   min-width:88px;
-
   padding:15px 8px;
-
   text-align:right;
-
   color:var(--muted);
-
   font-size:12px;
-
   font-weight:800;
-
-  border-right:1px solid var(--line);
-
   background:#f8fafc;
+  border-right:1px solid var(--line);
 }
 
 .time-label-end{
-
   display:block;
-
   margin-top:3px;
-
   font-weight:500;
 }
 
-
-/* =========================================================
-   ROOM CELL
-   ROOM CELLS
-   ========================================================= */
-
 .room-cell{
-  min-width:180px;
-
-  min-width:200px;
-
+  min-width:220px;
   padding:8px;
-  border-right:1px solid var(--line);
-
   min-height:115px;
-
   border-right:1px solid var(--line);
-
   background:#fff;
 }
 
 .room-cell:last-child{
-@@ -305,12 +394,15 @@
-
-
-/* =========================================================
-   MULTIPLE SESSIONS IN ONE ROOM
-   SESSION STACK
-   ========================================================= */
+  border-right:0;
+}
 
 .session-stack{
-
   display:flex;
-
   flex-direction:column;
-
   gap:8px;
 }
 
-@@ -320,11 +412,15 @@
+/* =========================================================
+   SESSION CARD
    ========================================================= */
 
 .session-card{
-
   position:relative;
-
   padding:13px;
-
   background:#fff;
-
   border:1px solid var(--line);
-
   border-radius:13px;
-
-  box-shadow:
-@@ -338,52 +434,80 @@
+  box-shadow:0 3px 10px #102a7210;
+  cursor:pointer;
+  transition:transform .15s ease,box-shadow .15s ease;
 }
 
 .session-card:hover{
-
   transform:translateY(-2px);
-
-  box-shadow:
-    0 6px 18px #102a7218;
+  box-shadow:0 6px 18px #102a7218;
 }
 
 .session-card h3{
-
   margin:0 30px 7px 0;
-
   font-size:14px;
-
   line-height:1.3;
 }
 
 .session-speaker{
-
   color:var(--muted);
-
   font-size:12px;
-
   line-height:1.4;
-
   margin-bottom:7px;
 }
 
 .session-affiliation{
-
   color:var(--muted);
-
   font-size:11px;
-
   line-height:1.4;
-
   margin-bottom:8px;
 }
 
 .tag{
-
   display:inline-block;
-
   background:var(--sky);
-
   color:var(--blue);
-
   border-radius:999px;
-
   padding:4px 7px;
-
   font-size:9px;
-
   font-weight:800;
-
   text-transform:uppercase;
 }
 
 .star{
-
   position:absolute;
-
   right:7px;
   top:5px;
-
   border:0;
-
   background:none;
-
   font-size:20px;
-
   color:#9aa5b6;
-
   cursor:pointer;
-
   padding:2px;
 }
 
-@@ -392,19 +516,25 @@
+.star.saved{
+  color:#e6af00;
 }
 
 .chair{
-
   margin-top:7px;
-
   color:var(--muted);
-
   font-size:10px;
 }
 
-
 /* =========================================================
-   ALL ROOMS BLOCK
    ALL ROOMS
    ========================================================= */
 
 .all-rooms-row{
-
   position:relative;
-
-  width:100%;
-
   border-left:1px solid var(--line);
   border-right:1px solid var(--line);
   border-bottom:1px solid var(--line);
-@@ -413,6 +543,7 @@
+  background:#fff;
 }
 
 .all-rooms-inner{
-
   padding:18px 20px;
-
   text-align:center;
-@@ -424,35 +555,49 @@
+  border-left:5px solid var(--blue);
+  background:#fff;
   min-height:95px;
-
   display:flex;
-
   flex-direction:column;
-
   justify-content:center;
-
   align-items:center;
 }
 
 .all-rooms-title{
-
   display:block;
-
   color:var(--navy);
-
   font-size:16px;
-
   font-weight:800;
-
   margin-bottom:6px;
 }
 
 .all-rooms-time{
-
   display:block;
-
   color:var(--muted);
-
   font-size:11px;
-
   margin-bottom:8px;
 }
 
+.all-rooms-speaker{
+  color:var(--muted);
+  font-size:12px;
+}
 
 /* =========================================================
-   HAPPENING NOW LINE
    HAPPENING NOW
    ========================================================= */
 
 .now-indicator{
-
   position:absolute;
-
   left:0;
-
   right:0;
-
   height:3px;
-@@ -468,9 +613,11 @@
+  background:var(--now);
+  z-index:30;
+  pointer-events:none;
+  box-shadow:0 1px 4px #e65b6740;
 }
 
 .now-indicator span{
-
   position:absolute;
-
   left:0;
-
   top:-13px;
-
   transform:translateY(-100%);
-@@ -493,14 +640,17 @@
+  background:var(--now);
+  color:#fff;
+  padding:5px 8px;
+  border-radius:6px;
+  font-size:10px;
+  line-height:1;
+  font-weight:800;
+  white-space:nowrap;
 }
 
 .now-indicator::after{
-
   content:"";
-
   position:absolute;
-
   left:-5px;
-
   top:-5px;
-
   width:13px;
-
   height:13px;
-
   border-radius:50%;
-@@ -518,11 +668,17 @@
+  background:var(--now);
+  box-shadow:0 0 0 3px #fff;
+}
+
+/* =========================================================
+   LOADING / EMPTY
+   ========================================================= */
 
 .loading,
 .empty{
-
   background:#fff;
-
   border:1px solid var(--line);
-
   border-radius:15px;
-
   padding:30px;
-
   color:var(--muted);
-
   text-align:center;
 }
 
-@@ -532,7 +688,9 @@
+/* =========================================================
+   MODAL
    ========================================================= */
 
 .modal{
-
   position:fixed;
-
   inset:0;
-
   background:#08122a99;
-@@ -549,6 +707,7 @@
+  z-index:100;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  padding:0;
+}
+
+.modal.open{
+  display:flex;
 }
 
 .modal-box{
-
   background:#fff;
-
   width:min(680px,100%);
-@@ -564,13 +723,15 @@
+  max-height:90vh;
+  overflow:auto;
+  border-radius:22px 22px 0 0;
+  padding:22px;
+  position:relative;
 }
 
 .close{
-
   float:right;
-
   border:0;
-
   border-radius:50%;
-
   width:36px;
-
   height:36px;
-
   cursor:pointer;
-@@ -579,11 +740,14 @@
+  background:#eef2f7;
+  color:var(--navy);
+  font-size:20px;
 }
 
 .modal h2{
-
   margin:0 45px 10px 0;
-
   line-height:1.2;
 }
 
 .modal-type{
-
   display:inline-block;
-
   background:var(--sky);
-@@ -602,14 +766,20 @@
+  color:var(--blue);
+  border-radius:999px;
+  padding:5px 8px;
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
 }
 
 .modal-details{
-
   margin-top:20px;
-
   padding-top:15px;
-
   border-top:1px solid var(--line);
 }
 
 .modal-details p{
-
   margin:9px 0;
-
   color:var(--muted);
-
   line-height:1.45;
 }
 
-@@ -619,14 +789,17 @@
+.modal-details b{
+  color:var(--ink);
+  margin-right:5px;
+}
+
+.abstract-section{
+  border-top:1px solid var(--line);
+  padding-top:20px;
+  margin-top:20px;
+}
+
+.abstract-section h3{
+  margin:0 0 10px;
+  color:var(--navy);
+  font-size:20px;
+}
+
+.abstract-text{
+  color:var(--ink);
+  line-height:1.65;
+  font-size:15px;
+  white-space:pre-wrap;
+}
+
+.no-abstract{
+  color:var(--muted);
+  font-style:italic;
+}
+
+/* =========================================================
+   FOOTER
    ========================================================= */
 
 footer{
-
+  max-width:1200px;
+  margin:auto;
   padding:0 16px 40px;
-
   color:var(--muted);
-
   font-size:12px;
 }
-
-
-/* =========================================================
-   MOBILE
-   DESKTOP
-   ========================================================= */
-
-@media(min-width:700px){
-@@ -649,6 +822,11 @@
-
-}
-
 
 /* =========================================================
    MOBILE
@@ -572,487 +613,1289 @@ footer{
 
 @media(max-width:699px){
 
+  .hero{
+    padding:18px 14px 28px;
+  }
+
+  .hero-logo{
+    width:150px;
+  }
+
+  .hero h1{
+    margin-top:32px;
+  }
+
   .main{
-@@ -660,7 +838,30 @@
+    padding:22px 10px 60px;
+  }
+
+  .status{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .status-right{
+    justify-content:flex-start;
+  }
+
+  .timetable-hint{
+    display:block;
   }
 
   .timetable{
-    min-width:850px;
-    min-width:1088px;
+    min-width:calc(88px + (var(--room-count,1) * 250px));
   }
 
-  .time-header{
-    grid-template-columns:
-      88px
-      250px
-      250px
-      250px
-      250px;
-  }
-
-  .time-block{
-    grid-template-columns:
-      88px
-      250px
-      250px
-      250px
-      250px;
-  }
-
-  .room-header,
+  .room-heading,
   .room-cell{
     min-width:250px;
   }
 
-}
-@@ -838,7 +1039,7 @@
+  .time-heading,
+  .time-heading-cell{
+    min-width:88px;
+  }
 
+  .abstract-section h3{
+    font-size:18px;
+  }
+
+  .abstract-text{
+    font-size:14px;
+  }
+}
+
+@media(min-width:700px){
+  .modal{
+    align-items:center;
+    padding:20px;
+  }
+
+  .modal-box{
+    border-radius:22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+
+    <img
+      class="hero-logo"
+      src="assets/sera-logo-original.png"
+      alt="SERA">
+
+    <h1>Living Our Research: Agency, Culture, and the Pursuit of Equity in Education</h1>
+
+    <p>
+      SERA Conference 2026 — a programme of research, discussion and exchange
+      at Edinburgh Napier University.
+    </p>
+
+    <div class="meta">
+      <span class="pill">18–19 November 2026</span>
+      <span class="pill">Edinburgh Napier University</span>
+      <span class="pill">Edinburgh</span>
+    </div>
+
+  </div>
+</header>
+
+<div id="notice" class="notice">
+  Loading the conference programme…
+</div>
+
+<nav class="controls">
+  <div class="controls-inner">
+
+    <button class="day active" data-day="0">
+      Wed 18 Nov
+    </button>
+
+    <button class="day" data-day="1">
+      Thu 19 Nov
+    </button>
+
+    <input
+      id="search"
+      class="search"
+      type="search"
+      placeholder="Search sessions, speakers, rooms…"
+      aria-label="Search programme">
+
+    <button id="liveButton" class="demo active">
+      ● Live
+    </button>
+
+  </div>
+</nav>
+
+<main class="main">
+
+  <div class="status">
+
+    <div>
+      <h2 id="dayTitle">Wednesday 18 November</h2>
+    </div>
+
+    <div class="status-right">
+      <small id="status">Loading programme…</small>
+      <small id="saved">0 saved</small>
+    </div>
+
+  </div>
+
+  <div class="timetable-hint">
+    ← Swipe left/right to see all rooms →
+  </div>
+
+  <section id="timetable">
+    <div class="loading">
+      Loading programme…
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  SERA Conference 2026 · Living Our Research: Agency, Culture, and the Pursuit of Equity in Education
+</footer>
 
 <!-- =========================================================
      SESSION MODAL
-     MODAL
      ========================================================= -->
 
-<div
-@@ -920,22 +1121,18 @@
-   FIXED ROOM LIST
-   =========================================================
+<div id="modal" class="modal" aria-hidden="true">
 
-   These rooms will ALWAYS appear.
-   IMPORTANT:
+  <div class="modal-box" role="dialog" aria-modal="true">
 
-   If you add another room to the conference,
-   add it here.
-   These are the room headings that will appear.
+    <button
+      id="closeModal"
+      class="close"
+      aria-label="Close">
+      ×
+    </button>
 
-   "All Rooms" is NOT included because it
-   becomes a full-width session.
-   ========================================================= */
-   Room 3030 is explicitly included.
-*/
+    <div id="mtype" class="modal-type"></div>
 
-const ROOMS = [
+    <h2 id="mtitle"></h2>
 
-  "Main Hall",
-  "Room A",
-  "Room B",
-  "Room 3030"
+    <div class="modal-details">
 
-];
+      <p>
+        <b>Time:</b>
+        <span id="mtime"></span>
+      </p>
 
+      <p>
+        <b>Speaker(s):</b>
+        <span id="mspeaker"></span>
+      </p>
 
-@@ -969,7 +1166,7 @@
+      <p>
+        <b>Affiliation:</b>
+        <span id="maffiliation"></span>
+      </p>
 
+      <p>
+        <b>Room:</b>
+        <span id="mroom"></span>
+      </p>
+
+      <p>
+        <b>Strand:</b>
+        <span id="mstrand"></span>
+      </p>
+
+      <p>
+        <b>Chair:</b>
+        <span id="mchair"></span>
+      </p>
+
+    </div>
+
+    <div class="abstract-section">
+
+      <h3>Abstract</h3>
+
+      <div id="modalAbstract" class="abstract-text"></div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+"use strict";
 
 /* =========================================================
-   CLEAN TEXT
-   CLEAN
+   GOOGLE SHEET
+   ========================================================= */
+
+const PROGRAMME_URL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vRMrcoDNYRb8VfAG9dTTEGRWtLRLDPkAumjl-ePZ7PHp6xl4SAI9K4GVX-3FyTu5_YCddZl8jxWbagu/pub?gid=0&single=true&output=csv";
+
+/* =========================================================
+   STATE
+   ========================================================= */
+
+let sessions = [];
+let currentDay = 0;
+let searchTerm = "";
+let liveEnabled = true;
+
+const saved = JSON.parse(
+  localStorage.getItem("seraConferenceSaved") || "[]"
+);
+
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
+
+const timetable = document.getElementById("timetable");
+const notice = document.getElementById("notice");
+const statusEl = document.getElementById("status");
+const savedEl = document.getElementById("saved");
+const searchEl = document.getElementById("search");
+const dayTitle = document.getElementById("dayTitle");
+const liveButton = document.getElementById("liveButton");
+
+const modal = document.getElementById("modal");
+const closeModal = document.getElementById("closeModal");
+
+const mtype = document.getElementById("mtype");
+const mtitle = document.getElementById("mtitle");
+const mtime = document.getElementById("mtime");
+const mspeaker = document.getElementById("mspeaker");
+const maffiliation = document.getElementById("maffiliation");
+const mroom = document.getElementById("mroom");
+const mstrand = document.getElementById("mstrand");
+const mchair = document.getElementById("mchair");
+const modalAbstract = document.getElementById("modalAbstract");
+
+/* =========================================================
+   TEXT HELPERS
    ========================================================= */
 
 function clean(value){
-@@ -1009,21 +1206,18 @@
+  return String(value ?? "")
+    .replace(/\r/g,"")
+    .trim();
+}
 
+function escapeHTML(value){
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+function normaliseRoom(room){
+  return clean(room)
+    .toLowerCase()
+    .replace(/\s+/g," ");
+}
 
 /* =========================================================
-   TIME TO MINUTES
    TIME
    ========================================================= */
 
-function mins(value){
+function minutes(time){
 
-  if(!value){
-
+  if(!time){
     return 0;
-
   }
 
-  const parts =
-    value.split(":");
+  const match = String(time)
+    .trim()
+    .match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm)?$/i);
 
+  if(!match){
+    return 0;
+  }
 
-  return (
-    Number(parts[0]) * 60 +
-    Number(parts[1])
-@@ -1032,10 +1226,6 @@
+  let hours = Number(match[1]);
+  const mins = Number(match[2] || 0);
+  const meridiem = (match[3] || "").toLowerCase();
+
+  if(meridiem === "pm" && hours < 12){
+    hours += 12;
+  }
+
+  if(meridiem === "am" && hours === 12){
+    hours = 0;
+  }
+
+  return hours * 60 + mins;
 }
-
-
-/* =========================================================
-   MINUTES TO TIME
-   ========================================================= */
 
 function formatMinutes(total){
 
-  const hours =
-@@ -1046,7 +1236,6 @@
-  const minutes =
-    total % 60;
+  const hours = Math.floor(total / 60);
+  const mins = total % 60;
 
-
-  return (
-    String(hours)
-      .padStart(2,"0")
-@@ -1061,7 +1250,7 @@
-
+  return String(hours).padStart(2,"0") +
+    ":" +
+    String(mins).padStart(2,"0");
+}
 
 /* =========================================================
-   NORMALISE ROOM
-   ROOM NORMALISATION
+   CSV PARSER
    ========================================================= */
 
-function normaliseRoom(room){
-@@ -1215,7 +1404,7 @@
+function parseCSV(text){
 
+  const rows = [];
+  let row = [];
+  let cell = "";
+  let quoted = false;
+
+  for(let i = 0; i < text.length; i++){
+
+    const char = text[i];
+    const next = text[i + 1];
+
+    if(char === '"' && quoted && next === '"'){
+      cell += '"';
+      i++;
+      continue;
+    }
+
+    if(char === '"'){
+      quoted = !quoted;
+      continue;
+    }
+
+    if(char === "," && !quoted){
+      row.push(cell);
+      cell = "";
+      continue;
+    }
+
+    if((char === "\n" || char === "\r") && !quoted){
+
+      if(char === "\r" && next === "\n"){
+        i++;
+      }
+
+      row.push(cell);
+      cell = "";
+
+      if(row.some(value => clean(value) !== "")){
+        rows.push(row);
+      }
+
+      row = [];
+      continue;
+    }
+
+    cell += char;
+  }
+
+  if(cell !== "" || row.length){
+    row.push(cell);
+
+    if(row.some(value => clean(value) !== "")){
+      rows.push(row);
+    }
+  }
+
+  return rows;
+}
 
 /* =========================================================
-   CONVERT GOOGLE SHEET ROWS
    CONVERT SHEET DATA
    ========================================================= */
 
 function convertRows(rows){
-@@ -1472,7 +1661,7 @@
 
+  if(!rows.length){
+    return [];
+  }
+
+  const headers = rows[0].map(header =>
+    clean(header).toLowerCase()
+  );
+
+  const index = name =>
+    headers.indexOf(name.toLowerCase());
+
+  const get = (row,name) => {
+    const i = index(name);
+    return i === -1 ? "" : clean(row[i]);
+  };
+
+  return rows
+    .slice(1)
+    .map((row,i) => ({
+
+      id:
+        get(row,"ID") ||
+        `session-${i + 1}`,
+
+      day:get(row,"Day"),
+      date:get(row,"Date"),
+      start:get(row,"Start"),
+      end:get(row,"End"),
+      room:get(row,"Room"),
+      type:get(row,"Type"),
+      title:get(row,"Title"),
+      speaker:get(row,"Speaker(s)"),
+      affiliation:get(row,"Affiliation"),
+      strand:get(row,"Strand"),
+      chair:get(row,"Chair"),
+      abstract:get(row,"Abstract")
+
+    }))
+    .filter(session =>
+      session.title ||
+      session.type ||
+      session.room
+    );
+}
 
 /* =========================================================
-   GET DAY PROGRAMME
-   DAY FILTER
+   DAY
    ========================================================= */
 
 function getDayProgramme(){
-@@ -1510,7 +1699,7 @@
 
+  return sessions.filter(session => {
+
+    const date = clean(session.date).toLowerCase();
+    const day = clean(session.day).toLowerCase();
+
+    if(currentDay === 0){
+
+      return (
+        date.includes("18") ||
+        day.includes("wed")
+      );
+
+    }
+
+    return (
+      date.includes("19") ||
+      day.includes("thu")
+    );
+
+  });
+}
 
 /* =========================================================
    SEARCH
-   SEARCH FILTER
    ========================================================= */
 
 function getFilteredProgramme(){
-@@ -1562,12 +1751,10 @@
 
+  const programme = getDayProgramme();
+
+  if(!searchTerm){
+    return programme;
+  }
+
+  const needle = searchTerm.toLowerCase();
+
+  return programme.filter(session => {
+
+    const searchable = [
+      session.title,
+      session.speaker,
+      session.affiliation,
+      session.type,
+      session.strand,
+      session.chair,
+      session.room,
+      session.abstract,
+      session.date,
+      session.start,
+      session.end
+    ]
+    .join(" ")
+    .toLowerCase();
+
+    return searchable.includes(needle);
+  });
+}
 
 /* =========================================================
-   ONLY ALL ROOMS SPANS THE TIMETABLE
    ALL ROOMS
    ========================================================= */
 
-function isAllRooms(
-  session
-){
 function isAllRooms(session){
 
-  return (
-    normaliseRoom(
-@@ -1583,9 +1770,7 @@
+  return normaliseRoom(session.room) === "all rooms";
+}
+
+/* =========================================================
+   ROOMS
+   ========================================================= */
+
+function getRooms(programme){
+
+  const rooms = [];
+
+  programme.forEach(session => {
+
+    if(isAllRooms(session)){
+      return;
+    }
+
+    const room = clean(session.room);
+
+    if(!room){
+      return;
+    }
+
+    const exists = rooms.some(existing =>
+      normaliseRoom(existing) === normaliseRoom(room)
+    );
+
+    if(!exists){
+      rooms.push(room);
+    }
+
+  });
+
+  const preferred = [
+    "main hall",
+    "plenary",
+    "atrium"
+  ];
+
+  rooms.sort((a,b) => {
+
+    const aName = normaliseRoom(a);
+    const bName = normaliseRoom(b);
+
+    const aPreferred = preferred.indexOf(aName);
+    const bPreferred = preferred.indexOf(bName);
+
+    if(aPreferred !== -1 || bPreferred !== -1){
+
+      if(aPreferred === -1) return 1;
+      if(bPreferred === -1) return -1;
+
+      return aPreferred - bPreferred;
+    }
+
+    return a.localeCompare(
+      b,
+      undefined,
+      {
+        numeric:true,
+        sensitivity:"base"
+      }
+    );
+  });
+
+  return rooms;
+}
+
+/* =========================================================
    SESSION CARD
    ========================================================= */
 
-function sessionCard(
-  session
-){
 function sessionCard(session){
 
-  const isSaved =
-    saved.includes(
-@@ -1613,13 +1798,11 @@
-        )}"
-        aria-label="Save session"
-      >
+  const isSaved = saved.includes(String(session.id));
 
-        ${
-          isSaved
-            ? "★"
-            : "☆"
-        }
+  return `
+    <article
+      class="session-card"
+      data-session-id="${escapeHTML(session.id)}"
+      tabindex="0"
+      role="button"
+      aria-label="Open ${escapeHTML(session.title)}">
 
+      <button
+        class="star ${isSaved ? "saved" : ""}"
+        data-save-id="${escapeHTML(session.id)}"
+        aria-label="${isSaved ? "Remove from saved sessions" : "Save session"}"
+        title="${isSaved ? "Remove from saved sessions" : "Save session"}">
+        ${isSaved ? "★" : "☆"}
       </button>
 
+      <h3>${escapeHTML(session.title || "Untitled session")}</h3>
 
-@@ -1697,9 +1880,7 @@
+      ${
+        session.speaker
+          ? `<div class="session-speaker">${escapeHTML(session.speaker)}</div>`
+          : ""
+      }
+
+      ${
+        session.affiliation
+          ? `<div class="session-affiliation">${escapeHTML(session.affiliation)}</div>`
+          : ""
+      }
+
+      ${
+        session.type
+          ? `<span class="tag">${escapeHTML(session.type)}</span>`
+          : ""
+      }
+
+      ${
+        session.chair
+          ? `<div class="chair">Chair: ${escapeHTML(session.chair)}</div>`
+          : ""
+      }
+
+    </article>
+  `;
+}
+
+/* =========================================================
    ALL ROOMS CARD
    ========================================================= */
 
-function allRoomsCard(
-  session
-){
 function allRoomsCard(session){
 
   return `
+    <div
+      class="all-rooms-row"
+      data-session-id="${escapeHTML(session.id)}">
 
-@@ -1768,7 +1949,7 @@
+      <div class="all-rooms-inner">
 
+        <span class="all-rooms-title">
+          ${escapeHTML(session.title || "All Rooms")}
+        </span>
+
+        <span class="all-rooms-time">
+          ${escapeHTML(session.start)}
+          ${session.end ? "– " + escapeHTML(session.end) : ""}
+        </span>
+
+        ${
+          session.speaker
+            ? `<span class="all-rooms-speaker">${escapeHTML(session.speaker)}</span>`
+            : ""
+        }
+
+      </div>
+    </div>
+  `;
+}
 
 /* =========================================================
    RENDER
-   RENDER TIMETABLE
    ========================================================= */
 
 function render(){
-@@ -1800,22 +1981,6 @@
-  }
 
+  const programme = getFilteredProgramme();
 
-  /*
-     FIXED ROOM LIST.
+  const rooms = getRooms(programme);
 
-     Room 3030 will ALWAYS be
-     present on both days.
-  */
-
-  const rooms =
-    ROOMS;
-
-
-  /*
-     Separate All Rooms sessions
-     from room-specific sessions.
-  */
+  const roomSessions =
+    programme.filter(session => !isAllRooms(session));
 
   const allRoomSessions =
-    sessions.filter(
-      isAllRooms
-@@ -1832,7 +1997,7 @@
+    programme.filter(isAllRooms);
 
+  timetable.innerHTML = "";
 
-  /*
-     Get every start time.
-     Collect all start times.
-  */
+  if(!programme.length){
 
-  const startTimes = [];
-@@ -1868,58 +2033,61 @@
-  );
+    timetable.innerHTML = `
+      <div class="empty">
+        No sessions match your search.
+      </div>
+    `;
 
+    statusEl.textContent = "0 sessions";
+    return;
+  }
 
-  /*
-     HEADER
+  const startTimes = [
+    ...new Set(
+      roomSessions
+        .map(session => minutes(session.start))
+        .filter(value => value > 0)
+    )
+  ].sort((a,b) => a - b);
 
-     This is deliberately hard-coded.
+  const roomCount = Math.max(rooms.length,1);
 
-     Therefore Room 3030 will be
-     shown regardless of what happens
-     in the spreadsheet.
-  */
+  const gridColumns =
+    "88px " +
+    rooms.map(() => "220px").join(" ");
 
-  let html = `
-
+  timetable.innerHTML = `
     <div class="timetable-scroll">
 
-      <div class="timetable">
+      <div
+        class="timetable"
+        style="--room-count:${roomCount}">
 
         <div
-          class="time-header"
-          style="
-            grid-template-columns:
-            88px
-            repeat(
-              ${rooms.length},
-              minmax(180px,1fr)
-            );
-          "
-        >
-        <div class="time-header">
+          class="room-header-row"
+          style="grid-template-columns:${gridColumns}">
 
-          <div class="corner"></div>
-
-          ${rooms.map(
-            room => `
-
-              <div
-                class="room-header"
-              >
-          <div class="room-header">
-            Main Hall
+          <div class="time-heading">
+            Time
           </div>
 
-                ${escapeHTML(
-                  room
-                )}
-          <div class="room-header">
-            Room A
-          </div>
-
+          ${
+            rooms.map(room => `
+              <div class="room-heading">
+                ${escapeHTML(room)}
               </div>
-          <div class="room-header">
-            Room B
-          </div>
-
-            `
-          ).join("")}
-          <div class="room-header">
-            Room 3030
-          </div>
+            `).join("")
+          }
 
         </div>
 
+        <div id="rows"></div>
+
+      </div>
+
+    </div>
   `;
 
+  const rows = document.getElementById("rows");
 
-  /*
-     Render each start time.
-     Render each time.
-  */
+  /* ALL ROOMS */
 
-  startTimes.forEach(
-    start => {
+  allRoomSessions
+    .sort((a,b) =>
+      minutes(a.start) - minutes(b.start)
+    )
+    .forEach(session => {
 
-
-      /* ---------------------------------------------------
-      /*
-         ALL ROOMS
-         --------------------------------------------------- */
-
-         These appear as one
-         full-width block.
-      */
-
-      const allRooms =
-        allRoomSessions.filter(
-@@ -1941,9 +2109,10 @@
+      rows.insertAdjacentHTML(
+        "beforeend",
+        allRoomsCard(session)
       );
 
+    });
 
-      /* ---------------------------------------------------
-         ROOM-SPECIFIC SESSIONS
-         --------------------------------------------------- */
-      /*
-         Normal room-specific
-         sessions.
-      */
+  /* NORMAL ROOMS */
 
-      const atThisTime =
-        roomSessions.filter(
-@@ -1962,11 +2131,6 @@
-      }
+  startTimes.forEach(start => {
 
+    const atThisTime =
+      roomSessions.filter(session =>
+        minutes(session.start) === start
+      );
 
-      /*
-         Find the longest session
-         beginning at this time.
-      */
+    if(!atThisTime.length){
+      return;
+    }
 
-      const endMinutes =
-        atThisTime
-          .map(
-@@ -2001,14 +2165,6 @@
-              rowEnd
-            )
-          )}"
-          style="
-            grid-template-columns:
-            88px
-            repeat(
-              ${rooms.length},
-              minmax(180px,1fr)
+    const endMinutes =
+      Math.max(
+        start + 30,
+        ...atThisTime.map(session =>
+          minutes(session.end) || start + 30
+        )
+      );
+
+    const row = document.createElement("div");
+
+    row.className = "time-row";
+
+    row.style.gridTemplateColumns =
+      gridColumns;
+
+    row.dataset.start = start;
+    row.dataset.end = endMinutes;
+
+    row.innerHTML = `
+      <div class="time-heading-cell">
+
+        ${formatMinutes(start)}
+
+        <span class="time-label-end">
+          ${formatMinutes(endMinutes)}
+        </span>
+
+      </div>
+
+      ${
+        rooms.map(room => {
+
+          const matching =
+            atThisTime.filter(session =>
+              normaliseRoom(session.room) ===
+              normaliseRoom(room)
             );
-          "
-        >
 
+          return `
+            <div class="room-cell">
 
-@@ -2033,19 +2189,14 @@
-          </div>
+              <div class="session-stack">
 
+                ${
+                  matching
+                    .map(session => sessionCard(session))
+                    .join("")
+                }
 
-          ${rooms.map(
-          ${ROOMS.map(
-            room => {
+              </div>
 
-              /*
-                 CRITICAL:
+            </div>
+          `;
 
-                 A session is placed into
-                 this column ONLY if the
-                 Room cell in the Sheet
-                 matches the room heading.
+        }).join("")
+      }
+    `;
 
-                 Nothing is inferred from
-                 the title or Type.
-                 ONLY sessions whose
-                 Room matches this
-                 specific heading
-                 are put here.
-              */
+    rows.appendChild(row);
 
-              const sessionsInRoom =
-@@ -2123,10 +2274,6 @@
+  });
+
+  statusEl.textContent =
+    `${programme.length} session${programme.length === 1 ? "" : "s"}`;
+
+  updateSavedCount();
+
+  placeNow();
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+function openSession(id){
+
+  const session =
+    sessions.find(item =>
+      String(item.id) === String(id)
+    );
+
+  if(!session){
+    return;
+  }
+
+  mtype.textContent =
+    session.type || "Session";
+
+  mtitle.textContent =
+    session.title || "Untitled session";
+
+  mtime.textContent =
+    `${session.start || ""}${session.end ? " – " + session.end : ""}`;
+
+  mspeaker.textContent =
+    session.speaker || "—";
+
+  maffiliation.textContent =
+    session.affiliation || "—";
+
+  mroom.textContent =
+    session.room || "—";
+
+  mstrand.textContent =
+    session.strand || "—";
+
+  mchair.textContent =
+    session.chair || "—";
+
+  if(clean(session.abstract)){
+
+    modalAbstract.textContent =
+      session.abstract;
+
+    modalAbstract.classList.remove("no-abstract");
+
+  }else{
+
+    modalAbstract.textContent =
+      "No abstract available.";
+
+    modalAbstract.classList.add("no-abstract");
+  }
+
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden","false");
+
+  document.body.style.overflow = "hidden";
+}
+
+function closeSession(){
+
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden","true");
+
+  document.body.style.overflow = "";
+}
+
+/* =========================================================
+   SAVED
+   ========================================================= */
+
+function updateSavedCount(){
+
+  savedEl.textContent =
+    `${saved.length} saved`;
+}
+
+function toggleSaved(id){
+
+  const value = String(id);
+
+  const index =
+    saved.indexOf(value);
+
+  if(index === -1){
+
+    saved.push(value);
+
+  }else{
+
+    saved.splice(index,1);
+
+  }
+
+  localStorage.setItem(
+    "seraConferenceSaved",
+    JSON.stringify(saved)
+  );
+
+  render();
+}
+
+/* =========================================================
+   HAPPENING NOW
+   ========================================================= */
 
 function placeNow(){
 
-  /*
-     Remove existing indicators.
-  */
-
   document
-    .querySelectorAll(
-      ".now-indicator"
-@@ -2144,10 +2291,6 @@
+    .querySelectorAll(".now-indicator")
+    .forEach(el => el.remove());
+
+  if(!liveEnabled){
+    return;
   }
 
+  const now = new Date();
 
   /*
-     Get current real-world time.
+    Conference dates:
+    Wednesday 18 November 2026
+    Thursday 19 November 2026
   */
 
-  const now =
-    new Date();
-
-@@ -2163,9 +2306,8 @@
-
-
-  /*
-     Conference dates:
-       Wednesday 18 November 2026
-       Thursday 19 November 2026
-     Only show the line on
-     the actual conference dates.
-  */
+  const year = now.getFullYear();
+  const month = now.getMonth();
+  const date = now.getDate();
 
   const correctDay =
-@@ -2198,7 +2340,7 @@
+    year === 2026 &&
+    month === 10 &&
+    (date === 18 || date === 19);
 
+  if(!correctDay){
+    return;
+  }
+
+  const todayDay =
+    date === 18 ? 0 : 1;
+
+  if(currentDay !== todayDay){
+    return;
+  }
+
+  const currentMinutes =
+    now.getHours() * 60 +
+    now.getMinutes() +
+    now.getSeconds() / 60;
+
+  document
+    .querySelectorAll(".time-row")
+    .forEach(row => {
+
+      const start =
+        Number(row.dataset.start);
+
+      const end =
+        Number(row.dataset.end);
+
+      if(
+        currentMinutes >= start &&
+        currentMinutes <= end
+      ){
+
+        const duration =
+          Math.max(1,end - start);
+
+        const fraction =
+          (currentMinutes - start) /
+          duration;
+
+        const indicator =
+          document.createElement("div");
+
+        indicator.className =
+          "now-indicator";
+
+        indicator.style.top =
+          `${fraction * 100}%`;
+
+        indicator.innerHTML =
+          `<span>Happening now</span>`;
+
+        row.appendChild(indicator);
+      }
+
+    });
 
   /*
-     Normal sessions.
-     Normal timetable rows.
+    All Rooms sessions are full-width blocks.
+    Add a subtle indicator when one is happening.
   */
 
   document
-@@ -2273,7 +2415,7 @@
+    .querySelectorAll(".all-rooms-row")
+    .forEach(row => {
 
+      const id =
+        row.dataset.sessionId;
 
-  /*
-     All Rooms sessions.
-     All Rooms rows.
-  */
+      const session =
+        sessions.find(item =>
+          String(item.id) === String(id)
+        );
 
-  document
-@@ -2358,7 +2500,9 @@
-  event => {
+      if(!session){
+        return;
+      }
 
+      const start =
+        minutes(session.start);
 
-    /* SAVE */
-    /*
-       SAVE
-    */
+      const end =
+        minutes(session.end);
 
-    const saveButton =
-      event.target.closest(
-@@ -2408,7 +2552,9 @@
-    }
+      if(
+        currentMinutes >= start &&
+        currentMinutes <= end
+      ){
 
+        row.style.boxShadow =
+          `inset 0 3px 0 ${getComputedStyle(document.documentElement).getPropertyValue("--now")}`;
+      }
 
-    /* SESSION */
-    /*
-       OPEN SESSION
-    */
-
-    const card =
-      event.target.closest(
-@@ -2649,23 +2795,23 @@
-
+    });
+}
 
 /* =========================================================
-   UPDATE LIVE LINE
+   EVENTS
+   ========================================================= */
+
+document
+  .querySelectorAll(".day")
+  .forEach(button => {
+
+    button.addEventListener("click",() => {
+
+      document
+        .querySelectorAll(".day")
+        .forEach(item =>
+          item.classList.remove("active")
+        );
+
+      button.classList.add("active");
+
+      currentDay =
+        Number(button.dataset.day);
+
+      dayTitle.textContent =
+        currentDay === 0
+          ? "Wednesday 18 November"
+          : "Thursday 19 November";
+
+      render();
+
+    });
+
+  });
+
+searchEl.addEventListener("input",event => {
+
+  searchTerm =
+    clean(event.target.value);
+
+  render();
+
+});
+
+liveButton.addEventListener("click",() => {
+
+  liveEnabled = !liveEnabled;
+
+  liveButton.classList.toggle(
+    "active",
+    liveEnabled
+  );
+
+  liveButton.textContent =
+    liveEnabled
+      ? "● Live"
+      : "○ Live";
+
+  placeNow();
+
+});
+
+/* SESSION / SAVE */
+
+timetable.addEventListener("click",event => {
+
+  const saveButton =
+    event.target.closest("[data-save-id]");
+
+  if(saveButton){
+
+    event.stopPropagation();
+
+    toggleSaved(
+      saveButton.dataset.saveId
+    );
+
+    return;
+  }
+
+  const card =
+    event.target.closest("[data-session-id]");
+
+  if(card){
+
+    openSession(
+      card.dataset.sessionId
+    );
+
+  }
+
+});
+
+timetable.addEventListener("keydown",event => {
+
+  if(
+    event.key !== "Enter" &&
+    event.key !== " "
+  ){
+    return;
+  }
+
+  const card =
+    event.target.closest(".session-card");
+
+  if(card){
+
+    event.preventDefault();
+
+    openSession(
+      card.dataset.sessionId
+    );
+
+  }
+
+});
+
+/* MODAL */
+
+closeModal.addEventListener(
+  "click",
+  closeSession
+);
+
+modal.addEventListener("click",event => {
+
+  if(event.target === modal){
+    closeSession();
+  }
+
+});
+
+document.addEventListener("keydown",event => {
+
+  if(event.key === "Escape"){
+    closeSession();
+  }
+
+});
+
+/* =========================================================
+   LOAD PROGRAMME
+   ========================================================= */
+
+async function loadProgramme(){
+
+  try{
+
+    notice.classList.remove("error");
+
+    notice.textContent =
+      "Loading the conference programme…";
+
+    const response =
+      await fetch(
+        PROGRAMME_URL,
+        {
+          cache:"no-store"
+        }
+      );
+
+    if(!response.ok){
+      throw new Error(
+        `Programme request failed: ${response.status}`
+      );
+    }
+
+    const text =
+      await response.text();
+
+    const rows =
+      parseCSV(text);
+
+    sessions =
+      convertRows(rows);
+
+    if(!sessions.length){
+      throw new Error(
+        "No programme sessions were found in the Google Sheet."
+      );
+    }
+
+    notice.textContent =
+      "Programme loaded from the conference schedule.";
+
+    render();
+
+  }catch(error){
+
+    console.error(error);
+
+    notice.classList.add("error");
+
+    notice.textContent =
+      "Unable to load the programme. Please check the Google Sheet connection.";
+
+    timetable.innerHTML = `
+      <div class="empty">
+        The programme could not be loaded right now.
+        Please try refreshing the page.
+      </div>
+    `;
+
+    statusEl.textContent =
+      "Programme unavailable";
+
+  }
+
+}
+
+/* =========================================================
    KEEP LIVE LINE UPDATED
    ========================================================= */
 
@@ -1061,15 +1904,14 @@ setInterval(
   30000
 );
 
-
 /* =========================================================
    START
    ========================================================= */
 
+updateSavedCount();
 loadProgramme();
 
 </script>
 
 </body>
-
 </html>
