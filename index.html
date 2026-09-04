@@ -1,26 +1,25 @@
-<!doctype html>
+```html
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<meta name="theme-color" content="#102a72">
-
-<title>SERA Conference 2026 — Programme</title>
+<title>SERA Conference 2026</title>
 
 <style>
-
 :root{
-  --navy:#102a72;
-  --blue:#2466b1;
-  --sky:#edf4ff;
-  --ink:#18243b;
-  --muted:#667085;
-  --line:#d9e2f0;
-  --now:#e65b67;
+  --navy:#17324d;
+  --blue:#2d5f87;
+  --light-blue:#eaf2f8;
+  --lighter:#f5f8fb;
+  --border:#d7e0e8;
+  --text:#23313d;
+  --muted:#667786;
+  --red:#c62828;
+  --green:#2e7d32;
   --white:#ffffff;
+  --shadow:0 2px 8px rgba(0,0,0,.08);
 }
 
 *{
@@ -33,1327 +32,669 @@ html{
 
 body{
   margin:0;
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    sans-serif;
-  color:var(--ink);
-  background:#f7f9fc;
+  font-family:Arial, Helvetica, sans-serif;
+  color:var(--text);
+  background:#f7f9fb;
+}
+
+header{
+  background:var(--navy);
+  color:white;
+  padding:28px 20px 24px;
+}
+
+.header-inner{
+  max-width:1400px;
+  margin:auto;
+}
+
+.eyebrow{
+  font-size:13px;
+  font-weight:bold;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  opacity:.8;
+  margin-bottom:8px;
+}
+
+h1{
+  margin:0;
+  font-size:clamp(25px,4vw,42px);
+  line-height:1.15;
+}
+
+.header-subtitle{
+  margin-top:12px;
+  font-size:16px;
+  opacity:.9;
+}
+
+.controls{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:white;
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 5px rgba(0,0,0,.05);
+}
+
+.controls-inner{
+  max-width:1400px;
+  margin:auto;
+  padding:12px 16px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.day-buttons{
+  display:flex;
+  gap:6px;
 }
 
 button,
+select,
 input{
   font:inherit;
 }
 
-
-/* =========================================================
-   HERO
-   ========================================================= */
-
-.hero{
-  background:
-    linear-gradient(
-      135deg,
-      #102a72,
-      #1f62ad 65%,
-      #3184c5
-    );
-
-  color:#fff;
-
-  padding:
-    24px
-    18px
-    38px;
-}
-
-.hero-inner{
-  max-width:1200px;
-  margin:auto;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.brand img{
-  width:56px;
-  height:56px;
-  border-radius:50%;
-  object-fit:cover;
-  background:#fff;
-}
-
-.brand small{
-  display:block;
-  opacity:.85;
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:.06em;
-}
-
-.brand strong{
-  font-size:18px;
-}
-
-.hero h1{
-  font-size:
-    clamp(
-      34px,
-      7vw,
-      62px
-    );
-
-  line-height:1.02;
-
-  letter-spacing:-.04em;
-
-  margin:
-    45px 0
-    18px;
-
-  max-width:1100px;
-}
-
-.hero p{
-  max-width:750px;
-
-  line-height:1.55;
-
-  opacity:.92;
-
-  margin-bottom:20px;
-}
-
-.meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-
-.pill{
-  background:#ffffff1c;
-
-  border:
-    1px solid
-    #ffffff47;
-
-  border-radius:999px;
-
-  padding:
-    8px
-    12px;
-
-  font-size:13px;
-}
-
-
-/* =========================================================
-   NOTICE
-   ========================================================= */
-
-.notice{
-
-  max-width:1200px;
-
-  margin:
-    16px auto;
-
-  background:#fff;
-
-  border:
-    1px solid
-    var(--line);
-
-  color:var(--muted);
-
-  border-radius:12px;
-
-  padding:
-    11px
-    14px;
-
-  font-size:13px;
-}
-
-.notice.error{
-
-  background:#fff0f1;
-
-  border-color:#f0b5bb;
-
-  color:#8d2631;
-}
-
-
-/* =========================================================
-   CONTROLS
-   ========================================================= */
-
-.controls{
-
-  position:sticky;
-
-  top:0;
-
-  z-index:20;
-
-  background:#f7f9fced;
-
-  backdrop-filter:blur(10px);
-
-  border-bottom:
-    1px solid
-    var(--line);
-}
-
-.controls-inner{
-
-  max-width:1200px;
-
-  margin:auto;
-
-  padding:
-    10px
-    16px;
-
-  display:flex;
-
-  gap:8px;
-
-  overflow-x:auto;
-}
-
-.day,
-.live-button{
-
-  border:
-    1px solid
-    var(--line);
-
-  background:#fff;
-
-  border-radius:11px;
-
-  padding:
-    9px
-    12px;
-
-  white-space:nowrap;
-
+.day-button{
+  border:1px solid var(--border);
+  background:white;
+  color:var(--navy);
+  padding:9px 14px;
+  border-radius:6px;
   cursor:pointer;
+  font-weight:bold;
 }
 
-.day.active,
-.live-button.active{
-
+.day-button.active{
   background:var(--navy);
-
-  color:#fff;
-
+  color:white;
   border-color:var(--navy);
 }
 
-.search{
-
-  min-width:220px;
-
+.search-wrap{
   flex:1;
-
-  border:
-    1px solid
-    var(--line);
-
-  border-radius:11px;
-
-  padding:
-    9px
-    12px;
-
-  background:#fff;
+  min-width:220px;
 }
 
+.search{
+  width:100%;
+  padding:9px 12px;
+  border:1px solid var(--border);
+  border-radius:6px;
+}
 
-/* =========================================================
-   MAIN
-   ========================================================= */
+.favourites-button{
+  border:1px solid var(--border);
+  background:white;
+  color:var(--navy);
+  padding:9px 14px;
+  border-radius:6px;
+  cursor:pointer;
+}
 
-.main{
-
-  max-width:1200px;
-
-  margin:auto;
-
-  padding:
-    26px
-    16px
-    70px;
+.favourites-button.active{
+  background:var(--blue);
+  color:white;
 }
 
 .status{
-
-  display:flex;
-
-  justify-content:space-between;
-
-  gap:12px;
-
-  align-items:end;
-
-  margin-bottom:20px;
-}
-
-.status h2{
-
-  margin:0;
-
-  font-size:24px;
-}
-
-.status small{
-
+  max-width:1400px;
+  margin:14px auto 0;
+  padding:0 16px;
+  font-size:14px;
   color:var(--muted);
 }
 
-
-/* =========================================================
-   TIMETABLE SCROLL
-   ========================================================= */
-
-.timetable-wrapper{
-
-  width:100%;
-
-  overflow-x:auto;
-
-  overflow-y:visible;
-
-  -webkit-overflow-scrolling:touch;
-
-  padding-bottom:14px;
+.status.error{
+  color:var(--red);
+  font-weight:bold;
 }
 
-
-/*
-  IMPORTANT:
-
-  The timetable width is determined
-  by the number of rooms found
-  in the Google Sheet.
-
-  There are NO hard-coded room names.
-*/
-
-.timetable{
-
-  width:max-content;
-
-  min-width:100%;
-
+.now-line{
+  max-width:1400px;
+  margin:10px auto;
+  padding:0 16px;
+  color:var(--red);
+  font-size:14px;
+  font-weight:bold;
+  min-height:18px;
 }
 
-
-/* =========================================================
-   HEADER ROW
-   ========================================================= */
-
-.room-header-row{
-
-  display:grid;
-
-  position:relative;
-
-  background:#f1f5fb;
-
-  border:
-    1px solid
-    var(--line);
-
-  border-radius:
-    15px
-    15px
-    0
-    0;
-
-  overflow:visible;
+.programme-wrap{
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 16px 40px;
 }
 
-
-/*
-  The first column is the time column.
-*/
-
-.time-heading{
-
-  min-width:88px;
-
-  min-height:58px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  background:#e9eef6;
-
-  border-right:
-    1px solid
-    var(--line);
-
-  font-size:11px;
-
-  font-weight:800;
-
-  color:var(--muted);
-}
-
-
-/*
-  ROOM HEADINGS
-
-  These are generated entirely
-  from the Google Sheet.
-
-  Nothing such as "Room A" or
-  "Main Hall" is written here.
-*/
-
-.room-heading{
-
-  min-width:220px;
-
-  min-height:58px;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  padding:
-    10px
-    14px;
-
-  text-align:center;
-
-  font-size:13px;
-
-  font-weight:800;
-
+.day-heading{
+  margin:22px 0 14px;
   color:var(--navy);
-
-  background:#f1f5fb;
-
-  border-right:
-    1px solid
-    var(--line);
-
-  white-space:normal;
-
-  word-break:normal;
-
-  visibility:visible;
-
-  opacity:1;
 }
 
-.room-heading:last-child{
-
-  border-right:0;
+.day-heading h2{
+  margin:0;
+  font-size:25px;
 }
 
+.day-heading .date{
+  margin-top:3px;
+  color:var(--muted);
+}
 
-/* =========================================================
-   TIME ROW
-   ========================================================= */
+.rooms-container{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
 
-.time-row{
+.room-section{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:8px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
 
-  display:grid;
+.room-title{
+  background:var(--light-blue);
+  color:var(--navy);
+  font-size:18px;
+  font-weight:bold;
+  padding:12px 14px;
+  border-bottom:1px solid var(--border);
+}
 
+.timeline-scroll{
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+.timeline{
+  min-width:900px;
   position:relative;
+}
 
-  border-left:
-    1px solid
-    var(--line);
-
-  border-right:
-    1px solid
-    var(--line);
-
-  border-bottom:
-    1px solid
-    var(--line);
-
-  background:#fff;
+.time-header{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  border-bottom:1px solid var(--border);
+  background:#fafcfd;
 }
 
 .time-label{
-
-  min-width:88px;
-
-  padding:
-    15px
-    8px;
-
-  text-align:right;
-
-  color:var(--muted);
-
-  font-size:12px;
-
-  font-weight:800;
-
-  background:#f8fafc;
-
-  border-right:
-    1px solid
-    var(--line);
-}
-
-.time-label-end{
-
-  display:block;
-
-  margin-top:4px;
-
-  font-weight:500;
-}
-
-
-/* =========================================================
-   ROOM CELL
-   ========================================================= */
-
-.room-cell{
-
-  min-width:220px;
-
-  min-height:110px;
-
   padding:8px;
-
-  background:#fff;
-
-  border-right:
-    1px solid
-    var(--line);
+  color:var(--muted);
+  font-size:12px;
+  text-align:right;
+  border-right:1px solid var(--border);
 }
 
-.room-cell:last-child{
-
-  border-right:0;
+.time-grid{
+  position:relative;
 }
 
+.session-row{
+  display:grid;
+  grid-template-columns:90px 1fr;
+  min-height:82px;
+  border-bottom:1px solid var(--border);
+}
 
-/* =========================================================
-   SESSION STACK
-   ========================================================= */
+.session-time{
+  padding:10px 8px;
+  text-align:right;
+  font-size:12px;
+  color:var(--muted);
+  border-right:1px solid var(--border);
+  background:#fafcfd;
+}
 
-.session-stack{
-
+.session-area{
+  padding:8px;
   display:flex;
-
   flex-direction:column;
-
-  gap:8px;
+  gap:7px;
 }
-
-
-/* =========================================================
-   SESSION CARD
-   ========================================================= */
 
 .session-card{
-
-  position:relative;
-
-  background:#fff;
-
-  border:
-    1px solid
-    var(--line);
-
-  border-radius:13px;
-
-  padding:13px;
-
+  background:white;
+  border:1px solid #cbd7e1;
+  border-left:5px solid var(--blue);
+  border-radius:6px;
+  padding:10px 11px;
   cursor:pointer;
-
-  box-shadow:
-    0 3px 10px
-    #102a7210;
-
-  transition:
-    transform .15s ease,
-    box-shadow .15s ease;
+  transition:.15s ease;
 }
 
 .session-card:hover{
-
-  transform:translateY(-2px);
-
-  box-shadow:
-    0 6px 18px
-    #102a7218;
+  box-shadow:0 2px 8px rgba(0,0,0,.12);
+  transform:translateY(-1px);
 }
 
-.session-card h3{
+.session-card.favourite{
+  border-left-color:#e09b00;
+}
 
-  margin:
-    0
-    30px
-    7px
-    0;
-
-  font-size:14px;
-
+.session-title{
+  font-weight:bold;
+  color:var(--navy);
   line-height:1.3;
 }
 
 .session-speaker{
-
-  color:var(--muted);
-
-  font-size:12px;
-
-  line-height:1.4;
-
-  margin-bottom:7px;
+  margin-top:5px;
+  font-size:13px;
+  color:var(--text);
 }
 
 .session-affiliation{
-
+  margin-top:3px;
+  font-size:12px;
   color:var(--muted);
-
-  font-size:11px;
-
-  line-height:1.4;
-
-  margin-bottom:8px;
 }
 
-.session-chair{
-
-  color:var(--muted);
-
-  font-size:10px;
-
-  line-height:1.4;
-
-  margin-top:8px;
-}
-
-.tag{
-
-  display:inline-block;
-
-  background:var(--sky);
-
-  color:var(--blue);
-
-  border-radius:999px;
-
-  padding:
-    4px
-    7px;
-
-  font-size:9px;
-
-  font-weight:800;
-
-  text-transform:uppercase;
-}
-
-.star{
-
-  position:absolute;
-
-  right:7px;
-
-  top:5px;
-
-  border:0;
-
-  background:none;
-
-  font-size:20px;
-
-  color:#9aa5b6;
-
-  cursor:pointer;
-
-  padding:2px;
-}
-
-.star.saved{
-
-  color:#e6af00;
-}
-
-
-/* =========================================================
-   ALL ROOMS
-   ========================================================= */
-
-.all-rooms{
-
-  width:100%;
-
-  border-left:
-    1px solid
-    var(--line);
-
-  border-right:
-    1px solid
-    var(--line);
-
-  border-bottom:
-    1px solid
-    var(--line);
-
-  background:#fff;
-
-  position:relative;
-}
-
-.all-rooms-inner{
-
-  min-height:95px;
-
-  padding:
-    18px
-    20px;
-
+.session-meta{
+  margin-top:7px;
   display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  justify-content:center;
-
-  text-align:center;
-
-  border-left:
-    5px solid
-    var(--blue);
-
-  background:#fff;
+  gap:6px;
+  flex-wrap:wrap;
 }
 
-.all-rooms-title{
-
-  color:var(--navy);
-
-  font-size:16px;
-
-  font-weight:800;
-
-  margin-bottom:6px;
-}
-
-.all-rooms-time{
-
+.badge{
+  display:inline-block;
+  padding:3px 7px;
+  border-radius:4px;
+  background:var(--lighter);
   color:var(--muted);
-
   font-size:11px;
-
-  margin-bottom:8px;
 }
 
-
-/* =========================================================
-   HAPPENING NOW
-   ========================================================= */
-
-.now-line{
-
-  position:absolute;
-
-  left:0;
-
-  right:0;
-
-  height:3px;
-
-  background:var(--now);
-
-  z-index:40;
-
-  pointer-events:none;
-
-  box-shadow:
-    0 1px 5px
-    #e65b6740;
-}
-
-.now-label{
-
-  position:absolute;
-
-  left:0;
-
-  top:-4px;
-
-  transform:
-    translateY(-100%);
-
-  background:var(--now);
-
-  color:#fff;
-
-  padding:
-    5px
-    8px;
-
-  border-radius:6px;
-
-  font-size:10px;
-
-  font-weight:800;
-
-  white-space:nowrap;
-}
-
-.now-line::after{
-
-  content:"";
-
-  position:absolute;
-
-  left:-6px;
-
-  top:-6px;
-
-  width:15px;
-
-  height:15px;
-
-  border-radius:50%;
-
-  background:var(--now);
-
-  border:
-    3px solid
-    #fff;
-}
-
-
-/* =========================================================
-   LOADING / EMPTY
-   ========================================================= */
-
-.loading,
-.empty{
-
-  background:#fff;
-
-  border:
-    1px solid
-    var(--line);
-
-  border-radius:15px;
-
-  padding:30px;
-
+.chair{
+  margin-top:6px;
+  font-size:12px;
   color:var(--muted);
-
-  text-align:center;
 }
 
+.all-rooms-section{
+  margin-bottom:20px;
+}
 
-/* =========================================================
-   MODAL
-   ========================================================= */
+.all-rooms-block{
+  background:#edf5ee;
+  border:1px solid #c8ddca;
+  border-left:5px solid var(--green);
+  border-radius:6px;
+  padding:14px;
+  cursor:pointer;
+}
+
+.all-rooms-block .session-title{
+  color:#245c28;
+}
+
+.empty{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:30px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.loading{
+  padding:40px;
+  text-align:center;
+  color:var(--muted);
+}
+
+/* Modal */
 
 .modal{
-
-  position:fixed;
-
-  inset:0;
-
-  background:#08122a99;
-
   display:none;
-
-  align-items:flex-end;
-
-  z-index:50;
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:rgba(0,0,0,.55);
+  padding:20px;
+  overflow-y:auto;
 }
 
 .modal.open{
-
   display:flex;
+  align-items:flex-start;
+  justify-content:center;
 }
 
-.modal-box{
+.modal-content{
+  width:min(850px,100%);
+  background:white;
+  border-radius:10px;
+  margin:20px auto;
+  box-shadow:0 10px 40px rgba(0,0,0,.25);
+  overflow:hidden;
+}
 
-  background:#fff;
+.modal-header{
+  background:var(--navy);
+  color:white;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+}
 
-  width:min(
-    680px,
-    100%
-  );
-
-  border-radius:
-    22px
-    22px
-    0
-    0;
-
-  padding:22px;
-
-  max-height:85vh;
-
-  overflow:auto;
+.modal-header h2{
+  margin:0;
+  line-height:1.25;
 }
 
 .close{
-
-  float:right;
-
   border:0;
-
-  border-radius:50%;
-
-  width:36px;
-
-  height:36px;
-
+  background:transparent;
+  color:white;
+  font-size:28px;
   cursor:pointer;
+  line-height:1;
+  padding:0;
+}
 
+.modal-body{
+  padding:22px;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin-bottom:22px;
+}
+
+.info-item{
+  background:var(--lighter);
+  border-radius:6px;
+  padding:11px 13px;
+}
+
+.info-label{
+  font-size:11px;
+  font-weight:bold;
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  margin-bottom:4px;
+}
+
+.info-value{
+  font-size:14px;
+  line-height:1.4;
+}
+
+.abstract-section{
+  border-top:1px solid var(--border);
+  padding-top:20px;
+}
+
+.abstract-section h3{
+  margin:0 0 10px;
+  color:var(--navy);
   font-size:20px;
 }
 
-.modal h2{
-
-  margin:
-    0
-    45px
-    10px
-    0;
-
-  line-height:1.2;
+.abstract-text{
+  color:var(--text);
+  line-height:1.65;
+  font-size:15px;
+  white-space:pre-wrap;
 }
 
-.modal-details{
-
-  margin-top:20px;
-
-  padding-top:15px;
-
-  border-top:
-    1px solid
-    var(--line);
-}
-
-.modal-details p{
-
-  margin:
-    9px
-    0;
-
+.no-abstract{
   color:var(--muted);
-
-  line-height:1.45;
+  font-style:italic;
 }
 
-
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-footer{
-
-  max-width:1200px;
-
-  margin:auto;
-
-  padding:
-    0
-    16px
-    40px;
-
-  color:var(--muted);
-
-  font-size:12px;
+.modal-footer{
+  padding:14px 22px 20px;
+  display:flex;
+  justify-content:flex-end;
 }
 
+.favourite-modal{
+  border:1px solid var(--border);
+  background:white;
+  padding:9px 14px;
+  border-radius:6px;
+  cursor:pointer;
+  color:var(--navy);
+}
 
-/* =========================================================
-   DESKTOP
-   ========================================================= */
+.favourite-modal.active{
+  background:#fff4d6;
+  border-color:#e0a800;
+}
 
-@media(min-width:700px){
+/* Mobile */
 
-  .hero{
+@media(max-width:700px){
 
-    padding:
-      30px
-      28px
-      44px;
+  header{
+    padding:22px 15px 20px;
   }
 
-  .main{
+  .controls-inner{
+    padding:10px 12px;
+  }
 
-    padding:
-      34px
-      28px
-      80px;
+  .day-buttons{
+    width:100%;
+  }
+
+  .day-button{
+    flex:1;
+  }
+
+  .search-wrap{
+    min-width:100%;
+    order:3;
+  }
+
+  .favourites-button{
+    flex:1;
+  }
+
+  .programme-wrap{
+    padding:0 10px 30px;
+  }
+
+  .room-section{
+    border-radius:6px;
+  }
+
+  .room-title{
+    font-size:17px;
+  }
+
+  .timeline{
+    min-width:760px;
   }
 
   .modal{
-
-    align-items:center;
+    padding:8px;
   }
 
-  .modal-box{
-
-    border-radius:22px;
+  .modal-content{
+    margin:8px auto;
   }
 
+  .modal-header{
+    padding:16px;
+  }
+
+  .modal-body{
+    padding:16px;
+  }
+
+  .info-grid{
+    grid-template-columns:1fr;
+    gap:9px;
+  }
+
+  .abstract-section h3{
+    font-size:18px;
+  }
+
+  .abstract-text{
+    font-size:14px;
+  }
 }
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media(max-width:699px){
-
-  .hero{
-
-    padding:
-      22px
-      16px
-      32px;
-  }
-
-  .hero h1{
-
-    margin-top:35px;
-
-    font-size:38px;
-  }
-
-  .main{
-
-    padding:
-      22px
-      10px
-      60px;
-  }
-
-  /*
-     On mobile the timetable remains
-     horizontally scrollable.
-
-     This is important because each
-     room is a genuine column.
-  */
-
-  .room-heading,
-  .room-cell{
-
-    min-width:230px;
-  }
-
-  .time-heading,
-  .time-label{
-
-    min-width:82px;
-  }
-
-}
-
-
-/* =========================================================
-   MOBILE SWIPE HINT
-   ========================================================= */
-
-.timetable-hint{
-
-  display:none;
-
-  color:var(--muted);
-
-  font-size:11px;
-
-  text-align:center;
-
-  margin:
-    -4px
-    0
-    12px;
-}
-
-@media(max-width:699px){
-
-  .timetable-hint{
-
-    display:block;
-  }
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =======================================================
-     HERO
-     ======================================================= -->
-
-<header class="hero">
-
-  <div class="hero-inner">
-
-    <div class="brand">
-
-      <img
-        src="assets/sera-logo-original.png"
-        alt="SERA logo"
-      >
-
-      <div>
-
-        <small>
-          Scottish Educational Research Association
-        </small>
-
-        <strong>
-          SERA Conference 2026
-        </strong>
-
-      </div>
-
-    </div>
-
+<header>
+  <div class="header-inner">
+    <div class="eyebrow">SERA Conference 2026</div>
 
     <h1>
       Living Our Research: Agency, Culture, and the Pursuit of Equity in Education
     </h1>
 
-
-    <p>
-      Explore the SERA Conference 2026 programme,
-      search sessions and speakers, and save sessions
-      to your personal programme.
-    </p>
-
-
-    <div class="meta">
-
-      <span class="pill">
-        18–19 November 2026
-      </span>
-
-      <span class="pill">
-        Edinburgh Napier University
-      </span>
-
-      <span class="pill">
-        Edinburgh
-      </span>
-
+    <div class="header-subtitle">
+      18–19 November 2026 · Edinburgh Napier University, Edinburgh
     </div>
-
   </div>
-
 </header>
 
-
-<!-- =======================================================
-     NOTICE
-     ======================================================= -->
-
-<div
-  id="notice"
-  class="notice"
->
-
-  <strong>Programme:</strong>
-  The programme is subject to change.
-
-</div>
-
-
-<!-- =======================================================
-     CONTROLS
-     ======================================================= -->
-
-<nav class="controls">
-
+<div class="controls">
   <div class="controls-inner">
 
-    <button
-      class="day active"
-      data-day="0"
-    >
-      Wed 18 Nov
-    </button>
+    <div class="day-buttons">
+      <button class="day-button active" data-day="Wednesday">
+        Wednesday 18
+      </button>
 
-
-    <button
-      class="day"
-      data-day="1"
-    >
-      Thu 19 Nov
-    </button>
-
-
-    <input
-      id="search"
-      class="search"
-      placeholder="Search sessions, speakers, rooms…"
-      aria-label="Search programme"
-    >
-
-
-    <button
-      id="liveButton"
-      class="live-button active"
-    >
-      ● Live
-    </button>
-
-  </div>
-
-</nav>
-
-
-<!-- =======================================================
-     MAIN
-     ======================================================= -->
-
-<main class="main">
-
-  <div class="status">
-
-    <div>
-
-      <h2 id="dayTitle">
-        Wednesday 18 November
-      </h2>
-
-      <small id="status">
-        Loading programme from Google Sheets…
-      </small>
-
+      <button class="day-button" data-day="Thursday">
+        Thursday 19
+      </button>
     </div>
 
+    <div class="search-wrap">
+      <input
+        id="search"
+        class="search"
+        type="search"
+        placeholder="Search presentations, speakers, affiliations..."
+        aria-label="Search programme"
+      >
+    </div>
 
-    <small id="saved">
-      0 saved
-    </small>
+    <button id="favouritesButton" class="favourites-button">
+      ★ Favourites
+    </button>
 
   </div>
+</div>
 
+<div id="status" class="status"></div>
+<div id="nowLine" class="now-line"></div>
 
-  <div class="timetable-hint">
+<main class="programme-wrap">
 
-    ← Swipe left/right to see all rooms →
-
+  <div class="day-heading">
+    <h2 id="dayTitle">Wednesday 18 November</h2>
+    <div id="dayDate" class="date"></div>
   </div>
 
-
-  <section id="timetable">
-
+  <div id="programme">
     <div class="loading">
-
       Loading programme…
-
     </div>
-
-  </section>
+  </div>
 
 </main>
 
+<!-- Modal -->
 
-<footer>
+<div id="modal" class="modal" aria-hidden="true">
 
-  SERA Conference 2026 · Programme subject to change.
+  <div class="modal-content">
 
-</footer>
+    <div class="modal-header">
 
+      <h2 id="modalTitle"></h2>
 
-<!-- =======================================================
-     MODAL
-     ======================================================= -->
+      <button
+        id="closeModal"
+        class="close"
+        aria-label="Close"
+      >
+        ×
+      </button>
 
-<div
-  id="modal"
-  class="modal"
->
+    </div>
 
-  <div class="modal-box">
+    <div class="modal-body">
 
-    <button
-      id="close"
-      class="close"
-      aria-label="Close"
-    >
-      ×
-    </button>
+      <div class="info-grid">
 
+        <div class="info-item">
+          <div class="info-label">Type</div>
+          <div id="modalType" class="info-value"></div>
+        </div>
 
-    <h2 id="mtitle"></h2>
+        <div class="info-item">
+          <div class="info-label">Time</div>
+          <div id="modalTime" class="info-value"></div>
+        </div>
 
+        <div class="info-item">
+          <div class="info-label">Speaker(s)</div>
+          <div id="modalSpeaker" class="info-value"></div>
+        </div>
 
-    <span
-      id="mtype"
-      class="tag"
-    ></span>
+        <div class="info-item">
+          <div class="info-label">Affiliation</div>
+          <div id="modalAffiliation" class="info-value"></div>
+        </div>
 
+        <div class="info-item">
+          <div class="info-label">Room</div>
+          <div id="modalRoom" class="info-value"></div>
+        </div>
 
-    <div class="modal-details">
+        <div class="info-item">
+          <div class="info-label">Strand</div>
+          <div id="modalStrand" class="info-value"></div>
+        </div>
 
-      <p>
-        <b>Time:</b>
-        <span id="mtime"></span>
-      </p>
+        <div class="info-item">
+          <div class="info-label">Chair</div>
+          <div id="modalChair" class="info-value"></div>
+        </div>
 
+      </div>
 
-      <p>
-        <b>Speaker(s):</b>
-        <span id="mspeaker"></span>
-      </p>
+      <!-- NEW: ABSTRACT -->
 
+      <div class="abstract-section">
 
-      <p>
-        <b>Affiliation:</b>
-        <span id="maffiliation"></span>
-      </p>
+        <h3>Abstract</h3>
 
+        <div id="modalAbstract" class="abstract-text"></div>
 
-      <p>
-        <b>Room:</b>
-        <span id="mroom"></span>
-      </p>
+      </div>
 
+    </div>
 
-      <p>
-        <b>Strand:</b>
-        <span id="mstrand"></span>
-      </p>
+    <div class="modal-footer">
 
-
-      <p>
-        <b>Chair:</b>
-        <span id="mchair"></span>
-      </p>
+      <button id="modalFavourite" class="favourite-modal">
+        ☆ Add to favourites
+      </button>
 
     </div>
 
@@ -1361,1060 +702,531 @@ footer{
 
 </div>
 
-
 <script>
 
+const CSV_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRMrcoDNYRb8VfAG9dTTEGRWtLRLDPkAumjl-ePZ7PHp6xl4SAI9K4GVX-3FyTu5_YCddZl8jxWbagu/pub?gid=0&single=true&output=csv";
 
-/* =========================================================
-   GOOGLE SHEETS CSV URL
-   ========================================================= */
+let allSessions = [];
+let selectedDay = "Wednesday";
+let showFavouritesOnly = false;
+let currentModalSession = null;
 
-const PROGRAMME_URL =
-"https://docs.google.com/spreadsheets/d/e/2PACX-1vRMrcoDNYRb8VfAG9dTTEGRWtLRLDPkAumjl-ePZ7PHp6xl4SAI9K4GVX-3FyTu5_YCddZl8jxWbagu/pub?gid=0&single=true&output=csv";
-
-
-/* =========================================================
-   STATE
-   ========================================================= */
-
-let programme = [];
-
-let selectedDay = 0;
-
-let liveLineEnabled = true;
-
-let saved =
-  JSON.parse(
-    localStorage.getItem(
-      "seraSaved"
-    ) || "[]"
-  );
+const $ = selector => document.querySelector(selector);
 
 
-/* =========================================================
-   SHORTCUT
-   ========================================================= */
-
-const $ =
-  selector =>
-    document.querySelector(
-      selector
-    );
-
-
-/* =========================================================
-   CLEAN VALUE
-   ========================================================= */
+/* -------------------------------------------------------
+   Utility functions
+------------------------------------------------------- */
 
 function clean(value){
-
-  if(
-    value === undefined ||
-    value === null
-  ){
-
-    return "";
-
-  }
-
-  return String(value)
-    .replace(/^\uFEFF/,"")
-    .trim();
-
+  if(value === null || value === undefined) return "";
+  return String(value).trim();
 }
-
-
-/* =========================================================
-   HTML ESCAPE
-   ========================================================= */
 
 function escapeHTML(value){
-
-  return String(
-    value || ""
-  )
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
-
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
-
-
-/* =========================================================
-   TIME TO MINUTES
-   ========================================================= */
 
 function minutes(time){
 
-  if(!time){
+  if(!time) return 0;
 
-    return 0;
-
-  }
-
-
-  const parts =
-    clean(time)
-      .split(":");
-
-
-  if(
-    parts.length < 2
-  ){
-
-    return 0;
-
-  }
-
-
-  return (
-    Number(parts[0]) * 60 +
-    Number(parts[1])
+  const match = String(time).trim().match(
+    /^(\d{1,2})(?::(\d{2}))?\s*(am|pm)?$/i
   );
 
+  if(!match) return 0;
+
+  let hour = parseInt(match[1],10);
+  let minute = parseInt(match[2] || "0",10);
+  const ampm = match[3];
+
+  if(ampm){
+    const lower = ampm.toLowerCase();
+
+    if(lower === "pm" && hour !== 12){
+      hour += 12;
+    }
+
+    if(lower === "am" && hour === 12){
+      hour = 0;
+    }
+  }
+
+  return hour * 60 + minute;
 }
 
+function minutesToTime(total){
 
-/* =========================================================
-   MINUTES TO TIME
-   ========================================================= */
+  let hour = Math.floor(total / 60);
+  const minute = total % 60;
 
-function minutesToTime(value){
+  const suffix = hour >= 12 ? "pm" : "am";
 
-  const hours =
-    Math.floor(
-      value / 60
-    );
+  if(hour > 12){
+    hour -= 12;
+  }
 
-  const mins =
-    value % 60;
+  if(hour === 0){
+    hour = 12;
+  }
 
-
-  return (
-    String(hours)
-      .padStart(2,"0")
-    +
-    ":"
-    +
-    String(mins)
-      .padStart(2,"0")
-  );
-
+  return `${hour}:${String(minute).padStart(2,"0")} ${suffix}`;
 }
-
-
-/* =========================================================
-   NORMALISE ROOM NAME
-   ========================================================= */
 
 function normaliseRoom(room){
-
-  return clean(room)
-    .replace(/\s+/g," ")
-    .toLowerCase();
-
+  return clean(room);
 }
 
 
-/* =========================================================
-   CSV PARSER
-   ========================================================= */
+/* -------------------------------------------------------
+   CSV parser
+------------------------------------------------------- */
 
 function parseCSV(text){
 
   const rows = [];
-
   let row = [];
-
   let cell = "";
+  let inQuotes = false;
 
-  let insideQuotes = false;
+  for(let i=0;i<text.length;i++){
 
+    const char = text[i];
+    const next = text[i+1];
 
-  for(
-    let i=0;
-    i<text.length;
-    i++
-  ){
-
-    const char =
-      text[i];
-
-    const next =
-      text[i+1];
-
-
-    /*
-       Two quotes inside a quoted
-       CSV field represent one quote.
-    */
-
-    if(
-      char === '"' &&
-      insideQuotes &&
-      next === '"'
-    ){
-
+    if(char === '"' && inQuotes && next === '"'){
       cell += '"';
-
       i++;
-
       continue;
-
     }
-
-
-    /*
-       Start/end quoted field.
-    */
 
     if(char === '"'){
-
-      insideQuotes =
-        !insideQuotes;
-
+      inQuotes = !inQuotes;
       continue;
-
     }
 
+    if(char === "," && !inQuotes){
+      row.push(cell);
+      cell = "";
+      continue;
+    }
 
-    /*
-       Comma outside quotes =
-       next column.
-    */
+    if((char === "\n" || char === "\r") && !inQuotes){
 
-    if(
-      char === "," &&
-      !insideQuotes
-    ){
+      if(char === "\r" && next === "\n"){
+        i++;
+      }
 
       row.push(cell);
-
       cell = "";
 
-      continue;
-
-    }
-
-
-    /*
-       New line outside quotes =
-       next row.
-    */
-
-    if(
-      (
-        char === "\n" ||
-        char === "\r"
-      ) &&
-      !insideQuotes
-    ){
-
-      if(
-        char === "\r" &&
-        next === "\n"
-      ){
-
-        i++;
-
-      }
-
-
-      row.push(cell);
-
-
-      if(
-        row.some(
-          item =>
-            clean(item) !== ""
-        )
-      ){
-
+      if(row.some(value => clean(value) !== "")){
         rows.push(row);
-
       }
-
 
       row = [];
-
-      cell = "";
-
       continue;
-
     }
-
 
     cell += char;
-
   }
 
-
-  /*
-     Last row.
-  */
-
-  if(
-    cell.length ||
-    row.length
-  ){
-
+  if(cell !== "" || row.length){
     row.push(cell);
 
-
-    if(
-      row.some(
-        item =>
-          clean(item) !== ""
-      )
-    ){
-
+    if(row.some(value => clean(value) !== "")){
       rows.push(row);
-
     }
-
   }
 
-
   return rows;
-
 }
 
 
-/* =========================================================
-   CONVERT CSV ROWS INTO SESSIONS
-   ========================================================= */
+/* -------------------------------------------------------
+   Convert Google Sheet rows into sessions
+------------------------------------------------------- */
 
 function convertRows(rows){
 
-  if(
-    rows.length < 2
-  ){
+  if(!rows.length) return [];
 
-    return [];
-
-  }
-
-
-  const headers =
-    rows[0].map(
-      header =>
-        clean(header)
-          .toLowerCase()
-    );
-
+  const headers = rows[0].map(
+    header => clean(header).toLowerCase()
+  );
 
   function indexOfHeader(name){
-
-    return headers.indexOf(
-      name.toLowerCase()
-    );
-
+    return headers.indexOf(name);
   }
-
 
   const columns = {
 
-    id:
-      indexOfHeader("id"),
+    id: indexOfHeader("id"),
+    day: indexOfHeader("day"),
+    date: indexOfHeader("date"),
+    start: indexOfHeader("start"),
+    end: indexOfHeader("end"),
+    room: indexOfHeader("room"),
+    type: indexOfHeader("type"),
+    title: indexOfHeader("title"),
+    speaker: indexOfHeader("speaker(s)"),
+    affiliation: indexOfHeader("affiliation"),
+    strand: indexOfHeader("strand"),
+    chair: indexOfHeader("chair"),
 
-    day:
-      indexOfHeader("day"),
-
-    date:
-      indexOfHeader("date"),
-
-    start:
-      indexOfHeader("start"),
-
-    end:
-      indexOfHeader("end"),
-
-    room:
-      indexOfHeader("room"),
-
-    type:
-      indexOfHeader("type"),
-
-    title:
-      indexOfHeader("title"),
-
-    speaker:
-      indexOfHeader("speaker(s)"),
-
-    affiliation:
-      indexOfHeader("affiliation"),
-
-    strand:
-      indexOfHeader("strand"),
-
-    chair:
-      indexOfHeader("chair")
-
+    // NEW COLUMN
+    abstract: indexOfHeader("abstract")
   };
 
+  return rows.slice(1).map((row,index) => {
 
-  return rows
-    .slice(1)
-    .map(
-      (
-        row,
-        index
-      ) => {
+    const value = column => {
 
-        return {
+      if(column === -1) return "";
 
-          id:
-            clean(
-              row[columns.id]
-            ) ||
-            "session-" +
-            index,
+      return clean(row[column]);
 
-          day:
-            clean(
-              row[columns.day]
-            ),
+    };
 
-          date:
-            clean(
-              row[columns.date]
-            ),
+    return {
 
-          start:
-            clean(
-              row[columns.start]
-            ),
+      id: value(columns.id) || `session-${index + 1}`,
 
-          end:
-            clean(
-              row[columns.end]
-            ),
+      day: value(columns.day),
 
-          room:
-            clean(
-              row[columns.room]
-            ),
+      date: value(columns.date),
 
-          type:
-            clean(
-              row[columns.type]
-            ),
+      start: value(columns.start),
 
-          title:
-            clean(
-              row[columns.title]
-            ) ||
-            "Untitled session",
+      end: value(columns.end),
 
-          speaker:
-            clean(
-              row[columns.speaker]
-            ),
+      room: normaliseRoom(value(columns.room)),
 
-          affiliation:
-            clean(
-              row[columns.affiliation]
-            ),
+      type: value(columns.type),
 
-          strand:
-            clean(
-              row[columns.strand]
-            ),
+      title: value(columns.title),
 
-          chair:
-            clean(
-              row[columns.chair]
-            )
+      speaker: value(columns.speaker),
 
-        };
+      affiliation: value(columns.affiliation),
 
-      }
-    )
-    .filter(
-      session =>
-        session.start &&
-        session.title
+      strand: value(columns.strand),
+
+      chair: value(columns.chair),
+
+      // NEW: ABSTRACT FROM GOOGLE SHEET
+      abstract: value(columns.abstract)
+
+    };
+
+  }).filter(session => {
+
+    return (
+      session.title ||
+      session.room ||
+      session.type ||
+      session.start
     );
+
+  });
 
 }
 
 
-/* =========================================================
-   LOAD GOOGLE SHEET
-   ========================================================= */
+/* -------------------------------------------------------
+   Load programme
+------------------------------------------------------- */
 
 async function loadProgramme(){
 
+  const status = $("#status");
+
+  status.textContent = "Loading programme…";
+  status.classList.remove("error");
+
   try{
 
-    const response =
-      await fetch(
-        PROGRAMME_URL +
-        "&cache=" +
-        Date.now()
-      );
-
+    const response = await fetch(
+      CSV_URL + "&cache=" + Date.now()
+    );
 
     if(!response.ok){
-
-      throw new Error(
-        "Could not access Google Sheet."
-      );
-
+      throw new Error("Could not load the programme.");
     }
 
+    const csv = await response.text();
 
-    const csv =
-      await response.text();
+    const rows = parseCSV(csv);
 
+    allSessions = convertRows(rows);
 
-    const rows =
-      parseCSV(csv);
-
-
-    programme =
-      convertRows(rows);
-
-
-    if(
-      !programme.length
-    ){
-
-      throw new Error(
-        "No programme rows found."
-      );
-
-    }
-
-
-    $("#notice")
-      .classList
-      .remove(
-        "error"
-      );
-
-
-    $("#status")
-      .textContent =
-        programme.length +
-        " programme items loaded from Google Sheets.";
-
+    status.textContent =
+      `${allSessions.length} programme items loaded.`;
 
     render();
 
-
   }catch(error){
 
-    console.error(
-      error
-    );
+    console.error(error);
 
+    status.textContent =
+      "Unable to load the programme. Please try again later.";
 
-    $("#notice")
-      .classList
-      .add(
-        "error"
-      );
+    status.classList.add("error");
 
-
-    $("#notice")
-      .innerHTML =
-        `
-          <strong>
-            Programme could not be loaded.
-          </strong>
-          Please check that the Google Sheet
-          is published to the web as CSV.
-        `;
-
-
-    $("#timetable")
-      .innerHTML =
-        `
-          <div class="empty">
-
-            The programme could not be
-            loaded from Google Sheets.
-
-          </div>
-        `;
+    $("#programme").innerHTML = `
+      <div class="empty">
+        The programme could not be loaded.
+      </div>
+    `;
 
   }
 
 }
 
 
-/* =========================================================
-   DAY MATCHING
-   ========================================================= */
+/* -------------------------------------------------------
+   Day handling
+------------------------------------------------------- */
 
-function sessionBelongsToSelectedDay(
-  session
-){
+function sessionBelongsToSelectedDay(session){
 
-  const day =
-    clean(
-      session.day
-    ).toLowerCase();
+  const day = clean(session.day).toLowerCase();
 
-
-  const date =
-    clean(
-      session.date
-    ).toLowerCase();
-
-
-  if(
-    selectedDay === 0
-  ){
-
-    return (
-      day.includes("wed") ||
-      day.includes("wednesday") ||
-      date.includes("18")
-    );
-
+  if(day){
+    return day === selectedDay.toLowerCase();
   }
 
+  const date = clean(session.date).toLowerCase();
+
+  if(selectedDay === "Wednesday"){
+    return (
+      date.includes("18th") ||
+      date.includes("18/")
+    );
+  }
 
   return (
-    day.includes("thu") ||
-    day.includes("thursday") ||
-    date.includes("19")
+    date.includes("19th") ||
+    date.includes("19/")
   );
 
 }
-
-
-/* =========================================================
-   GET DAY'S SESSIONS
-   ========================================================= */
 
 function getDaySessions(){
 
-  return programme.filter(
-    session =>
-      sessionBelongsToSelectedDay(
-        session
-      )
+  return allSessions.filter(
+    session => sessionBelongsToSelectedDay(session)
   );
 
 }
 
-
-/* =========================================================
-   GET SEARCHED SESSIONS
-   ========================================================= */
-
 function getFilteredSessions(){
 
-  const query =
-    $("#search")
-      .value
-      .toLowerCase()
-      .trim();
+  let sessions = getDaySessions();
 
+  const search = clean($("#search").value).toLowerCase();
 
-  const sessions =
-    getDaySessions();
+  if(search){
 
-
-  if(!query){
-
-    return sessions;
-
-  }
-
-
-  return sessions.filter(
-    session => {
+    sessions = sessions.filter(session => {
 
       const searchable = [
-
         session.title,
         session.speaker,
         session.affiliation,
-        session.room,
         session.type,
         session.strand,
         session.chair,
-        session.date
-
+        session.room,
+        session.abstract
       ]
       .join(" ")
       .toLowerCase();
 
+      return searchable.includes(search);
 
-      return searchable.includes(
-        query
-      );
+    });
 
-    }
-  );
+  }
 
-}
+  if(showFavouritesOnly){
 
+    const favourites =
+      JSON.parse(localStorage.getItem("sera-favourites") || "[]");
 
-/* =========================================================
-   DETERMINE WHETHER A SESSION IS ALL ROOMS
-   ========================================================= */
+    sessions = sessions.filter(
+      session => favourites.includes(session.id)
+    );
 
-function isAllRooms(
-  session
-){
+  }
 
-  return (
-    normaliseRoom(
-      session.room
-    ) ===
-    "all rooms"
-  );
+  return sessions;
 
 }
 
 
-/* =========================================================
-   GET ROOMS FROM GOOGLE SHEET
-   =========================================================
+/* -------------------------------------------------------
+   Rooms
+------------------------------------------------------- */
 
-   THIS IS THE IMPORTANT PART.
+function isAllRooms(session){
 
-   There are NO hard-coded room names.
+  return clean(session.room).toLowerCase() === "all rooms";
 
-   If the Sheet contains:
+}
 
-       Room 3030
-
-   then Room 3030 becomes a heading.
-
-   If you add another room:
-
-       Room 3050
-
-   then Room 3050 becomes a heading too.
-*/
-
-function getRooms(
-  sessions
-){
+function getRooms(sessions){
 
   const rooms = [];
 
-  sessions.forEach(
-    session => {
+  sessions.forEach(session => {
 
-      if(
-        isAllRooms(
-          session
-        )
-      ){
+    if(isAllRooms(session)) return;
 
-        return;
-
-      }
-
-
-      const room =
-        clean(
-          session.room
-        );
-
-
-      if(!room){
-
-        return;
-
-      }
-
-
-      /*
-         Compare normalised names
-         but preserve the original
-         capitalisation from the Sheet.
-      */
-
-      const alreadyExists =
-        rooms.some(
-          existing =>
-            normaliseRoom(
-              existing
-            ) ===
-            normaliseRoom(
-              room
-            )
-        );
-
-
-      if(
-        !alreadyExists
-      ){
-
-        rooms.push(
-          room
-        );
-
-      }
-
+    if(session.room && !rooms.includes(session.room)){
+      rooms.push(session.room);
     }
-  );
 
-
-  /*
-     Sort alphabetically, but put
-     common whole-conference spaces
-     first if they exist.
-
-     This does NOT rename them.
-  */
-
-  const preferred = [
-    "main hall",
-    "plenary",
-    "atrium"
-  ];
-
-
-  rooms.sort(
-    (
-      a,
-      b
-    ) => {
-
-      const ai =
-        preferred.indexOf(
-          normaliseRoom(a)
-        );
-
-      const bi =
-        preferred.indexOf(
-          normaliseRoom(b)
-        );
-
-
-      if(
-        ai !== -1 &&
-        bi === -1
-      ){
-
-        return -1;
-
-      }
-
-
-      if(
-        ai === -1 &&
-        bi !== -1
-      ){
-
-        return 1;
-
-      }
-
-
-      if(
-        ai !== -1 &&
-        bi !== -1
-      ){
-
-        return ai - bi;
-
-      }
-
-
-      return a.localeCompare(
-        b,
-        undefined,
-        {
-          numeric:true,
-          sensitivity:"base"
-        }
-      );
-
-    }
-  );
-
+  });
 
   return rooms;
 
 }
 
 
-/* =========================================================
-   SESSION CARD
-   ========================================================= */
+/* -------------------------------------------------------
+   Favourites
+------------------------------------------------------- */
 
-function makeSessionCard(
-  session
-){
+function getFavourites(){
 
-  const savedClass =
-    saved.includes(
-      session.id
-    )
-      ? "saved"
-      : "";
+  return JSON.parse(
+    localStorage.getItem("sera-favourites") || "[]"
+  );
 
+}
 
-  const star =
-    saved.includes(
-      session.id
-    )
-      ? "★"
-      : "☆";
+function isFavourite(id){
 
+  return getFavourites().includes(id);
 
-  return `
+}
 
-    <article
-      class="session-card"
-      data-session-id="${escapeHTML(
-        session.id
-      )}"
-    >
+function toggleFavourite(id){
 
-      <button
-        class="star ${savedClass}"
-        data-save="${escapeHTML(
-          session.id
-        )}"
-        aria-label="Save session"
-      >
-        ${star}
-      </button>
+  let favourites = getFavourites();
 
+  if(favourites.includes(id)){
 
-      <h3>
-        ${escapeHTML(
-          session.title
-        )}
-      </h3>
+    favourites =
+      favourites.filter(item => item !== id);
 
+  }else{
 
-      ${
-        session.speaker
-          ? `
-            <div class="session-speaker">
-              ${escapeHTML(
-                session.speaker
-              )}
-            </div>
-          `
-          : ""
-      }
+    favourites.push(id);
 
+  }
 
-      ${
-        session.affiliation
-          ? `
-            <div class="session-affiliation">
-              ${escapeHTML(
-                session.affiliation
-              )}
-            </div>
-          `
-          : ""
-      }
+  localStorage.setItem(
+    "sera-favourites",
+    JSON.stringify(favourites)
+  );
 
+  render();
 
-      ${
-        session.type
-          ? `
-            <span class="tag">
-              ${escapeHTML(
-                session.type
-              )}
-            </span>
-          `
-          : ""
-      }
+  if(
+    currentModalSession &&
+    currentModalSession.id === id
+  ){
 
+    updateModalFavourite();
 
-      ${
-        session.chair
-          ? `
-            <div class="session-chair">
-              Chair:
-              ${escapeHTML(
-                session.chair
-              )}
-            </div>
-          `
-          : ""
-      }
-
-    </article>
-
-  `;
+  }
 
 }
 
 
-/* =========================================================
-   ALL ROOMS BLOCK
-   ========================================================= */
+/* -------------------------------------------------------
+   Session card
+------------------------------------------------------- */
 
-function makeAllRoomsBlock(
-  session
-){
+function makeSessionCard(session){
+
+  const favourite =
+    isFavourite(session.id);
 
   return `
 
     <div
-      class="all-rooms"
-      data-start="${escapeHTML(
-        session.start
-      )}"
-      data-end="${escapeHTML(
-        session.end
-      )}"
+      class="session-card ${favourite ? "favourite" : ""}"
+      data-id="${escapeHTML(session.id)}"
     >
 
-      <div class="all-rooms-inner">
+      <div class="session-title">
+        ${escapeHTML(session.title || "Untitled session")}
+      </div>
 
-        <span class="all-rooms-title">
+      ${
+        session.speaker
+        ?
+        `<div class="session-speaker">
+          ${escapeHTML(session.speaker)}
+        </div>`
+        :
+        ""
+      }
 
-          ${escapeHTML(
-            session.title
-          )}
+      ${
+        session.affiliation
+        ?
+        `<div class="session-affiliation">
+          ${escapeHTML(session.affiliation)}
+        </div>`
+        :
+        ""
+      }
 
-        </span>
-
-
-        <span class="all-rooms-time">
-
-          ${escapeHTML(
-            session.start
-          )}
-
-          ${
-            session.end
-              ? `
-                –
-                ${escapeHTML(
-                  session.end
-                )}
-              `
-              : ""
-          }
-
-        </span>
-
+      <div class="session-meta">
 
         ${
           session.type
-            ? `
-              <span class="tag">
-                ${escapeHTML(
-                  session.type
-                )}
-              </span>
-            `
-            : ""
+          ?
+          `<span class="badge">
+            ${escapeHTML(session.type)}
+          </span>`
+          :
+          ""
+        }
+
+        ${
+          session.strand
+          ?
+          `<span class="badge">
+            ${escapeHTML(session.strand)}
+          </span>`
+          :
+          ""
         }
 
       </div>
+
+      ${
+        session.chair
+        ?
+        `<div class="chair">
+          Chair: ${escapeHTML(session.chair)}
+        </div>`
+        :
+        ""
+      }
 
     </div>
 
@@ -2423,927 +1235,569 @@ function makeAllRoomsBlock(
 }
 
 
-/* =========================================================
-   RENDER
-   ========================================================= */
+/* -------------------------------------------------------
+   All Rooms block
+------------------------------------------------------- */
+
+function makeAllRoomsBlock(session){
+
+  const favourite =
+    isFavourite(session.id);
+
+  return `
+
+    <div
+      class="all-rooms-block ${favourite ? "favourite" : ""}"
+      data-id="${escapeHTML(session.id)}"
+    >
+
+      <div class="session-title">
+        ${escapeHTML(session.title || "Untitled session")}
+      </div>
+
+      ${
+        session.speaker
+        ?
+        `<div class="session-speaker">
+          ${escapeHTML(session.speaker)}
+        </div>`
+        :
+        ""
+      }
+
+      ${
+        session.affiliation
+        ?
+        `<div class="session-affiliation">
+          ${escapeHTML(session.affiliation)}
+        </div>`
+        :
+        ""
+      }
+
+      <div class="session-meta">
+
+        ${
+          session.type
+          ?
+          `<span class="badge">
+            ${escapeHTML(session.type)}
+          </span>`
+          :
+          ""
+        }
+
+      </div>
+
+      ${
+        session.chair
+        ?
+        `<div class="chair">
+          Chair: ${escapeHTML(session.chair)}
+        </div>`
+        :
+        ""
+      }
+
+    </div>
+
+  `;
+
+}
+
+
+/* -------------------------------------------------------
+   Render
+------------------------------------------------------- */
 
 function render(){
 
-  const sessions =
-    getFilteredSessions();
+  const programme = $("#programme");
 
+  const sessions = getFilteredSessions();
 
-  $("#saved")
-    .textContent =
-      saved.length +
-      " saved";
+  $("#dayTitle").textContent =
+    selectedDay === "Wednesday"
+      ? "Wednesday 18 November"
+      : "Thursday 19 November";
 
+  $("#dayDate").textContent =
+    selectedDay === "Wednesday"
+      ? "Edinburgh Napier University"
+      : "Edinburgh Napier University";
 
-  if(
-    !sessions.length
-  ){
+  if(!sessions.length){
 
-    $("#timetable")
-      .innerHTML =
-        `
-          <div class="empty">
+    programme.innerHTML = `
+      <div class="empty">
+        No programme items match your search.
+      </div>
+    `;
 
-            No sessions found for this day.
-
-          </div>
-        `;
+    placeNow();
 
     return;
 
   }
 
+  const allRoomsSessions =
+    sessions.filter(isAllRooms);
 
-  /*
-     Get room names DIRECTLY
-     from the Sheet.
-  */
+  const roomSessions =
+    sessions.filter(session => !isAllRooms(session));
 
-  const rooms =
-    getRooms(
-      sessions
-    );
+  let html = "";
 
+  /* All Rooms */
 
-  /*
-     Get all unique start times.
-  */
+  if(allRoomsSessions.length){
 
-  const startTimes = [];
+    html += `
+      <div class="all-rooms-section">
+        <div class="room-section">
 
-
-  sessions.forEach(
-    session => {
-
-      if(
-        !startTimes.includes(
-          session.start
-        )
-      ){
-
-        startTimes.push(
-          session.start
-        );
-
-      }
-
-    }
-  );
-
-
-  startTimes.sort(
-    (
-      a,
-      b
-    ) =>
-      minutes(a) -
-      minutes(b)
-  );
-
-
-  /*
-     Determine grid columns.
-
-     88px = time column.
-
-     Every room gets its own
-     220px column.
-  */
-
-  const gridColumns =
-    "88px " +
-    rooms
-      .map(
-        () =>
-          "220px"
-      )
-      .join(" ");
-
-
-  let html = `
-
-    <div class="timetable-wrapper">
-
-      <div
-        class="timetable"
-        style="--room-count:${rooms.length}"
-      >
-
-
-        <!-- ROOM HEADINGS -->
-
-        <div
-          class="room-header-row"
-          style="grid-template-columns:${gridColumns}"
-        >
-
-          <div class="time-heading">
-            Time
+          <div class="room-title">
+            All Rooms
           </div>
 
-  `;
+          <div class="session-area">
+    `;
 
+    allRoomsSessions
+      .sort((a,b) => minutes(a.start) - minutes(b.start))
+      .forEach(session => {
 
-  /*
-     BUILD HEADINGS DIRECTLY
-     FROM GOOGLE SHEET ROOM VALUES.
-  */
+        html += `
+          <div class="session-row">
 
-  rooms.forEach(
-    room => {
-
-      html += `
-
-        <div class="room-heading">
-
-          ${escapeHTML(
-            room
-          )}
-
-        </div>
-
-      `;
-
-    }
-  );
-
-
-  html += `
-
-        </div>
-
-  `;
-
-
-  /*
-     BUILD TIME ROWS.
-  */
-
-  startTimes.forEach(
-    start => {
-
-      const atThisTime =
-        sessions.filter(
-          session =>
-            session.start ===
-            start
-        );
-
-
-      /*
-         All Rooms sessions.
-      */
-
-      const allRooms =
-        atThisTime.filter(
-          isAllRooms
-        );
-
-
-      allRooms.forEach(
-        session => {
-
-          html +=
-            makeAllRoomsBlock(
-              session
-            );
-
-        }
-      );
-
-
-      /*
-         Room-specific sessions.
-      */
-
-      const roomSpecific =
-        atThisTime.filter(
-          session =>
-            !isAllRooms(
-              session
-            )
-        );
-
-
-      if(
-        !roomSpecific.length
-      ){
-
-        return;
-
-      }
-
-
-      /*
-         Determine the latest
-         ending session in this row.
-      */
-
-      const ends =
-        roomSpecific
-          .map(
-            session =>
-              minutes(
+            <div class="session-time">
+              ${escapeHTML(session.start)}
+              ${
                 session.end
-              )
-          )
-          .filter(
-            value =>
-              value > 0
-          );
-
-
-      const rowEnd =
-        ends.length
-          ? Math.max(
-              ...ends
-            )
-          : minutes(start);
-
-
-      html += `
-
-        <div
-          class="time-row"
-          data-start="${escapeHTML(
-            start
-          )}"
-          data-end="${escapeHTML(
-            minutesToTime(
-              rowEnd
-            )
-          )}"
-          style="grid-template-columns:${gridColumns}"
-        >
-
-
-          <div class="time-label">
-
-            ${escapeHTML(
-              start
-            )}
-
-            <span
-              class="time-label-end"
-            >
-
-              ${escapeHTML(
-                minutesToTime(
-                  rowEnd
-                )
-              )}
-
-            </span>
-
-          </div>
-
-      `;
-
-
-      /*
-         IMPORTANT:
-
-         For EACH room heading,
-         only sessions whose room
-         exactly matches that room
-         are placed underneath it.
-      */
-
-      rooms.forEach(
-        room => {
-
-          const matchingSessions =
-            roomSpecific.filter(
-              session =>
-                normaliseRoom(
-                  session.room
-                ) ===
-                normaliseRoom(
-                  room
-                )
-            );
-
-
-          html += `
-
-            <div class="room-cell">
-
-              <div class="session-stack">
-
-                ${matchingSessions
-                  .map(
-                    session =>
-                      makeSessionCard(
-                        session
-                      )
-                  )
-                  .join("")
-                }
-
-              </div>
-
+                ? `<br>–<br>${escapeHTML(session.end)}`
+                : ""
+              }
             </div>
 
-          `;
+            <div class="session-area">
+              ${makeAllRoomsBlock(session)}
+            </div>
 
-        }
-      );
+          </div>
+        `;
 
+      });
+
+    html += `
+          </div>
+        </div>
+      </div>
+    `;
+
+  }
+
+  /* Individual rooms */
+
+  const rooms = getRooms(roomSessions);
+
+  rooms.forEach(room => {
+
+    const sessionsInRoom =
+      roomSessions
+        .filter(session => session.room === room)
+        .sort((a,b) => minutes(a.start) - minutes(b.start));
+
+    html += `
+
+      <section class="room-section">
+
+        <div class="room-title">
+          ${escapeHTML(room)}
+        </div>
+
+        <div class="timeline-scroll">
+
+          <div class="timeline">
+
+    `;
+
+    sessionsInRoom.forEach(session => {
 
       html += `
+
+        <div class="session-row">
+
+          <div class="session-time">
+
+            ${escapeHTML(session.start)}
+
+            ${
+              session.end
+              ?
+              `<br>–<br>${escapeHTML(session.end)}`
+              :
+              ""
+            }
+
+          </div>
+
+          <div class="session-area">
+
+            ${makeSessionCard(session)}
+
+          </div>
 
         </div>
 
       `;
 
-    }
-  );
+    });
 
+    html += `
 
-  html += `
+          </div>
 
-      </div>
+        </div>
 
-    </div>
+      </section>
 
-  `;
+    `;
 
+  });
 
-  $("#timetable")
-    .innerHTML =
-      html;
+  programme.innerHTML = html;
 
+  attachSessionHandlers();
 
   placeNow();
 
 }
 
 
-/* =========================================================
-   HAPPENING NOW
-   ========================================================= */
+/* -------------------------------------------------------
+   Session click handlers
+------------------------------------------------------- */
 
-function placeNow(){
-
-  /*
-     Remove previous lines.
-  */
+function attachSessionHandlers(){
 
   document
-    .querySelectorAll(
-      ".now-line"
-    )
-    .forEach(
-      element =>
-        element.remove()
-    );
+    .querySelectorAll("[data-id]")
+    .forEach(element => {
 
+      element.addEventListener("click", event => {
 
-  if(
-    !liveLineEnabled
-  ){
+        const id =
+          element.getAttribute("data-id");
 
-    return;
+        const session =
+          allSessions.find(item => item.id === id);
 
-  }
+        if(!session) return;
 
+        openModal(session);
 
-  /*
-     Current real date/time.
-  */
+      });
 
-  const now =
-    new Date();
-
-
-  const year =
-    now.getFullYear();
-
-  const month =
-    now.getMonth() + 1;
-
-  const date =
-    now.getDate();
-
-
-  /*
-     Only show the line on the
-     corresponding conference day.
-  */
-
-  const correctDay =
-
-    (
-      selectedDay === 0 &&
-      year === 2026 &&
-      month === 11 &&
-      date === 18
-    )
-
-    ||
-
-    (
-      selectedDay === 1 &&
-      year === 2026 &&
-      month === 11 &&
-      date === 19
-    );
-
-
-  if(!correctDay){
-
-    return;
-
-  }
-
-
-  const currentMinutes =
-
-    now.getHours() * 60 +
-
-    now.getMinutes() +
-
-    now.getSeconds() / 60;
-
-
-  /*
-     Normal timetable rows.
-  */
-
-  document
-    .querySelectorAll(
-      ".time-row"
-    )
-    .forEach(
-      row => {
-
-        const start =
-          minutes(
-            row.dataset.start
-          );
-
-        const end =
-          minutes(
-            row.dataset.end
-          );
-
-
-        if(
-          currentMinutes >= start &&
-          currentMinutes < end
-        ){
-
-          const percentage =
-
-            (
-              currentMinutes -
-              start
-            )
-            /
-            Math.max(
-              1,
-              end - start
-            );
-
-
-          const line =
-            document.createElement(
-              "div"
-            );
-
-
-          line.className =
-            "now-line";
-
-
-          line.innerHTML =
-            `
-              <span class="now-label">
-                HAPPENING NOW
-              </span>
-            `;
-
-
-          line.style.top =
-            (
-              percentage *
-              row.offsetHeight
-            )
-            +
-            "px";
-
-
-          row.appendChild(
-            line
-          );
-
-        }
-
-      }
-    );
-
-
-  /*
-     All Rooms rows.
-  */
-
-  document
-    .querySelectorAll(
-      ".all-rooms"
-    )
-    .forEach(
-      row => {
-
-        const start =
-          minutes(
-            row.dataset.start
-          );
-
-        const end =
-          minutes(
-            row.dataset.end
-          );
-
-
-        if(
-          currentMinutes >= start &&
-          currentMinutes < end
-        ){
-
-          const percentage =
-
-            (
-              currentMinutes -
-              start
-            )
-            /
-            Math.max(
-              1,
-              end - start
-            );
-
-
-          const line =
-            document.createElement(
-              "div"
-            );
-
-
-          line.className =
-            "now-line";
-
-
-          line.innerHTML =
-            `
-              <span class="now-label">
-                HAPPENING NOW
-              </span>
-            `;
-
-
-          line.style.top =
-            (
-              percentage *
-              row.offsetHeight
-            )
-            +
-            "px";
-
-
-          row.appendChild(
-            line
-          );
-
-        }
-
-      }
-    );
+    });
 
 }
 
 
-/* =========================================================
-   SAVE / OPEN SESSION
-   ========================================================= */
+/* -------------------------------------------------------
+   Modal
+------------------------------------------------------- */
 
-document.addEventListener(
-  "click",
-  event => {
+function openModal(session){
+
+  currentModalSession = session;
+
+  $("#modalTitle").textContent =
+    session.title || "Untitled session";
+
+  $("#modalType").textContent =
+    session.type || "—";
+
+  $("#modalTime").textContent =
+    session.start
+      ?
+      `${session.start}${session.end ? " – " + session.end : ""}`
+      :
+      "—";
+
+  $("#modalSpeaker").textContent =
+    session.speaker || "—";
+
+  $("#modalAffiliation").textContent =
+    session.affiliation || "—";
+
+  $("#modalRoom").textContent =
+    session.room || "—";
+
+  $("#modalStrand").textContent =
+    session.strand || "—";
+
+  $("#modalChair").textContent =
+    session.chair || "—";
 
 
-    /*
-       SAVE BUTTON
-    */
+  /* -----------------------------------------
+     NEW: DISPLAY ABSTRACT
+  ----------------------------------------- */
 
-    const saveButton =
-      event.target.closest(
-        "[data-save]"
+  if(session.abstract){
+
+    $("#modalAbstract").textContent =
+      session.abstract;
+
+    $("#modalAbstract").classList.remove(
+      "no-abstract"
+    );
+
+  }else{
+
+    $("#modalAbstract").textContent =
+      "No abstract available.";
+
+    $("#modalAbstract").classList.add(
+      "no-abstract"
+    );
+
+  }
+
+
+  updateModalFavourite();
+
+  $("#modal").classList.add("open");
+
+  $("#modal").setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.style.overflow = "hidden";
+
+}
+
+
+function closeModal(){
+
+  $("#modal").classList.remove("open");
+
+  $("#modal").setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.style.overflow = "";
+
+  currentModalSession = null;
+
+}
+
+function updateModalFavourite(){
+
+  if(!currentModalSession) return;
+
+  const button =
+    $("#modalFavourite");
+
+  const favourite =
+    isFavourite(currentModalSession.id);
+
+  button.textContent =
+    favourite
+      ? "★ Remove from favourites"
+      : "☆ Add to favourites";
+
+  button.classList.toggle(
+    "active",
+    favourite
+  );
+
+}
+
+
+/* -------------------------------------------------------
+   Happening now
+------------------------------------------------------- */
+
+function placeNow(){
+
+  const nowLine = $("#nowLine");
+
+  if(!allSessions.length){
+
+    nowLine.textContent = "";
+
+    return;
+
+  }
+
+  const now = new Date();
+
+  const currentHour =
+    now.getHours();
+
+  const currentMinute =
+    now.getMinutes();
+
+  const currentTotal =
+    currentHour * 60 + currentMinute;
+
+  const currentSessions =
+    getDaySessions().filter(session => {
+
+      const start =
+        minutes(session.start);
+
+      const end =
+        minutes(session.end);
+
+      return (
+        currentTotal >= start &&
+        currentTotal < end
       );
 
+    });
 
-    if(saveButton){
+  if(currentSessions.length){
 
-      const id =
-        saveButton.dataset.save;
+    nowLine.textContent =
+      "● HAPPENING NOW: " +
+      currentSessions
+        .map(session => session.title)
+        .join(" · ");
+
+  }else{
+
+    nowLine.textContent = "";
+
+  }
+
+}
 
 
-      if(
-        saved.includes(
-          id
-        )
-      ){
+/* -------------------------------------------------------
+   Event listeners
+------------------------------------------------------- */
 
-        saved =
-          saved.filter(
-            item =>
-              item !== id
-          );
+document
+  .querySelectorAll(".day-button")
+  .forEach(button => {
 
-      }else{
+    button.addEventListener("click", () => {
 
-        saved.push(
-          id
+      document
+        .querySelectorAll(".day-button")
+        .forEach(item =>
+          item.classList.remove("active")
         );
 
-      }
+      button.classList.add("active");
 
-
-      localStorage.setItem(
-        "seraSaved",
-        JSON.stringify(
-          saved
-        )
-      );
-
+      selectedDay =
+        button.getAttribute("data-day");
 
       render();
 
-      return;
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
 
-    }
+    });
+
+  });
 
 
-    /*
-       SESSION CARD
-    */
+$("#search").addEventListener(
+  "input",
+  render
+);
 
-    const card =
-      event.target.closest(
-        ".session-card"
+
+$("#favouritesButton").addEventListener(
+  "click",
+  () => {
+
+    showFavouritesOnly =
+      !showFavouritesOnly;
+
+    $("#favouritesButton")
+      .classList.toggle(
+        "active",
+        showFavouritesOnly
       );
 
-
-    if(!card){
-
-      return;
-
-    }
-
-
-    const id =
-      card.dataset.sessionId;
-
-
-    const session =
-      programme.find(
-        item =>
-          item.id === id
-      );
-
-
-    if(!session){
-
-      return;
-
-    }
-
-
-    $("#mtitle")
-      .textContent =
-        session.title;
-
-
-    $("#mtype")
-      .textContent =
-        session.type ||
-        "";
-
-
-    $("#mtime")
-      .textContent =
-
-        session.start +
-
-        (
-          session.end
-            ? "–" +
-              session.end
-            : ""
-        );
-
-
-    $("#mspeaker")
-      .textContent =
-        session.speaker ||
-        "—";
-
-
-    $("#maffiliation")
-      .textContent =
-        session.affiliation ||
-        "—";
-
-
-    $("#mroom")
-      .textContent =
-        session.room ||
-        "—";
-
-
-    $("#mstrand")
-      .textContent =
-        session.strand ||
-        "—";
-
-
-    $("#mchair")
-      .textContent =
-        session.chair ||
-        "—";
-
-
-    $("#modal")
-      .classList
-      .add(
-        "open"
-      );
+    render();
 
   }
 );
 
 
-/* =========================================================
-   CLOSE MODAL
-   ========================================================= */
-
-$("#close").onclick =
-  () => {
-
-    $("#modal")
-      .classList
-      .remove(
-        "open"
-      );
-
-  };
-
-
-$("#modal").onclick =
-  event => {
-
-    if(
-      event.target.id ===
-      "modal"
-    ){
-
-      $("#modal")
-        .classList
-        .remove(
-          "open"
-        );
-
-    }
-
-  };
-
-
-/* =========================================================
-   DAY BUTTONS
-   ========================================================= */
-
-document
-  .querySelectorAll(
-    ".day"
-  )
-  .forEach(
-    (
-      button,
-      index
-    ) => {
-
-      button.onclick =
-        () => {
-
-          selectedDay =
-            index;
-
-
-          document
-            .querySelectorAll(
-              ".day"
-            )
-            .forEach(
-              (
-                item,
-                itemIndex
-              ) => {
-
-                item.classList.toggle(
-                  "active",
-                  itemIndex ===
-                  index
-                );
-
-              }
-            );
-
-
-          $("#dayTitle")
-            .textContent =
-
-              index === 0
-
-                ? "Wednesday 18 November"
-
-                : "Thursday 19 November";
-
-
-          render();
-
-        };
-
-    }
-  );
-
-
-/* =========================================================
-   SEARCH
-   ========================================================= */
-
-$("#search").oninput =
-  () => {
-
-    render();
-
-  };
-
-
-/* =========================================================
-   LIVE BUTTON
-   ========================================================= */
-
-$("#liveButton").onclick =
-  () => {
-
-    liveLineEnabled =
-      !liveLineEnabled;
-
-
-    $("#liveButton")
-      .classList
-      .toggle(
-        "active",
-        liveLineEnabled
-      );
-
-
-    $("#liveButton")
-      .textContent =
-
-        liveLineEnabled
-
-          ? "● Live"
-
-          : "○ Live";
-
-
-    render();
-
-  };
-
-
-/* =========================================================
-   KEEP "HAPPENING NOW" CURRENT
-   ========================================================= */
-
-setInterval(
-  placeNow,
-  30000
+$("#closeModal").addEventListener(
+  "click",
+  closeModal
 );
 
 
-/* =========================================================
-   INITIAL LOAD
-   ========================================================= */
+$("#modalFavourite").addEventListener(
+  "click",
+  () => {
+
+    if(currentModalSession){
+
+      toggleFavourite(
+        currentModalSession.id
+      );
+
+    }
+
+  }
+);
+
+
+$("#modal").addEventListener(
+  "click",
+  event => {
+
+    if(event.target === $("#modal")){
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if(event.key === "Escape"){
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+/* -------------------------------------------------------
+   Start
+------------------------------------------------------- */
 
 loadProgramme();
+
+setInterval(
+  placeNow,
+  60000
+);
 
 </script>
 
 </body>
-
 </html>
+```
